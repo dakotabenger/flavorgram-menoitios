@@ -50,6 +50,10 @@ background-color: red;
 const NavBar = ({ setAuthenticated }) => {
   return (
     <navbar>
+      <div class="searchbar__container navbar__links">
+          <div class="searchbar"  class="fas fa-search">
+            Search</div>
+        </div>
       <ul>
         <navbarcontainer>
         <styledLi>
@@ -76,9 +80,20 @@ const NavBar = ({ setAuthenticated }) => {
         <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
         </li>
-        <searchbarcontainer>
-          <searchbar></searchbar>
-        </searchbarcontainer>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <li class="navbar__btn">
+           </li>
+            <i class="fas fa-home navbar__links"></i>
+          </li>
+          <li class="navbar__item">
+            <i class="fas fa-mortar-pestle navbar__links"></i>
+          </li>
+
+          <li class="navbar__btn">
+            <i class="far fa-user-circle navbar__links"></i>
+          </li>
+        </ul>
     </navbarcontainer>
       </ul>
 
