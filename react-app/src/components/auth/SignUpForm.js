@@ -1,6 +1,31 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import styled from "styled-components";
+
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #FAFAFA;
+`
+
+const Input = styled.input`
+  margin-bottom:4px;
+  margin-top:4px;
+  padding: 4px 0 4px 4px;
+  border:solid 1px;
+  border-radius:5px;
+  justify-self: center;
+`
+
+const SubmitButton = styled.button`
+  width:24%;
+  margin-bottom:4px;
+  margin-top:4px;
+  border:solid 1px;
+  border-radius:5px
+`
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
@@ -40,44 +65,46 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <form onSubmit={onSignUp}>
-      <div>
-        <label>User Name</label>
-        <input
+      <FormContainer>
+        <div>
+          <Input
           type="text"
           name="username"
           onChange={updateUsername}
           value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
+          placeholder='User Name'
+          ></Input>
+        </div>
+        <div>
+          <Input
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+            placeholder='Email'
+          ></Input>
+        </div>
+        <div>
+          <Input
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+            placeholder='Password'
+          ></Input>
+        </div>
+        <div>
+          <Input
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+            placeholder='Confirm Password'
+          ></Input>
+        </div>
+        <SubmitButton type="submit">Sign Up</SubmitButton>
+      </FormContainer>
     </form>
   );
 };
