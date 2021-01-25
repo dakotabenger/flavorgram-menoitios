@@ -9,7 +9,7 @@ const Page = styled.div`
   width: auto;
 `
 
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items:center;
