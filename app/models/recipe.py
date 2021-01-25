@@ -1,4 +1,7 @@
-from . import user, like, db, comment
+from .db import db
+from .like import Like
+from . import User
+from sqlalchemy.orm import relationship
 
 class Recipe(db.Model):
     __tablename__ = "recipes"
