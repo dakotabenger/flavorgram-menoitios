@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
 
   followers = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followingId, secondaryjoin=id==follow.c.followerId, back_populates="following")
   following = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followerId, secondaryjoin=id==follow.c.followingId, back_populates="followers")
-  posts = relationship("Post")
+  recipes = relationship("Recipes")
 
   @property
   def password(self):
