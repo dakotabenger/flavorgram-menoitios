@@ -24,7 +24,7 @@ const SubmitButton = styled.button`
   margin-bottom:4px;
   margin-top:4px;
   border:solid 1px;
-  border-radius:5px
+  border-radius:5px;
 `
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
