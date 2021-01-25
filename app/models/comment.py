@@ -1,4 +1,7 @@
+
 from .models import user, like, db, recipe
+
+
 
 class Comment(db.Model):
     __tablename__ = "comments"
