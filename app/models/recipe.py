@@ -1,4 +1,4 @@
-from .models import user, like, db, comment
+from . import user, like, db, comment
 
 class Recipe(db.Model):
     __tablename__ = "recipes"
