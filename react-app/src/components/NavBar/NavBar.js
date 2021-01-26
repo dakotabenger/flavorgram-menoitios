@@ -8,11 +8,11 @@ import Search from '../Search/Search'
 const Navigation = styled.nav`
     background: #fff;
     border-bottom: 1px solid lightblue;
-    height: 40px;
+    height: 80px;
     widith: 100%
     display: flex;
     justify-content: left;
-    align-items: left;
+    // align-items: center;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
@@ -25,9 +25,9 @@ const Navbarcontainer = styled.div`
   height: 80px;
   z-index: 1;
   width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 50px;
+  min-width: 1000px;
+  // margin: 0 auto;
+  // padding: 0 50px;
 `;
 
 const StyledLi = styled.li`
@@ -38,15 +38,15 @@ background-color: red;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
+  display: inline;
+  // align-items: center;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
   color: black;
-  position:relative;
-  bottom: 30px;
-  right: 300px;
+  // position:relative;
+  // bottom: 30px;
+  // right: 300px;
 `;
 
 const TestLi = styled.li`
@@ -60,11 +60,14 @@ const IconContainer = styled.div`
   justify-content: flex-end;
   position: relative;
   top: 20px;
-  left: 560px;
+  // left: 560px;
+
 `
 
-const StyledIcon = styled.div`seac
-  padding: 5px;
+const StyledIcon = styled.div`
+  padding: 10px;
+  bottom: 8px;
+  position: relative;
 
 `
 
@@ -88,8 +91,8 @@ const StyledSearch = styled.li`
   font-size: 2rem;
   color: black;
   position:relative;
-  bottom: 30px;
-  right: 75px;
+  bottom: 10px;
+  // right: 75px;
 
 `
 // Moved to Search/Search.js
@@ -106,8 +109,8 @@ font-size:22pt;
 text-decoration: none;
 color: black;
 position: relative;
-right: 425px;
-bottom: 8px;
+// right: 425px;
+top: 10px;
 
 `
 
@@ -119,9 +122,9 @@ const IconLi = styled.li`
   text-decoration: none;
   font-size: 2rem;
   color: black;
-  position:relative;
-  bottom: 30px;
-  right: 300px;
+  // position:relative;
+  // bottom: 30px;
+  // right: 300px;
 `;
 
 const HomeButton = styled.i`
@@ -132,7 +135,9 @@ background-color: black;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
-
+  padding: 10px;
+  position: relative;
+  bottom: 10px;
 
 
 `
@@ -144,12 +149,12 @@ const NavBar = ({ setAuthenticated }) => {
     <Navigation>
       <ul>
         <Navbarcontainer>
-        <StyledLi>
-          <i className="fas fa-utensils"></i>
 
-        </StyledLi>
         <BrandContainer>
            <NavLink to="/" exact={true} activeClassName="active" className="brand_link">
+        <StyledLi>
+          <i className="fas fa-utensils"></i>
+        </StyledLi>
             Flavorgram
           </NavLink>
           </BrandContainer>
