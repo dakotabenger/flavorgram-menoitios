@@ -1,25 +1,19 @@
-from flask import Flask, render_template, redirect
+from flask import Blueprint, jsonify
 from dotenv import load_dotenv
 load_dotenv
 from flask_login import login_required
 from app.config import Config
-from app.forms import NewRecipe
 from app.models import Recipe
 
-app = Flask(__name__)
-app.config.from_object(Config)
-db.init_app(app)
-migrate = Migrate(app, db)
+recipe_routes = Blueprint('recipes', __name__)
 
 
-@app.route('/feed', methods=["GET"])
-@login_required
+@recipe_routes.route('/feed', methods=["GET"])
 def get_recipes():
     recipes = Recipe.query.all()
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
 
-@app.route('/create_recipe', methods=["POST"])
-@login_required
+@recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
     form = NewRecipe()
     if form.validate_on_submit():
