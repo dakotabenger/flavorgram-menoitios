@@ -9,6 +9,7 @@ import User from "./components/User";
 import CreateRecipe from "./components/CreateRecipe";
 import { authenticate } from "./services/auth";
 import Profile from "./components/Profile";
+import SearchedResults from './components/SearchResults/SearchResults'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -42,6 +43,9 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
+        </Route>
+        <Route path='/search-results' exact={true}>
+          <SearchedResults />
         </Route>
         <ProtectedRoute
           path={`/users/:username`}
