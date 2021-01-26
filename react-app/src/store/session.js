@@ -3,7 +3,7 @@ import { fetch } from './csrf.js';
 //keys
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
-
+const LOGIN_USER = 'session/loginUser'
 
 //action to set the user in session store
 const setUser = (user) => ({
@@ -25,16 +25,15 @@ export const login = ({ email, password }) => async (dispatch) => {
     method: 'POST',
     body: JSON.stringify({ email, password })
   });
-  dispatch(setUser(res.data.username));
-  console.log(res.data.username)
-  return res;
+  dispatch(setUser(res.data));
+  return {type: LOGIN_USER, payload: res.data};
 };
 
-export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/auth');
-  dispatch(setUser(res.data.username));
-  return res;
-};
+// export const restoreUser = () => async (dispatch) => {
+//   const res = await fetch('/api/auth');
+//   dispatch(setUser(res.data));
+//   return res;
+// };
 
 
 //change lines 45-47 with user object before destructure?
@@ -49,13 +48,12 @@ export const signup = (user) => async (dispatch) => {
     })
   });
 
-  dispatch(setUser(response.data.username));
+  dispatch(setUser(response.data));
   return response;
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/auth', {
-    method: 'DELETE'
+  const response = await fetch('/api/auth/logout', {
   });
   dispatch(removeUser());
   return response;

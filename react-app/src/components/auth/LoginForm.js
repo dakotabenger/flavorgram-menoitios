@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
@@ -55,7 +54,7 @@ const Page = styled.div`
   width: auto;
 `
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,7 +63,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const onLogin = async (e) => {
+  const onLogin = (e) => {
     e.preventDefault();
 
     return dispatch(sessionActions.login({ email, password }))
@@ -74,13 +73,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  // const updateEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
+  // const updatePassword = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
   return (
     <Page>
@@ -97,7 +96,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               type="text"
               placeholder="Email"
               value={email}
-              onChange={updateEmail}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -106,7 +105,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={updatePassword}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <SubmitButton type="submit">Login</SubmitButton>
