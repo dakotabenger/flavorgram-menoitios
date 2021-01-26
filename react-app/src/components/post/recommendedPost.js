@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 
-const UserPost = ({ usepost }) => {
+const RecommendedPost = ({ usepost }) => {
   const overlay = useRef(null);
   const history = useHistory();
   return (
@@ -27,3 +27,5 @@ const UserPost = ({ usepost }) => {
     </div>
   );
 };
+
+export default RecommendedPost;
