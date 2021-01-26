@@ -2,22 +2,23 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import styled from "styled-components";
+import './NavBar.css'
 
-const navbar = styled.nav`
+const Navigation = styled.nav`
     background: #fff;
     border-bottom: 1px solid lightblue;
-    height: 80px;
+    height: 40px;
+    widith: 100%
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
     z-index: 999;
 `;
 
-const navbarcontainer = styled.div`
-background-color: black
+const Navbarcontainer = styled.div`
   display:flex;
   justify-content: space-between;
   height: 80px;
@@ -28,7 +29,7 @@ background-color: black
   padding: 0 50px;
 `;
 
-const styledLi = styled.li`
+const StyledLi = styled.li`
 background-color: red;
   background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
   background-size: 100%;
@@ -42,68 +43,162 @@ background-color: red;
   text-decoration: none;
   font-size: 2rem;
   color: black;
+  position:relative;
+  bottom: 30px;
+  right: 300px;
 `;
 
-const testLi = styled.li`
+const TestLi = styled.li`
 text-decoration: none;
+
+`
+
+const IconContainer = styled.div`
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  position: relative;
+  top: 20px;
+  left: 560px;
+`
+
+const StyledIcon = styled.div`
+  padding: 5px;
+  
+`
+
+const StyledSpan = styled.span`
+padding:20px;
+
+`
+
+const StyledSearch = styled.li`
+// background-color: black;
+  // background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
+  background-size: 100%;
+  // -webkit-background-clip: text;
+  // -moz-background-clip: text;
+  // -webkit-text-fill-color: red;
+  // -moz-text-fill-color: red;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  color: black;
+  position:relative;
+  bottom: 30px;
+  right: 75px;
+
+`
+
+const StyledInput = styled.input`
+  height:35px;
+  width: 500px;
+  font-size: 30px;
+  text-align: center;
+
+`
+
+const BrandContainer = styled.div`
+font-size:22pt;
+text-decoration: none;
+color: black;
+position: relative;
+right: 425px;
+bottom: 8px;
+
+`
+
+const IconLi = styled.li`
+  background-size: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  color: black;
+  position:relative;
+  bottom: 30px;
+  right: 300px;
+`;
+
+const HomeButton = styled.i`
+background-color: black;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+
+
 
 `
 
 
 
-
-
 const NavBar = ({ setAuthenticated }) => {
   return (
-    <navbar>
-      <div className="searchbar__container navbar__links">
-          <div className="searchbar fas fa-search">
-            Search</div>
-        </div>
+    <Navigation>
       <ul>
-        <navbarcontainer>
-        <styledLi>
-          <NavLink to="/" exact={true} activeClassName="active">
+        <Navbarcontainer>
+        <StyledLi>         
           <i className="fas fa-utensils"></i>
+          
+        </StyledLi>
+        <BrandContainer>
+           <NavLink to="/" exact={true} activeClassName="active" className="brand_link">
             Flavorgram
           </NavLink>
-        </styledLi>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
+          </BrandContainer>
+      <StyledSearch>
+      <StyledSpan>
+      <i class="fas fa-search"></i>
+      </StyledSpan>
+      <StyledInput type="text" className="searchbar fas fa-search" placeholder="Search Recipes..."></StyledInput>
+      </StyledSearch>
+      
+        {/* <li>
         </li>
         <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
+        <NavLink to="/sign-up" exact={true} activeClassName="active">
+        Sign Up
+        </NavLink>
         </li>
         <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
+        <NavLink to="/users" exact={true} activeClassName="active">
+        Users
+        </NavLink>
+      </li> */}
+        {/* <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
-        </li>
+        </li> */}
         <ul className="navbar__menu">
-          <testLi className="navbar__item">
-            <li className="navbar__btn">
-           </li>
-            <i className="fas fa-home navbar__links"></i>
-          </testLi>
-          <li className="navbar__item">
-            <i className="fas fa-mortar-pestle navbar__links"></i>
-          </li>
+        <IconContainer>
+          <IconLi className="navbar__item">
+            <IconLi className="navbar__btn">
+           </IconLi>
+        <NavLink to="/feed" exact={true} activeClassName="active">
+            <HomeButton className="fas fa-home navbar__links"></HomeButton>
+        </NavLink>
+          </IconLi>
+          <IconLi className="navbar__item">
+          <NavLink to="/recipe-form" exact={true} activeClassName="active">
+          <HomeButton className="fas fa-mortar-pestle navbar__links"></HomeButton> 
+        </NavLink>
+           
+          </IconLi>
 
-          <li className="navbar__btn">
-            <i className="far fa-user-circle navbar__links"></i>
-          </li>
+          <IconLi className="navbar__btn">
+            <StyledIcon className="far fa-user-circle navbar__links"></StyledIcon>
+          </IconLi>
+        </IconContainer>
         </ul>
-    </navbarcontainer>
+    </Navbarcontainer>
       </ul>
 
-    </navbar>
+    </Navigation>
   );
 }
 
