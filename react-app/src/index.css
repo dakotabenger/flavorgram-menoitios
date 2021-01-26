@@ -31,6 +31,12 @@ body {
   flex-direction: row;
 }
 
+.main__header__div {
+  width: 291px;
+  height: 194px;
+  margin-right: 30px;
+}
+
 .header__profilePicture {
   width: 150px;
   height: 150px;
@@ -43,12 +49,26 @@ body {
   border: solid black;
 }
 
+.profile__picture {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 150px;
+}
+
 .section__bio {
   width: 613px;
   height: 96px;
   font-size: 16px;
   line-height: 24px;
   display: block;
+}
+
+.username-div {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: row;
 }
 .section__userName {
   display: block;
@@ -78,7 +98,7 @@ body {
   box-sizing: border-box;
 }
 
-.div__posts__sectionTitle {
+.posts__sectionTitle {
   align-items: center;
   color: black;
   margin-right: 60px;
@@ -92,6 +112,23 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: center;
+}
+.span-posts {
+  display: flex;
+  align-items: center;
+  color: #262601;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.following-span {
+  color: #262601;
+  font-weight: 600;
+}
+.follow-list {
+  margin-right: 0;
+  font-size: 16px;
 }
 
 .posts-images {
