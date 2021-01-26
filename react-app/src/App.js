@@ -48,7 +48,7 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <NavBar setAuthenticated={setAuthenticated} />
+          <NavBar/>
           <Profile />
           {/* <UsersList/> */}
         </ProtectedRoute>
@@ -60,6 +60,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+          <NavBar/>
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
