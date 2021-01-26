@@ -1,11 +1,14 @@
-export const authenticate = async() => {
-  const response = await fetch('/api/auth/',{
+export const authenticate = async () => {
+  const response = await fetch("/api/auth/", {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      "Content-Type": "application/json",
+    },
   });
-  return await response.json();
-}
+  const res = await response.json();
+  localStorage.setItem("FG_USERNAME", `${res.username}`);
+  return res;
+};
+
 
 // export const login = async (email, password) => {
 //   const response = await fetch('/api/auth/login', {
@@ -25,11 +28,10 @@ export const logout = async () => {
   const response = await fetch("/api/auth/logout", {
     headers: {
       "Content-Type": "application/json",
-    }
+    },
   });
   return await response.json();
 };
-
 
 export const signUp = async (username, email, password) => {
   const response = await fetch("/api/auth/signup", {
@@ -44,4 +46,6 @@ export const signUp = async (username, email, password) => {
     }),
   });
   return await response.json();
-}
+
+};
+
