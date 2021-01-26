@@ -17,6 +17,7 @@ const navbar = styled.nav`
 `;
 
 const navbarcontainer = styled.div`
+background-color: black
   display:flex;
   justify-content: space-between;
   height: 80px;
@@ -25,7 +26,7 @@ const navbarcontainer = styled.div`
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 50px;
-`
+`;
 
 const styledLi = styled.li`
 background-color: red;
@@ -41,6 +42,11 @@ background-color: red;
   text-decoration: none;
   font-size: 2rem;
   color: black;
+`;
+
+const testLi = styled.li`
+text-decoration: none;
+
 `
 
 
@@ -50,8 +56,8 @@ background-color: red;
 const NavBar = ({ setAuthenticated }) => {
   return (
     <navbar>
-      <div class="searchbar__container navbar__links">
-          <div class="searchbar"  class="fas fa-search">
+      <div className="searchbar__container navbar__links">
+          <div className="searchbar fas fa-search">
             Search</div>
         </div>
       <ul>
@@ -80,18 +86,18 @@ const NavBar = ({ setAuthenticated }) => {
         <li>
           <LogoutButton setAuthenticated={setAuthenticated} />
         </li>
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <li class="navbar__btn">
+        <ul className="navbar__menu">
+          <testLi className="navbar__item">
+            <li className="navbar__btn">
            </li>
-            <i class="fas fa-home navbar__links"></i>
-          </li>
-          <li class="navbar__item">
-            <i class="fas fa-mortar-pestle navbar__links"></i>
+            <i className="fas fa-home navbar__links"></i>
+          </testLi>
+          <li className="navbar__item">
+            <i className="fas fa-mortar-pestle navbar__links"></i>
           </li>
 
-          <li class="navbar__btn">
-            <i class="far fa-user-circle navbar__links"></i>
+          <li className="navbar__btn">
+            <i className="far fa-user-circle navbar__links"></i>
           </li>
         </ul>
     </navbarcontainer>
