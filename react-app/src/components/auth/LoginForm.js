@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import * as sessionActions from "../../store/session";
 
 const FormContainer = styled.div`
   display: flex;
@@ -57,15 +59,19 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+
+  if (sessionUser) return <Redirect to="/" />;
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
-    if (!user.errors) {
-      setAuthenticated(true);
-    } else {
-      setErrors(user.errors);
-    }
+
+    return dispatch(sessionActions.login({ email, password }))
+    .catch((res) => {
+      if (res.data && res.data.errors) setErrors(res.data.errors);
+    });
+
   };
 
   const updateEmail = (e) => {
@@ -75,10 +81,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <Page>
