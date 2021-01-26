@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import CreateRecipe from "./components/CreateRecipe";
+import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import { authenticate } from "./services/auth";
 import Profile from "./components/Profile";
 
@@ -52,6 +52,9 @@ function App() {
           <Profile />
           {/* <UsersList/> */}
         </ProtectedRoute>
+        <Route path="/create_recipe" exact={true}>
+          <CreateRecipe />
+        </Route>
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
