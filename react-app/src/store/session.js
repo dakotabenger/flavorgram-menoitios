@@ -1,35 +1,45 @@
 import { fetch } from './csrf.js';
 
+//keys
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const LOGIN_USER = 'session/loginUser'
 
+//action to set the user in session store
 const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
 
+
+//action too remove user from session
 const removeUser = () => ({
   type: REMOVE_USER
 });
 
-export const login = ({ credential, password }) => async (dispatch) => {
-  const res = await fetch('/api/auth', {
+
+//thunk to fetch login route then dispatch setUser action to store
+//user in session store
+export const login = ({ email, password }) => async (dispatch) => {
+  const res = await fetch('/api/auth/login', {
     method: 'POST',
-    body: JSON.stringify({ credential, password })
+    body: JSON.stringify({ email, password })
   });
-  dispatch(setUser(res.data.user));
-  return res;
+  dispatch(setUser(res.data));
+  return {type: LOGIN_USER, payload: res.data};
 };
 
-export const restoreUser = () => async (dispatch) => {
-  const res = await fetch('/api/auth');
-  dispatch(setUser(res.data.user));
-  return res;
-};
+// export const restoreUser = () => async (dispatch) => {
+//   const res = await fetch('/api/auth');
+//   dispatch(setUser(res.data));
+//   return res;
+// };
 
+
+//change lines 45-47 with user object before destructure?
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
-  const response = await fetch('/api/users', {
+  const response = await fetch('/api/auth/signup', {
     method: 'POST',
     body: JSON.stringify({
       username,
@@ -38,13 +48,12 @@ export const signup = (user) => async (dispatch) => {
     })
   });
 
-  dispatch(setUser(response.data.user));
+  dispatch(setUser(response.data));
   return response;
 };
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/auth', {
-    method: 'DELETE'
+  const response = await fetch('/api/auth/logout', {
   });
   dispatch(removeUser());
   return response;

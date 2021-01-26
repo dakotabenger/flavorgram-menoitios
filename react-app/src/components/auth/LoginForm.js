@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import * as sessionActions from "../../store/session";
 
 const FormContainer = styled.div`
   display: flex;
@@ -53,32 +54,32 @@ const Page = styled.div`
   width: auto;
 `
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
-  const onLogin = async (e) => {
+  if (sessionUser) return <Redirect to="/" />;
+
+  const onLogin = (e) => {
     e.preventDefault();
-    const user = await login(email, password);
-    if (!user.errors) {
-      setAuthenticated(true);
-    } else {
-      setErrors(user.errors);
-    }
+
+    return dispatch(sessionActions.login({ email, password }))
+    .catch((res) => {
+      if (res.data && res.data.errors) setErrors(res.data.errors);
+    });
+
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  // const updateEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  // const updatePassword = (e) => {
+  //   setPassword(e.target.value);
+  // };
 
   return (
     <Page>
@@ -95,7 +96,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               type="text"
               placeholder="Email"
               value={email}
-              onChange={updateEmail}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
@@ -104,7 +105,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={updatePassword}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <SubmitButton type="submit">Login</SubmitButton>

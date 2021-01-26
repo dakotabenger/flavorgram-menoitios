@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux"
+import * as sessionActions from "../../store/session";
 
 const Page = styled.div`
   background-color:#FAFAFA;
@@ -53,19 +55,21 @@ const SubmitButton = styled.button`
 
 `;
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
+      dispatch(sessionActions.signup({ username, email, password }))
+      // if (!user.errors) {
+      //   return <Redirect to="/login" />;
+      // }
     }
   };
 
@@ -85,9 +89,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
     setRepeatPassword(e.target.value);
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+  if (sessionUser) return <Redirect to="/" />;
 
   return (
     <Page>

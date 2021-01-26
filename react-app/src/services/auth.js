@@ -9,20 +9,20 @@ export const authenticate = async () => {
   return res;
 };
 
-export const login = async (email, password) => {
-  const response = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-    }),
-  });
-  const res = await response.json();
-  return res;
-};
+
+// export const login = async (email, password) => {
+//   const response = await fetch('/api/auth/login', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       email,
+//       password
+//     })
+//   });
+//   return await response.json();
+// }
 
 export const logout = async () => {
   const response = await fetch("/api/auth/logout", {
@@ -46,4 +46,6 @@ export const signUp = async (username, email, password) => {
     }),
   });
   return await response.json();
+
 };
+
