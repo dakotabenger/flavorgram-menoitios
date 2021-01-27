@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import React, { useState} from "react";
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux"
@@ -54,6 +54,19 @@ const SubmitButton = styled.button`
   }
 
 `;
+
+const LoginButton = styled.button`
+  width:163px;
+  margin-bottom:4px;
+  margin-top:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:#FAFAFA;
+
+  &:hover{
+    background-color:red;
+  `;
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
@@ -133,6 +146,9 @@ const SignUpForm = () => {
             ></Input>
           </div>
           <SubmitButton type="submit">Sign Up</SubmitButton>
+          <NavLink to='/login'>
+            <LoginButton type="button">Login</LoginButton>
+          </NavLink>
         </FormContainer>
       </Form>
     </Page>
