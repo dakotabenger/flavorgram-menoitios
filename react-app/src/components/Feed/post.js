@@ -22,7 +22,47 @@ const Post = ({ recipe, user, users, myUserId }) => {
         </div>
       ))
     ) : (
-     
+      <>
+        <div className="feed-link">
+          <NavLink className="more-comments" to={`/recipes/${recipe.id}`}>
+            {`See ${comments.length - 2} more comments`}{" "}
+          </NavLink>
+        </div>
+        <div className="feed-comment">
+          <NavLink
+            to={`/users/${
+              users[comments[comments.length - 2].userId].username
+            }`}
+          >
+            <b>{users[comments[comments.length - 2].userId].username}</b>
+          </NavLink>
+          {" " + comments[comments.length - 2].comment}
+        </div>
+        <div className="feed-comment">
+          <NavLink
+            to={`/users/${
+              users[comments[comments.length - 1].userId].username
+            }`}
+          >
+            <b>{users[comments[comments.length - 1].userId].username}</b>
+          </NavLink>
+          {" " + comments[comments.length - 1].comment}
+        </div>
+      </>
+    );
+  };
+
+  const submitComment = async (e) => {
+    e.preventDefault();
+    if (comment.length === 0) return;
+    let res = await fetch(`/api/recipes/${recipeId}/comments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comment }),
+    });
+    res = await res.json();
+    setComments(...res.comments);
+    setComment("");
   };
 
   const like = async (e) => {
