@@ -13,6 +13,7 @@ def get_recipes():
     recipes = Recipe.query.all()
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
 
+
 @recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
     form = NewRecipe()
@@ -25,5 +26,5 @@ def create_recipe():
                                     photoUrl=data["photoUrl"])
         db.session.add(new_recipe)
         db.session.commit()
-        return redirect("/feed")
+        return new_recipe.to_dict()
     return "Uh-oh. There's something wrong here..."

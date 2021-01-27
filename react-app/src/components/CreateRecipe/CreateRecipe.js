@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { addRecipe } from '../../store/post';
+import * as sessionActions from "../../store/post";
 import './createrecipe.css'
 
 function CreateRecipe() {
@@ -24,7 +25,7 @@ function CreateRecipe() {
         photoUrl
         };
 
-        let createdRecipe = await dispatch(addRecipe(payload))
+        const createdRecipe = dispatch(sessionActions.addRecipe(payload))
 
         if (createdRecipe) return <Redirect to="/" />;
     };
