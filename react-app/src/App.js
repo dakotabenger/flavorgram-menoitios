@@ -12,19 +12,22 @@ import Profile from "./components/Profile";
 import SearchedResults from "./components/SearchResults/SearchResults";
 import ImageGen from "./components/ImagePost/ImageGen";
 import Post from "./components/post";
+import {restoreUser} from './store/session'
+import { useDispatch } from "react-redux";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [userdata, setUserData] = useState({});
+  const dispatch = useDispatch()
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-        setUserData(user);
-      }
+      dispatch(restoreUser())
+      // if (!user.errors) {
+      //   setAuthenticated(true);
+      //   setUserData(user);
+      // }
       setLoaded(true);
     })();
   }, []);
