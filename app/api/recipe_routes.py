@@ -46,7 +46,7 @@ def get_recipes():
 
 @recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
-    form = Recipe()
+    form = NewRecipe()
     if form.validate_on_submit():
         data = form.data
         new_recipe = Recipe(userId=data["userId"],
