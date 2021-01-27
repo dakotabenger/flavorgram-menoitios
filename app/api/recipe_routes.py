@@ -1,12 +1,55 @@
+import boto3
+import os
 from flask import Blueprint, jsonify
 from dotenv import load_dotenv
+load_dotenv
+
 from flask_login import login_required
 from app.config import Config
 from app.models import Recipe
 
-load_dotenv
 
 recipe_routes = Blueprint('recipes', __name__)
+posts_routes = Blueprint('posts', __name__)
+s3 = boto3.client('s3',
+                    aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
+                    aws_secret_access_key=os.environ.get('AWS_SECRET_KEY')
+                    )
+BUCKET_NAME = 'flavorgram-gp'
+
+#AWS s3 HELPER
+
+def spaceRemover(filename):
+    list_filename = filename.split(' ')
+    return '+'.join(list_filename)
+
+
+def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
+    s3.upload_fileobj(
+        file,
+        bucket_name,
+        file.filename,
+        ExtraArgs={
+            "ACL": acl,
+            "ContentType": file.content_type
+        }
+    )
+
+    return "{}{}".format(app.config["S3_LOCATION"], spaceRemover(file.filename))
+
+#Create Post
+
+# @recipe_routes.route('/', methods=["POST"])
+# # @login_required
+# def create_recipe():
+#         pass
+
+# Read Post
+# @recipe_routes.route('/<int:id>', methods=['GET'])
+# def read_post(id):
+#    pass
+
+
 
 
 @recipe_routes.route('/feed', methods=["GET"])
@@ -30,8 +73,9 @@ def create_recipe():
         return redirect("/feed")
     return "Uh-oh. There's something wrong here..."
 
-
+  
 @recipe_routes.route('searched/<keyword>', methods=['GET'])
 def searched(keyword):
     recipes = Recipe.query.filter(Recipe.dish_name.ilike(f'%{keyword}%')).all()
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
+

@@ -14,12 +14,14 @@ import SearchedResults from './components/SearchResults/SearchResults'
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [userdata, setUserData] = useState({});
 
   useEffect(() => {
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
+        setUserData(user);
       }
       setLoaded(true);
     })();
@@ -36,6 +38,7 @@ function App() {
           <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
+            setUserData={setUserData}
           />
         </Route>
         <Route path="/sign-up" exact={true}>
@@ -52,8 +55,8 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <NavBar/>
-          <Profile />
+          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+          <Profile userdata={userdata} />
           {/* <UsersList/> */}
         </ProtectedRoute>
         <Route path="/create_recipe" exact={true}>
@@ -67,7 +70,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <NavBar/>
+          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
