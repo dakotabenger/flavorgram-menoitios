@@ -3,6 +3,7 @@ from .like import Like
 from . import User
 from sqlalchemy.orm import relationship
 
+
 class Recipe(db.Model):
     __tablename__ = "recipes"
 
@@ -24,14 +25,14 @@ class Recipe(db.Model):
             "dish_name": self.dish_name,
             "ingredients": self.ingredients,
             "instructions": self.instructions,
-            
+
 
             "photoUrl": self.photoUrl,
             "numLikes": len(self.likingUsers),
             "numComments": len(self.comments)
 
         }
-    
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -40,6 +41,6 @@ class Recipe(db.Model):
             "instructions": self.instructions,
             "photoUrl": self.photoUrl,
             "comments": [comment.to_dict() for comment in self.comments],
-            "numLikes": len(self.likingUsers),
-            "likers":[l.id for l in self.likingUsers]
+            # "numLikes": len(self.likingUsers),
+            # "likers":[l.id for l in self.likingUsers]
         }
