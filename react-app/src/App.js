@@ -40,17 +40,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-            setUserData={setUserData}
-          />
+          <LoginForm/>
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <SignUpForm/>
         </Route>
         <Route path="/search-results" exact={true}>
           <SearchedResults />
@@ -58,9 +51,8 @@ function App() {
         <ProtectedRoute
           path={`/users/:username`}
           exact={true}
-          authenticated={authenticated}
         >
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+          <NavBar/>
           <Profile userdata={userdata} />
           {/* <UsersList/> */}
         </ProtectedRoute>
@@ -68,7 +60,6 @@ function App() {
         <ProtectedRoute
           path="/recipes/new"
           exact={true}
-          authenticated={authenticated}
         >
           <NavBar userdata={userdata} />
           <ImageGen />
@@ -79,12 +70,11 @@ function App() {
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
-          authenticated={authenticated}
         >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+        <ProtectedRoute path="/" exact={true}>
+          <NavBar userdata={userdata} />
           <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
