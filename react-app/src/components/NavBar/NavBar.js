@@ -200,7 +200,15 @@ const NavBar = ({ setAuthenticated }) => {
           </IconLi>
 
           <IconLi className="navbar__btn">
-            <StyledIcon onClick= {() => setShowModal(true)}className="far fa-user-circle navbar__links"></StyledIcon>
+
+            <StyledIcon onClick= {() => {
+              if(showModal === false) {
+                setShowModal(true)
+              } else {
+                setShowModal(false)
+              }
+              }}className="far fa-user-circle navbar__links"></StyledIcon>
+
           </IconLi>
         </IconContainer>
         </ul>
@@ -209,9 +217,11 @@ const NavBar = ({ setAuthenticated }) => {
       <>
     {showModal && (
     <Modal onClose={() => setShowModal(false)}>
-    <LogoutButton />
-    <NavLink to="/profile" exact={true} activeClassName="active" className="brand_link">
-            Profile
+
+    <LogoutButton className="logout" />
+    <NavLink to="/profile" exact={true}>
+            <button className="brand_linked">Profile</button>
+
         </NavLink>
         </Modal> )}
 </>

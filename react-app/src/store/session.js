@@ -31,12 +31,16 @@ export const login = ({ email, password }) => async (dispatch) => {
 };
 
 export const restoreUser = () => async (dispatch) => {
+
   const res = await fetch('/api/auth/', {
+
     headers: {
       "Content-Type": "application/json",
     },
   });
+
   if(res.data){
+
     dispatch(setUser(res.data))
   }
     // dispatch(setUser(res.data));
