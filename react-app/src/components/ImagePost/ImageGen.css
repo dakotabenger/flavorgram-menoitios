@@ -1,0 +1,32 @@
+.newPostForm {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.postFormContainer {
+  width: 500px;
+  height: 100%;
+  border: 1px solid lightgrey;
+  /* border: 3px solid black; */
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+}
+
+.imgCaptionContainer {
+  padding: 20px 20px 0px 20px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+}
+
+.imgCaptionInput {
+  border: 1px solid lightgray;
+  width: 400px;
+  height: 100px;
+  resize: none;
+}

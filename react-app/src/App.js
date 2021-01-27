@@ -9,7 +9,8 @@ import User from "./components/User";
 import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import { authenticate } from "./services/auth";
 import Profile from "./components/Profile";
-import SearchedResults from './components/SearchResults/SearchResults'
+import SearchedResults from "./components/SearchResults/SearchResults";
+import ImageGen from "./components/ImagePost/ImageGen";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -47,7 +48,7 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path='/search-results' exact={true}>
+        <Route path="/search-results" exact={true}>
           <SearchedResults />
         </Route>
         <ProtectedRoute
@@ -58,6 +59,14 @@ function App() {
           <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
           <Profile userdata={userdata} />
           {/* <UsersList/> */}
+        </ProtectedRoute>
+        <ProtectedRoute
+          path="/recipes/new"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+          <ImageGen />
         </ProtectedRoute>
         <Route path="/create_recipe" exact={true}>
           <CreateRecipe />
