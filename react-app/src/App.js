@@ -67,7 +67,7 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+          <NavBar userdata={userdata} />
           <ImageGen />
         </ProtectedRoute>
         <Route path="/create_recipe" exact={true}>
