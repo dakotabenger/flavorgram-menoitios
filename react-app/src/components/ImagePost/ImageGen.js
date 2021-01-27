@@ -90,13 +90,21 @@ export default function () {
         <div className="postFormContainer">
           {uploadImage()}
           <div>
-            <input style={{ display: "none" }} type="file" name="file" />
+            <input
+              ref={uploadInput}
+              style={{ display: "none" }}
+              type="file"
+              name="file"
+              onChange={updateFile}
+            />
           </div>
           <div className="imgCaptionContainer">
             <textarea
               className="imgCaptionInput"
+              value={description}
               name="description"
-              placeholder="Add a caption..."
+              placeholder="Add a description..."
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
           <div id="errorContainer"></div>
