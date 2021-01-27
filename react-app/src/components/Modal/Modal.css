@@ -1,0 +1,32 @@
+#modal {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    left: 1670px;
+    bottom: 0;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+  
+  #modal-background {
+    position: relative;
+    height: 50%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: ghostwhite;
+    display: flex;
+    float: right;
+    align-content: flex-end;
+  }
+  
+  #modal-content {
+    position: absolute;
+    background-color:ghostwhite;
+    padding: 5px;
+}
