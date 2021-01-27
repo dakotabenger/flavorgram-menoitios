@@ -39,7 +39,7 @@ export const restoreUser = () => async (dispatch) => {
     },
   });
 
-  if(res.data){
+  if(res.data && !res.data.errors){
 
     dispatch(setUser(res.data))
   }
