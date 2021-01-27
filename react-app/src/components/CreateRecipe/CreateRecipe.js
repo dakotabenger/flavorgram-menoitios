@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 import { addRecipe } from "../../store/post";
 import * as sessionActions from "../../store/post";
 import "./createrecipe.css";
@@ -11,7 +11,7 @@ function CreateRecipe() {
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id)
   const handleSubmit = async (e) => {
@@ -31,7 +31,7 @@ function CreateRecipe() {
   };
 
   const handleCancel = () => {
-    return <Redirect to="/" />;
+    history.push("/")
   };
 
   return (
