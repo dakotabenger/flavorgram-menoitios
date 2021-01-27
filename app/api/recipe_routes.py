@@ -10,7 +10,6 @@ from app.models import Recipe
 
 
 recipe_routes = Blueprint('recipes', __name__)
-posts_routes = Blueprint('posts', __name__)
 s3 = boto3.client('s3',
                     aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
                     aws_secret_access_key=os.environ.get('AWS_SECRET_KEY')
@@ -39,15 +38,7 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 
 #Create Post
 
-# @recipe_routes.route('/', methods=["POST"])
-# # @login_required
-# def create_recipe():
-#         pass
 
-# Read Post
-# @recipe_routes.route('/<int:id>', methods=['GET'])
-# def read_post(id):
-#    pass
 
 
 
