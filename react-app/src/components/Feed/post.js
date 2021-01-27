@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react";
 import frenchtoast from "../../assets/frenchtoast.jpg";
 import chewtalk from "../../assets/chewytalk.jpg";
-const Post = () => {
+
+const Post = ({ recipe, user, users, myUserId }) => {
+  const [comment, setComment] = useState("");
+  const [numLikes, setNumLikes] = useState(recipe.numLikes);
+  const [likeUsers, setLikeUsers] = useState(recipe.likers);
+  const [comments, setComments] = useState(recipe.comments);
+
+  const history = useHistory();
+
+  const commentGen = () => {
+      return comments.length <= 5 ? (
+          comments.map((c) => (
+              <div key={`${recipe.id}-${c.id}`} className="feed-comment">
+                   <NavLink to={`users/${users[c.userId].username}`}><b>{users[c.userId].username}</b></NavLink> {c.comment}
+              </div>
+          ))
+      )
+  }
   return (
     <div className="post-main__container">
       <div className="one-post-container">
