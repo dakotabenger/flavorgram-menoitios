@@ -36,7 +36,7 @@ export const restoreUser = () => async (dispatch) => {
       "Content-Type": "application/json",
     },
   });
-  if(res.data){
+  if(res.data && !res.data.errors){
     dispatch(setUser(res.data))
   }
     // dispatch(setUser(res.data));

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
@@ -38,9 +38,20 @@ const SubmitButton = styled.button`
 
   &:hover{
     background-color:red;
-  }
+  }`;
 
-`;
+const SignUpButton = styled.button`
+  width:163px;
+  margin-bottom:4px;
+  margin-top:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:#FAFAFA;
+
+  &:hover{
+    background-color:red;
+  `;
 
 const Form = styled.form`
   display: flex;
@@ -109,6 +120,9 @@ const LoginForm = () => {
             />
           </div>
           <SubmitButton type="submit">Login</SubmitButton>
+          <NavLink to='sign-up'>
+            <SignUpButton type="button">Sign Up</SignUpButton>
+          </NavLink>
         </FormContainer>
       </Form>
     </Page>
