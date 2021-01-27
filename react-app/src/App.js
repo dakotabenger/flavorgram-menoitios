@@ -13,18 +13,25 @@ import SearchedResults from "./components/SearchResults/SearchResults";
 import ImageGen from "./components/ImagePost/ImageGen";
 import Post from "./components/post";
 
+import {restoreUser} from './store/session'
+import { useDispatch } from "react-redux";
+
+import Feed from "./components/Feed/Feed";
+
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [userdata, setUserData] = useState({});
+  const dispatch = useDispatch()
 
   useEffect(() => {
     (async () => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-        setUserData(user);
-      }
+      dispatch(restoreUser())
+      // if (!user.errors) {
+      //   setAuthenticated(true);
+      //   setUserData(user);
+      // }
       setLoaded(true);
     })();
   }, []);
@@ -37,53 +44,45 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/login" exact={true}>
-          <LoginForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-            setUserData={setUserData}
-          />
+          <LoginForm/>
         </Route>
         <Route path="/sign-up" exact={true}>
-          <SignUpForm
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          <SignUpForm/>
         </Route>
         <Route path="/search-results" exact={true}>
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
-          <SearchedResults />
+          <NavBar />
+            <SearchedResults />
         </Route>
         <ProtectedRoute
           path={`/users/:username`}
           exact={true}
-          authenticated={authenticated}
         >
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+          <NavBar/>
           <Profile userdata={userdata} />
           {/* <UsersList/> */}
         </ProtectedRoute>
 
         <ProtectedRoute
-          path="/new/post"
+          path="/recipes/new"
           exact={true}
-          authenticated={authenticated}
         >
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
-          <Post />
+          <NavBar userdata={userdata} />
+          <ImageGen />
         </ProtectedRoute>
-        <Route path="/create_recipe" exact={true}>
+        <ProtectedRoute path="/create_recipe" exact={true}>
           <CreateRecipe />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
-          authenticated={authenticated}
         >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
-          <h1>My Home Page</h1>
+
+        <ProtectedRoute path="/" exact={true}>
+          <NavBar userdata={userdata} />
+           <Feed />
+
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

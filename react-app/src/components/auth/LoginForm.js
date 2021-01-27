@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
@@ -38,9 +38,20 @@ const SubmitButton = styled.button`
 
   &:hover{
     background-color:red;
-  }
+  }`;
 
-`;
+const SignUpButton = styled.button`
+  width:163px;
+  margin-bottom:4px;
+  margin-top:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:#FAFAFA;
+
+  &:hover{
+    background-color:red;
+  `;
 
 const Form = styled.form`
   display: flex;
@@ -54,6 +65,54 @@ const Page = styled.div`
   width: auto;
 `
 
+const Demo = styled.button`
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover{
+    background-color:red;
+`;
+
+const Logo = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom:75px;
+`;
+
+const Util =styled.li`
+  background-color: red;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: inline;
+  // align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  color: black;
+  // position:relative;
+  // bottom: 30px;
+  // right: 300px;
+`;
+
+const Name = styled.h2`
+  color: black;
+  display: inline;
+  font-size:30px;
+  font-family: "kunbh sans", sans-serif;
+`;
+
+
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -65,11 +124,12 @@ const LoginForm = () => {
 
   const onLogin = (e) => {
     e.preventDefault();
-
-    return dispatch(sessionActions.login({ email, password }))
-    .catch((res) => {
-      if (res.data && res.data.errors) setErrors(res.data.errors);
-    });
+    if (email && password){
+      return dispatch(sessionActions.login({ email, password }))
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+    }
 
   };
 
@@ -85,6 +145,13 @@ const LoginForm = () => {
     <Page>
       <Form onSubmit={onLogin}>
         <FormContainer>
+          <Logo>
+            <Util>
+              <i className="fas fa-utensils"></i>
+            </Util>
+            <Name>Flavorgram</Name>
+          </Logo>
+          <h3> Please Sign-In </h3>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
@@ -109,6 +176,16 @@ const LoginForm = () => {
             />
           </div>
           <SubmitButton type="submit">Login</SubmitButton>
+          <NavLink to='/sign-up'>
+            <SignUpButton type="button">Sign Up</SignUpButton>
+          </NavLink>
+          <Demo
+            type='submit'
+            onClick={() => {
+              setEmail('demo@aa.io')
+              setPassword('password')
+            }}
+          > Demo </Demo>
         </FormContainer>
       </Form>
     </Page>

@@ -3,6 +3,7 @@ import { logout } from "../../services/auth";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+import "./Logout.css"
 
 const LogoutButton = ({setAuthenticated}) => {
   const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const LogoutButton = ({setAuthenticated}) => {
     return dispatch(sessionActions.logout())
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className="logout" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;

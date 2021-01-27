@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import React, { useState} from "react";
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../services/auth';
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux"
@@ -55,6 +55,52 @@ const SubmitButton = styled.button`
 
 `;
 
+const LoginButton = styled.button`
+  width:163px;
+  margin-bottom:4px;
+  margin-top:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:#FAFAFA;
+
+  &:hover{
+    background-color:red;
+  `;
+
+  const Logo = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom:75px;
+`;
+
+const Util =styled.li`
+  background-color: red;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: inline;
+  // align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  color: black;
+  // position:relative;
+  // bottom: 30px;
+  // right: 300px;
+`;
+
+const Name = styled.h2`
+  color: black;
+  display: inline;
+  font-size:30px;
+  font-family: "kunbh sans", sans-serif;
+`;
+
+
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -95,6 +141,13 @@ const SignUpForm = () => {
     <Page>
       <Form onSubmit={onSignUp}>
         <FormContainer>
+        <Logo>
+            <Util>
+              <i className="fas fa-utensils"></i>
+            </Util>
+            <Name>Flavorgram</Name>
+          </Logo>
+          <h3> Please Sign-Up </h3>
           <div>
             <Input
             type="text"
@@ -133,6 +186,9 @@ const SignUpForm = () => {
             ></Input>
           </div>
           <SubmitButton type="submit">Sign Up</SubmitButton>
+          <NavLink to='/login'>
+            <LoginButton type="button">Login</LoginButton>
+          </NavLink>
         </FormContainer>
       </Form>
     </Page>
