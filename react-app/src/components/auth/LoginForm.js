@@ -78,7 +78,40 @@ const Demo = styled.button`
 
   &:hover{
     background-color:red;
-`
+`;
+
+const Logo = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom:75px;
+`;
+
+const Util =styled.li`
+  background-color: red;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  display: inline;
+  // align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  color: black;
+  // position:relative;
+  // bottom: 30px;
+  // right: 300px;
+`;
+
+const Name = styled.h2`
+  color: black;
+  display: inline;
+  font-size:30px;
+  font-family: "kunbh sans", sans-serif;
+`;
+
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -112,6 +145,13 @@ const LoginForm = () => {
     <Page>
       <Form onSubmit={onLogin}>
         <FormContainer>
+          <Logo>
+            <Util>
+              <i className="fas fa-utensils"></i>
+            </Util>
+            <Name>Flavorgram</Name>
+          </Logo>
+          <h3> Please Sign-In </h3>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
