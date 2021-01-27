@@ -33,6 +33,20 @@ export default function () {
     }
   };
 
+  const updateFile = (e) => {
+    e.preventDefault();
+    const {
+      target: {
+        validity,
+        files: [file],
+      },
+    } = e;
+    e.target.files[0]
+      ? setImagePreview(URL.createObjectURL(e.target.files[0]))
+      : setImagePreview(null);
+    return validity.valid && setImage(file);
+  };
+
   return (
     <div>
       <form className="newPostForm">
