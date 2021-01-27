@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { authenticate } from "../../services/auth";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RecommendedPost from "./recommendedPost";
 import "./post.css";
 
@@ -12,7 +12,7 @@ const Post = () => {
   const [dishName, setDishName] = useState("");
   const [users, setUsers] = useState({});
   const [poster, setPoster] = useState(0);
-  const [newComent, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState("");
   const [likeUsers, setLikeUsers] = useState([]);
   const [numLikes, setNumLikes] = useState(0);
   const [myUserId, setMyUserId] = useState(null);
@@ -22,7 +22,7 @@ const Post = () => {
   useEffect(() => {
     (async () => {
       setLoaded(true);
-      let res = await fetch(`/api/posts/${recipeId}`);
+      let res = await fetch(`/api/recipes/${recipeId}`);
       res = await res.json();
       setUsers(res.users);
       setImg(res.recipe.photoUrl);
@@ -41,13 +41,13 @@ const Post = () => {
     })();
   }, [recipeId]);
 
-  const submitComent = async (e) => {
+  const submitComment = async (e) => {
     e.preventDefault();
-    if (newComent.length === 0) return;
-    let res = await fetch(`/api/posts/${recipeId}/comments`, {
+    if (newComment.length === 0) return;
+    let res = await fetch(`/api/recipes/${recipeId}/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment: newComent }),
+      body: JSON.stringify({ comment: newComment }),
     });
     res = await res.json();
     setComments([
@@ -70,7 +70,7 @@ const Post = () => {
 
   const like = async (e) => {
     e.preventDefault();
-    let res = await fetch(`/api/posts/${recipeId}/likes`, {
+    let res = await fetch(`/api/recipes/${recipeId}/likes`, {
       method: "POST",
     });
     res = await res.json();
@@ -115,9 +115,9 @@ const Post = () => {
               <div className="post-likes">
                 {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
               </div>
-              <form onSubmit={submitComent}>
+              <form onSubmit={submitComment}>
                 <textarea
-                  value={newComent}
+                  value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder="New Comment"
                 />

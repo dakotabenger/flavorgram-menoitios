@@ -12,8 +12,12 @@ import Profile from "./components/Profile";
 import SearchedResults from "./components/SearchResults/SearchResults";
 import ImageGen from "./components/ImagePost/ImageGen";
 import Post from "./components/post";
+
 import {restoreUser} from './store/session'
 import { useDispatch } from "react-redux";
+
+import Feed from "./components/Feed/Feed";
+
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -73,9 +77,11 @@ function App() {
         >
           <User />
         </ProtectedRoute>
+
         <ProtectedRoute path="/" exact={true}>
           <NavBar userdata={userdata} />
-          <h1>My Home Page</h1>
+           <Feed />
+
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
