@@ -5,13 +5,16 @@ import styled from "styled-components";
 const SearchResults = () => {
     const results = useSelector((state) => state.search.results);
 
+    let recipes = <h1>Sorry No Recipes Match That Query</h1>
+    if (results){
+        if(results.recipes.length > 0){
+            recipes = results.recipes
+        }
+    }
     return (
         <div>
             <div>
-                <h1>{results.recipes}</h1>
-            </div>
-            <div>
-                <h2>Hit</h2>
+                {recipes}
             </div>
         </div>
     )
