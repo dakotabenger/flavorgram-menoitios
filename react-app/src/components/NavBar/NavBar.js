@@ -5,12 +5,13 @@ import styled from "styled-components";
 import './NavBar.css'
 import Search from '../Search/Search'
 import Modal from '../Modal/Modal'
+import {useSelector} from 'react-redux'
 
 const Navigation = styled.nav`
     background: #fff;
     border-bottom: 1px solid lightblue;
-    height: 80px;
-    widith: 100%
+    height: 63px;
+    width: 100%
     display: flex;
     justify-content: left;
     // align-items: center;
@@ -45,6 +46,7 @@ background-color: red;
   text-decoration: none;
   font-size: 2rem;
   color: black;
+  margin-left: 25px;
   // position:relative;
   // bottom: 30px;
   // right: 300px;
@@ -123,9 +125,7 @@ const IconLi = styled.li`
   text-decoration: none;
   font-size: 2rem;
   color: black;
-  // position:relative;
-  // bottom: 30px;
-  // right: 300px;
+  margin-bottom: 5px;
 `;
 
 const HomeButton = styled.i`
@@ -147,6 +147,7 @@ background-color: black;
 
 const NavBar = ({ setAuthenticated }) => {
   const [showModal, setShowModal] = useState(false);
+  const username = useSelector((state) => state.session.user.username)
 
   return (
     <Navigation>
@@ -219,7 +220,7 @@ const NavBar = ({ setAuthenticated }) => {
     <Modal onClose={() => setShowModal(false)}>
 
     <LogoutButton className="logout" />
-    <NavLink to="/profile" exact={true}>
+    <NavLink to={`/users/${username}`} exact={true}>
             <button className="brand_linked">Profile</button>
 
         </NavLink>
