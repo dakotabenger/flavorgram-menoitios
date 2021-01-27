@@ -5,13 +5,24 @@ import styled from "styled-components";
 const SearchResults = () => {
     const results = useSelector((state) => state.search.results);
 
+    let recipes = <h1>Sorry No Recipes Match That Query</h1>
+    if (results){
+        if(results.recipes.length > 0){
+            const resultRecipes = results.recipes
+            recipes = resultRecipes.map(recipe => {
+                return <div key={recipe.id}>
+                    <h2>{recipe.dish_name}</h2>
+                    <p>{recipe.instructions}</p>
+                    <p>{recipe.ingredients}</p>
+                    <img src={`${recipe.photo_url}`}/>
+                 </div>
+            })
+        }
+    }
     return (
         <div>
             <div>
-                <h1>{results.recipes}</h1>
-            </div>
-            <div>
-                <h2>Hit</h2>
+                {recipes}
             </div>
         </div>
     )

@@ -77,5 +77,6 @@ def create_recipe():
 @recipe_routes.route('searched/<keyword>', methods=['GET'])
 def searched(keyword):
     recipes = Recipe.query.filter(Recipe.dish_name.ilike(f'%{keyword}%')).all()
+    print([recipe.to_dict() for recipe in recipes])
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
 

@@ -19,9 +19,17 @@ class Recipe(db.Model):
     def to_simple_dict(self):
         return {
             "id": self.id,
+
+            "userId": self.userId,
+            "dish_name": self.dish_name,
+            "ingredients": self.ingredients,
+            "instructions": self.instructions,
+            
+
             "photoUrl": self.photoUrl,
             "numLikes": len(self.likingUsers),
             "numComments": len(self.comments)
+
         }
     
     def to_dict(self):
