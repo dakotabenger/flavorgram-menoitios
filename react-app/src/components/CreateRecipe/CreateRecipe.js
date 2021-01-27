@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { addRecipe } from "../../store/post";
 import * as sessionActions from "../../store/post";
@@ -13,18 +13,19 @@ function CreateRecipe() {
   const [photoUrl, setPhotoUrl] = useState("");
 
   const dispatch = useDispatch();
-
+  const userId = useSelector((state) => state.session.user.id)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
+      userId,
       dish_name,
       ingredients,
       instructions,
       photoUrl,
     };
-
-    const createdRecipe = dispatch(sessionActions.addRecipe(payload));
+    console.log("PAYLOAD", payload)
+    const createdRecipe = dispatch(addRecipe(payload));
 
     if (createdRecipe) return <Redirect to="/" />;
   };
@@ -41,13 +42,13 @@ function CreateRecipe() {
           <div className="form_container">
             <ImageGen />
             <h2>Title</h2>
-            <input type="text" className="title" />
+            <input onChange={(e) => {setDish_Name(e.target.value)}}type="text" className="title" />
             <h2>Ingredients</h2>
-            <textarea type="text" className="ingredients" />
+            <textarea onChange={(e) => {setIngredients(e.target.value)}} type="text" className="ingredients" />
             <h2>Instructions</h2>
-            <textarea type="text" className="instructions" />
+            <textarea onChange={(e) => {setInstructions(e.target.value)}} type="text" className="instructions" />
             <h2>Photo Url</h2>
-            <input type="text" className="photourl" />
+            <input onChange={(e) => {setPhotoUrl(e.target.value)}} type="text" className="photourl" />
             <button type="submit" className="submit_button">
               Create Recipe
             </button>

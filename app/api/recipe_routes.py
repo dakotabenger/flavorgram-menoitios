@@ -1,13 +1,13 @@
 import boto3
 import os
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from dotenv import load_dotenv
 load_dotenv
-
+from ..models.db import db
 from flask_login import login_required
 from app.config import Config
 from app.models import Recipe
-
+from app.forms import NewRecipe
 
 recipe_routes = Blueprint('recipes', __name__)
 s3 = boto3.client('s3',
@@ -52,6 +52,8 @@ def get_recipes():
 @recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
     form = NewRecipe()
+    print(form.data)
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         new_recipe = Recipe(userId=data["userId"],
