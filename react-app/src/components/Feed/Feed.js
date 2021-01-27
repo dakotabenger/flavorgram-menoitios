@@ -22,7 +22,19 @@ const Feed = () => {
   return (
     loaded && (
       <div className="post-container">
-        <Post />
+        {/* {recipe.length ? (
+          recipe.map((recipe) => ( */}
+        <Post
+          key={recipe.id}
+          recipe={recipe}
+          user={users[recipe.userId]}
+          users={users}
+          myUserId={myUserId}
+        />
+        {/* ))
+        ) : (
+          <h2>No Recipes currently Uploaded!</h2>
+        )} */}
       </div>
     )
   );

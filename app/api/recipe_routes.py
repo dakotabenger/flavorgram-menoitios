@@ -36,11 +36,6 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 
     return "{}{}".format(app.config["S3_LOCATION"], spaceRemover(file.filename))
 
-#Create Post
-
-
-
-
 
 
 @recipe_routes.route('/feed', methods=["GET"])
@@ -51,7 +46,7 @@ def get_recipes():
 
 @recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
-    form = NewRecipe()
+    form = Recipe()
     if form.validate_on_submit():
         data = form.data
         new_recipe = Recipe(userId=data["userId"],
