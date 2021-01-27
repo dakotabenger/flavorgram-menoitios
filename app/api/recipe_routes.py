@@ -2,12 +2,15 @@ import boto3
 import os
 from flask import Blueprint, jsonify
 from dotenv import load_dotenv
-# load_dotenv
+load_dotenv
+
 from flask_login import login_required
 from app.config import Config
 from app.models import Recipe
 
-recipe_routes = Blueprint('posts', __name__)
+
+recipe_routes = Blueprint('recipes', __name__)
+posts_routes = Blueprint('posts', __name__)
 s3 = boto3.client('s3',
                     aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
                     aws_secret_access_key=os.environ.get('AWS_SECRET_KEY')
@@ -49,11 +52,11 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 
 
 
-
 @recipe_routes.route('/feed', methods=["GET"])
 def get_recipes():
     recipes = Recipe.query.all()
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
+
 
 @recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
@@ -61,14 +64,18 @@ def create_recipe():
     if form.validate_on_submit():
         data = form.data
         new_recipe = Recipe(userId=data["userId"],
-                                    dish_name=data["dish_name"],
-                                    ingredients=data["ingredients"],
-                                    instructions=data["instructions"],
-                                    photoUrl=data["photoUrl"])
+                            dish_name=data["dish_name"],
+                            ingredients=data["ingredients"],
+                            instructions=data["instructions"],
+                            photoUrl=data["photoUrl"])
         db.session.add(new_recipe)
         db.session.commit()
         return redirect("/feed")
     return "Uh-oh. There's something wrong here..."
 
-
+  
+@recipe_routes.route('searched/<keyword>', methods=['GET'])
+def searched(keyword):
+    recipes = Recipe.query.filter(Recipe.dish_name.ilike(f'%{keyword}%')).all()
+    return {"recipes": [recipe.to_dict() for recipe in recipes]}
 

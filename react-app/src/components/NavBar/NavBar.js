@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import styled from "styled-components";
 import './NavBar.css'
+import Search from '../Search/Search'
 
 const Navigation = styled.nav`
     background: #fff;
@@ -62,9 +63,9 @@ const IconContainer = styled.div`
   left: 560px;
 `
 
-const StyledIcon = styled.div`
+const StyledIcon = styled.div`seac
   padding: 5px;
-  
+
 `
 
 const StyledSpan = styled.span`
@@ -91,14 +92,14 @@ const StyledSearch = styled.li`
   right: 75px;
 
 `
+// Moved to Search/Search.js
 
-const StyledInput = styled.input`
-  height:35px;
-  width: 500px;
-  font-size: 30px;
-  text-align: center;
-
-`
+// const StyledInput = styled.input`
+//   height:35px;
+//   width: 500px;
+//   font-size: 30px;
+//   text-align: center;
+// `
 
 const BrandContainer = styled.div`
 font-size:22pt;
@@ -143,9 +144,9 @@ const NavBar = ({ setAuthenticated }) => {
     <Navigation>
       <ul>
         <Navbarcontainer>
-        <StyledLi>         
+        <StyledLi>
           <i className="fas fa-utensils"></i>
-          
+
         </StyledLi>
         <BrandContainer>
            <NavLink to="/" exact={true} activeClassName="active" className="brand_link">
@@ -156,9 +157,9 @@ const NavBar = ({ setAuthenticated }) => {
       <StyledSpan>
       <i class="fas fa-search"></i>
       </StyledSpan>
-      <StyledInput type="text" className="searchbar fas fa-search" placeholder="Search Recipes..."></StyledInput>
+      <Search />
       </StyledSearch>
-      
+
         {/* <li>
         </li>
         <li>
@@ -185,9 +186,9 @@ const NavBar = ({ setAuthenticated }) => {
           </IconLi>
           <IconLi className="navbar__item">
           <NavLink to="/recipe-form" exact={true} activeClassName="active">
-          <HomeButton className="fas fa-mortar-pestle navbar__links"></HomeButton> 
+          <HomeButton className="fas fa-mortar-pestle navbar__links"></HomeButton>
         </NavLink>
-           
+
           </IconLi>
 
           <IconLi className="navbar__btn">

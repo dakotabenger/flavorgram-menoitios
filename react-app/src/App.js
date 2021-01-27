@@ -6,9 +6,10 @@ import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
-import CreateRecipe from "./components/CreateRecipe";
+import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import { authenticate } from "./services/auth";
 import Profile from "./components/Profile";
+import SearchedResults from './components/SearchResults/SearchResults'
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -46,6 +47,9 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
+        <Route path='/search-results' exact={true}>
+          <SearchedResults />
+        </Route>
         <ProtectedRoute
           path={`/users/:username`}
           exact={true}
@@ -55,6 +59,9 @@ function App() {
           <Profile userdata={userdata} />
           {/* <UsersList/> */}
         </ProtectedRoute>
+        <Route path="/create_recipe" exact={true}>
+          <CreateRecipe />
+        </Route>
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
