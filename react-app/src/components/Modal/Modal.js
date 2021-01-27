@@ -36,4 +36,6 @@ export default function Modal({ onClose, children }) {
     </div>,
     modalNode
   );
+
 }
+
