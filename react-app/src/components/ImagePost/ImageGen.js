@@ -47,6 +47,43 @@ export default function () {
     return validity.valid && setImage(file);
   };
 
+  const handleUploadImage = (e) => {
+    e.preventDefault();
+
+    uploadInput.current.click();
+  };
+
+  const uploadImage = () => {
+    if (!imagePreview) {
+      return (
+        <>
+          <h1 className="imgUploadTitle">Upload an Image</h1>
+          <div className="imgPlaceholder"></div>
+          <div onClick={handleUploadImage}>
+            <button className="imgUploadButton">Upload</button>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className="imgContainer">
+            <img
+              className="postImage"
+              src={imagePreview}
+              alt="Upload Preview"
+            />
+          </div>
+          <div onClick={handleUploadImage}>
+            <button className="imgUploadButton" style={{ width: "120px" }}>
+              Change Image
+            </button>
+          </div>
+        </>
+      );
+    }
+  };
+
   return (
     <div>
       <form className="newPostForm">

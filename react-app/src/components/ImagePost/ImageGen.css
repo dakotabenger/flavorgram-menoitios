@@ -17,6 +17,16 @@
   color: rgba(var(--i1d, 38, 38, 38), 1);
 }
 
+.imgContainer {
+  position: relative;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 .imgCaptionContainer {
   padding: 20px 20px 0px 20px;
   width: 450px;
@@ -29,4 +39,26 @@
   width: 400px;
   height: 100px;
   resize: none;
+}
+
+.imgUploadTitle {
+  display: inline;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.imgUploadButton {
+  background-color: #ad6bf8;
+  border-radius: 3px;
+  color: white;
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: none;
+  transition: 0.3s;
+}
+
+.imgUploadButton:hover {
+  background-color: #8929f7;
 }
