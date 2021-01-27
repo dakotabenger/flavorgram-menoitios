@@ -185,7 +185,7 @@ const NavBar = ({ setAuthenticated }) => {
         </NavLink>
           </IconLi>
           <IconLi className="navbar__item">
-          <NavLink to="/recipe-form" exact={true} activeClassName="active">
+          <NavLink to="/create_recipe" exact={true} activeClassName="active">
           <HomeButton className="fas fa-mortar-pestle navbar__links"></HomeButton>
         </NavLink>
 

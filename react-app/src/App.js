@@ -50,7 +50,8 @@ function App() {
           />
         </Route>
         <Route path="/search-results" exact={true}>
-          <SearchedResults />
+          <NavBar />
+            <SearchedResults />
         </Route>
         <ProtectedRoute
           path={`/users/:username`}
