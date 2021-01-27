@@ -12,20 +12,31 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const history = useHistory();
 
   const commentGen = () => {
-      return comments.length <= 5 ? (
-          comments.map((c) => (
-              <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-                   <NavLink to={`users/${users[c.userId].username}`}><b>{users[c.userId].username}</b></NavLink> {c.comment}
-              </div>
-          ))
-      )
-  }
+    return comments.length <= 3 ? (
+      comments.map((c) => (
+        <div key={`${recipe.id}-${c.id}`} className="feed-comment">
+          <NavLink to={`users/${users[c.userId].username}`}>
+            <b>{users[c.userId].username}</b>
+          </NavLink>{" "}
+          {c.comment}
+        </div>
+      ))
+    ) : (
+      
+    );
+  };
   return (
     <div className="post-main__container">
       <div className="one-post-container">
         <div className="post-user-info">
-          <img className="post-profile-pic" src={chewtalk} />
-          <div className="post-author-name">Chewy</div>
+          <img
+            className="post-profile-pic"
+            src={user.avatarUrl}
+            alt={`profile pic of ${user.username}`}
+          />
+          <div className="post-author-name">
+            <NavLink to={`/users/${user.username}`}>{user.username}</NavLink>
+          </div>
         </div>
         <div className="feed-post-img-container">
           <img src={frenchtoast} />

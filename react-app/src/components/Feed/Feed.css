@@ -74,6 +74,14 @@
   border-bottom: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
 }
 
+.see-comments {
+  text-decoration: none;
+}
+
+.feed-comment {
+  margin-bottom: 4px;
+}
+
 .fa-heart {
   cursor: pointer;
 }
