@@ -4,6 +4,13 @@ import { useHistory } from "react-router-dom";
 import "./ImageGen.css";
 
 export default function () {
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [error, setError] = useState(null);
+  const history = useHistory();
+  const uploadInput = useRef(null);
+
   return (
     <div>
       <form className="newPostForm">

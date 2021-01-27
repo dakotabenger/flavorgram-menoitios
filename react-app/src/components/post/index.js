@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { authenticate } from "../../services/auth";
 import { useParams, NavLink } from "react-router-dom";
-import RecommendedPost from "./recommenedPost";
+import RecommendedPost from "./recommendedPost";
 import "./post.css";
 
 const Post = () => {
@@ -28,14 +28,14 @@ const Post = () => {
       setImg(res.recipe.photoUrl);
       setComments([
         { userId: res.recipe.userId, comment: res.recipe.dishName },
-        ...res.post.comments,
+        ...res.recipe.comments,
       ]);
-      setDescription(res.recipe.dishName);
+      setDishName(res.recipe.dishName);
       setPoster(res.recipe.userId);
       setLikeUsers(res.recipe.likers);
       setNumLikes(res.recipe.numLikes);
       setMyUserId((await authenticate()).id);
-      setRecomendedPosts(res.recomended);
+      setRecommendedPosts(res.recommended);
       setCanFollow(res.canFollow);
       setLoaded(true);
     })();
