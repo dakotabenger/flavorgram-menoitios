@@ -50,6 +50,7 @@ function App() {
           />
         </Route>
         <Route path="/search-results" exact={true}>
+          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
           <SearchedResults />
         </Route>
         <ProtectedRoute

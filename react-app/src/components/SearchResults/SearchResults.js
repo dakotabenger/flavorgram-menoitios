@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux"
-import styled from "styled-components";
 
 const SearchResults = () => {
     const results = useSelector((state) => state.search.results);
