@@ -8,7 +8,10 @@ const SearchResults = () => {
     let recipes = <h1>Sorry No Recipes Match That Query</h1>
     if (results){
         if(results.recipes.length > 0){
-            recipes = results.recipes
+            const resultRecipes = results.recipes
+            recipes = resultRecipes.map(recipe => {
+                return <div key={recipe.id}> {recipe.id} </div>
+            })
         }
     }
     return (
