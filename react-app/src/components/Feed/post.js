@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory,NavLink } from "react";
+import { useHistory, NavLink } from "react";
 // import frenchtoast from "../../assets/frenchtoast.jpg";
 // import chewtalk from "../../assets/chewytalk.jpg";
 
@@ -21,17 +21,18 @@ const Post = ({ recipe, user, users, myUserId }) => {
           {c.comment}
         </div>
       ))
-    ) :
+    ) : (
+     
   };
 
   const like = async (e) => {
-      e.preventDefault();
-      let res = await fetch(`/api/recipes/${recipe.id}/likes`, {
-          method: "POST",
-      });
-      res = await res.json();
-      setNumLikes(res.numLikes);
-      setLikeUsers(res.likers);
+    e.preventDefault();
+    let res = await fetch(`/api/recipes/${recipe.id}/likes`, {
+      method: "POST",
+    });
+    res = await res.json();
+    setNumLikes(res.numLikes);
+    setLikeUsers(res.likers);
   };
   return (
     <div className="post-main__container">
@@ -54,10 +55,22 @@ const Post = ({ recipe, user, users, myUserId }) => {
           />
         </div>
         <div className="post-bottom-info-container">
-          <i className="far fa-heart" onClick={like}></i>
-          <div className="post-likes"></div>
+          <i
+            onClick={like}
+            className={
+              likeUsers.includes(myUserId)
+                ? "fas fa-heart fa-lg"
+                : "far fa-heart fa-lg"
+            }
+          ></i>
+          <div className="post-likes">
+            {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
+          </div>
           <div className="post-text">
-            <b>UserName</b>
+            <NavLink to={`/users/${user.username}`}>
+              <b>{user.username}</b>
+            </NavLink>{" "}
+            {recipe.description}
           </div>
           <div className="post-comment-container">Comments</div>
           <form className="comment-form">
