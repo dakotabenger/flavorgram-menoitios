@@ -65,6 +65,21 @@ const Page = styled.div`
   width: auto;
 `
 
+const Demo = styled.button`
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover{
+    background-color:red;
+`
+
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
@@ -76,11 +91,12 @@ const LoginForm = () => {
 
   const onLogin = (e) => {
     e.preventDefault();
-
-    return dispatch(sessionActions.login({ email, password }))
-    .catch((res) => {
-      if (res.data && res.data.errors) setErrors(res.data.errors);
-    });
+    if (email && password){
+      return dispatch(sessionActions.login({ email, password }))
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+    }
 
   };
 
@@ -123,6 +139,13 @@ const LoginForm = () => {
           <NavLink to='/sign-up'>
             <SignUpButton type="button">Sign Up</SignUpButton>
           </NavLink>
+          <Demo
+            type='submit'
+            onClick={() => {
+              setEmail('demo@aa.io')
+              setPassword('password')
+            }}
+          > Demo </Demo>
         </FormContainer>
       </Form>
     </Page>
