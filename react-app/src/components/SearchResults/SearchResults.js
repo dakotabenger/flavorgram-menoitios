@@ -14,7 +14,7 @@ const SearchResults = () => {
                     <h2>{recipe.dish_name}</h2>
                     <p>{recipe.instructions}</p>
                     <p>{recipe.ingredients}</p>
-                    <img src={`${recipe.photo_url}`}/>
+                    <img src={`${recipe.photoUrl}`}/>
                  </div>
             })
         }
