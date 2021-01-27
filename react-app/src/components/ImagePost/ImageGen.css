@@ -1,0 +1,123 @@
+.post-form {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.post-form__container {
+  width: 500px;
+  height: 100%;
+  border: 1px solid lightblue;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.img-container {
+  position: relative;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.img-post {
+  width: 400px;
+  height: auto;
+  overflow: hidden;
+}
+
+.imgCaptionContainer {
+  padding: 20px 20px 0px 20px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+}
+
+.imgCaptionInput {
+  border: 1px solid lightgray;
+  width: 400px;
+  height: 100px;
+  resize: none;
+}
+
+.imgUploadTitle {
+  display: inline;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.imgPlaceholder {
+  width: 400px;
+  height: 200px;
+  background-image: url(../../assets/spoonforklogo.jpg);
+  background-size: fit;
+  background-position: center;
+  border-radius: 2px;
+  margin: 20px;
+}
+
+.imgUploadButton {
+  background-color: red;
+  border-radius: 3px;
+  color: white;
+  width: 80px;
+  height: 30px;
+  outline: none;
+  border: none;
+  transition: 0.3s;
+}
+
+.imgUploadButton:hover {
+  background-color: #8929f7;
+}
+
+.imgCaptionContainer {
+  padding: 20px 20px 0px 20px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+}
+
+.imgCaptionInput {
+  border: 1px solid lightgray;
+  width: 400px;
+  height: 100px;
+  resize: none;
+}
+
+.imgCaptionInput:focus {
+  outline: none;
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
+.img-post__button {
+  cursor: pointer;
+  background-color: #b2dffc;
+  border-radius: 3px;
+  border: none;
+  color: white;
+  width: 80px;
+  height: 30px;
+  margin: 20px;
+  transition: 0.3s;
+}
+
+.img-post__button:hover {
+  background-color: #0095f6;
+}
+
+.img-post__button:focus {
+  background-color: #0095f6;
+  outline: none;
+}
+
+#errorMsg {
+  padding-bottom: -10px;
+  margin-bottom: -5px;
+}
