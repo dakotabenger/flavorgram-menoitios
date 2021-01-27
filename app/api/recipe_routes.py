@@ -36,11 +36,6 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 
     return "{}{}".format(app.config["S3_LOCATION"], spaceRemover(file.filename))
 
-#Create Post
-
-
-
-
 
 
 @recipe_routes.route('/feed', methods=["GET"])

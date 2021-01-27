@@ -12,6 +12,7 @@ import Profile from "./components/Profile";
 import SearchedResults from "./components/SearchResults/SearchResults";
 import ImageGen from "./components/ImagePost/ImageGen";
 import Post from "./components/post";
+import Feed from "./components/Feed/Feed";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -83,7 +84,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
           <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
-          <h1>My Home Page</h1>
+          <Feed />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

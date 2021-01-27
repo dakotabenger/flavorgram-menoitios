@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+}
+.post-main__container {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.posts-holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-user-info {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
+  padding: 15px;
+}
+
+.post-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+.post-comment-holder {
+  color: grey;
+  font-weight: lighter;
+  font-size: medium;
+}
+
+.post-text {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.post-bottom-info-container {
+  padding: 15px;
+}
+
+.post-comment-field {
+  margin-top: 10px;
+
+  border: 1px solid black;
+  width: 80%;
+}
+
+.one-post-container {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  width: 50%;
+  outline: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.feed-post-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
+}
+
+.fa-heart {
+  cursor: pointer;
+}
+
+.comment-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feed-post-img-container img {
+  max-width: 100%;
+  max-height: 80vh;
+  cursor: pointer;
+}
