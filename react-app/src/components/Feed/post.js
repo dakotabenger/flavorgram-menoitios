@@ -55,7 +55,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const submitComment = async (e) => {
     e.preventDefault();
     if (comment.length === 0) return;
-    let res = await fetch(`/api/recipes/${recipeId}/comments`, {
+    let res = await fetch(`/api/recipes/${recipe.id}/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ comment }),
@@ -90,7 +90,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
         <div className="feed-post-img-container">
           <img
             src={recipe.photoUrl}
-            alt={recipe.description}
+            alt={recipe.dish_name}
             onClick={(e) => history.push(`/recipes/${recipe.id}`)}
           />
         </div>
@@ -110,11 +110,17 @@ const Post = ({ recipe, user, users, myUserId }) => {
             <NavLink to={`/users/${user.username}`}>
               <b>{user.username}</b>
             </NavLink>{" "}
-            {recipe.description}
+            {recipe.dish_name}
           </div>
-          <div className="post-comment-container">Comments</div>
-          <form className="comment-form">
-            <textarea className="post-comment-field"></textarea>
+          <div className="post-comment-container">{commentGen()}</div>
+          <form className="comment-form" onSubmit={submitComment}>
+            <textarea
+              className="post-comment-field"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Add a comment..."
+            />
+            <input className="comment-submit" value="Comment" type="submit" />
           </form>
         </div>
       </div>
