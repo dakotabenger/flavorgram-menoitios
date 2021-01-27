@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux"
+<<<<<<< HEAD
 import { Redirect } from "react-router-dom";
 import styled from "styled-components";
+=======
+>>>>>>> main
 
 const SearchResults = () => {
     const results = useSelector((state) => state.search.results);

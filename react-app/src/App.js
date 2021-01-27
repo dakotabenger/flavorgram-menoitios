@@ -50,6 +50,7 @@ function App() {
           />
         </Route>
         <Route path="/search-results" exact={true}>
+          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
           <SearchedResults />
         </Route>
         <ProtectedRoute
@@ -63,12 +64,17 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute
-          path="/recipes/new"
+          path="/new/post"
           exact={true}
           authenticated={authenticated}
         >
+<<<<<<< HEAD
           <NavBar userdata={userdata} />
           <ImageGen />
+=======
+          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
+          <Post />
+>>>>>>> main
         </ProtectedRoute>
         <Route path="/create_recipe" exact={true}>
           <CreateRecipe />

@@ -8,7 +8,7 @@ const Post = () => {
   const { recipeId } = useParams();
   const [comments, setComments] = useState([]);
   const [img, setImg] = useState("");
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   const [dishName, setDishName] = useState("");
   const [users, setUsers] = useState({});
   const [poster, setPoster] = useState(0);
@@ -21,7 +21,7 @@ const Post = () => {
 
   useEffect(() => {
     (async () => {
-      setLoaded(false);
+      setLoaded(true);
       let res = await fetch(`/api/posts/${recipeId}`);
       res = await res.json();
       setUsers(res.users);
@@ -87,12 +87,8 @@ const Post = () => {
           </div>
           <div className="post-info-holder">
             <div className="poster-info">
-              <img alt="user avatar" src={users[poster].avatarUrl} />
-              <div className="post-user-name">
-                <NavLink to={`/users/${users[poster].username}`}>
-                  {users[poster].username}
-                </NavLink>
-              </div>
+              <img alt="user avatar" />
+              <div className="post-user-name"></div>
               {canFollow ? (
                 <div onClick={follow} className="post-follow-link">
                   Follow
@@ -103,12 +99,7 @@ const Post = () => {
               {comments.map((c) => (
                 <div key={c.id} className="post-comment">
                   <img alt="user avatar" src={users[c.userId].avatarUrl} />
-                  <div className="post-comment-text">
-                    <NavLink to={`/users/${users[c.userId].username}`}>
-                      <b>{users[c.userId].username}</b>
-                    </NavLink>{" "}
-                    {c.comment}
-                  </div>
+                  <div className="post-comment-text"></div>
                 </div>
               ))}
             </div>

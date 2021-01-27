@@ -1,4 +1,5 @@
 .brand_link {
     text-decoration: none;
     color: black;
+    display: inline;
 }
