@@ -8,7 +8,7 @@ const addNewRecipe = recipe => ({
   });
 
 export const addRecipe = ({ dish_name, ingredients, instructions, photoUrl }) => async (dispatch) => {
-    const res = await fetch('/api/create_recipe', {
+    const res = await fetch('/api/recipes/create_recipe', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
