@@ -70,7 +70,7 @@ def create_recipe():
                             photoUrl=data["photoUrl"])
         db.session.add(new_recipe)
         db.session.commit()
-        return redirect("/feed")
+        return new_recipe.to_dict()
     return "Uh-oh. There's something wrong here..."
 
   
