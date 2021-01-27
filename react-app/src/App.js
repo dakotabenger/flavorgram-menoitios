@@ -61,14 +61,6 @@ function App() {
           <Profile userdata={userdata} />
           {/* <UsersList/> */}
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/new/posts"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <NavBar setAuthenticated={setAuthenticated} userdata={userdata} />
-          <Post />
-        </ProtectedRoute>
 
         <ProtectedRoute
           path="/recipes/new"
