@@ -10,7 +10,8 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const [comments, setComments] = useState(recipe.comments);
 
   const history = useHistory();
-
+  //maps through comments and if <= 3, it will show all, if > than three, it hides all comments
+  //  except 2 most recent.
   const commentGen = () => {
     return comments.length <= 3 ? (
       comments.map((c) => (
