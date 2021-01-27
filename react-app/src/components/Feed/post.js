@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useHistory } from "react";
-import frenchtoast from "../../assets/frenchtoast.jpg";
-import chewtalk from "../../assets/chewytalk.jpg";
+import { useHistory,NavLink } from "react";
+// import frenchtoast from "../../assets/frenchtoast.jpg";
+// import chewtalk from "../../assets/chewytalk.jpg";
 
 const Post = ({ recipe, user, users, myUserId }) => {
   const [comment, setComment] = useState("");
@@ -21,9 +21,17 @@ const Post = ({ recipe, user, users, myUserId }) => {
           {c.comment}
         </div>
       ))
-    ) : (
-      
-    );
+    ) :
+  };
+
+  const like = async (e) => {
+      e.preventDefault();
+      let res = await fetch(`/api/recipes/${recipe.id}/likes`, {
+          method: "POST",
+      });
+      res = await res.json();
+      setNumLikes(res.numLikes);
+      setLikeUsers(res.likers);
   };
   return (
     <div className="post-main__container">
@@ -39,10 +47,14 @@ const Post = ({ recipe, user, users, myUserId }) => {
           </div>
         </div>
         <div className="feed-post-img-container">
-          <img src={frenchtoast} />
+          <img
+            src={recipe.photoUrl}
+            alt={recipe.description}
+            onClick={(e) => history.push(`/recipes/${recipe.id}`)}
+          />
         </div>
         <div className="post-bottom-info-container">
-          <i className="far fa-heart"></i>
+          <i className="far fa-heart" onClick={like}></i>
           <div className="post-likes"></div>
           <div className="post-text">
             <b>UserName</b>
