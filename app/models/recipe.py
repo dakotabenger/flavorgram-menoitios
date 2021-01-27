@@ -17,6 +17,10 @@ class Recipe(db.Model):
 
     def to_dict(self):
         return {
-        "id": self.id,
-        "photo_url": self.photoUrl
+            "id": self.id,
+            "userId": self.userId,
+            "dish_name": self.dish_name,
+            "ingredients": self.ingredients,
+            "instructions": self.instructions,
+            "photo_url": self.photoUrl
         }

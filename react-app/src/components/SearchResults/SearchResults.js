@@ -11,7 +11,9 @@ const SearchResults = () => {
             const resultRecipes = results.recipes
             recipes = resultRecipes.map(recipe => {
                 return <div key={recipe.id}>
-                    <h2>{recipe.id}</h2>
+                    <h2>{recipe.dish_name}</h2>
+                    <p>{recipe.instructions}</p>
+                    <p>{recipe.ingredients}</p>
                     <img src={`${recipe.photo_url}`}/>
                  </div>
             })
