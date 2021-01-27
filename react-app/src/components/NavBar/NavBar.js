@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import styled from "styled-components";
 import './NavBar.css'
 import Search from '../Search/Search'
+import Modal from '../Modal/Modal'
 
 const Navigation = styled.nav`
     background: #fff;
@@ -145,6 +146,8 @@ background-color: black;
 
 
 const NavBar = ({ setAuthenticated }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <Navigation>
       <ul>
@@ -197,13 +200,21 @@ const NavBar = ({ setAuthenticated }) => {
           </IconLi>
 
           <IconLi className="navbar__btn">
-            <StyledIcon className="far fa-user-circle navbar__links"></StyledIcon>
+            <StyledIcon onClick= {() => setShowModal(true)}className="far fa-user-circle navbar__links"></StyledIcon>
           </IconLi>
         </IconContainer>
         </ul>
     </Navbarcontainer>
       </ul>
-
+      <>
+    {showModal && (
+    <Modal onClose={() => setShowModal(false)}>
+    <LogoutButton />
+    <NavLink to="/profile" exact={true} activeClassName="active" className="brand_link">
+            Profile
+        </NavLink>
+        </Modal> )}
+</>
     </Navigation>
   );
 }
