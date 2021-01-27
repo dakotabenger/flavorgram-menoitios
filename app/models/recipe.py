@@ -14,13 +14,32 @@ class Recipe(db.Model):
     photoUrl = db.Column(db.String, nullable=False)
 
     user = relationship("User")
+    comments = relationship('Comment')
 
-    def to_dict(self):
+    def to_simple_dict(self):
         return {
             "id": self.id,
+
             "userId": self.userId,
             "dish_name": self.dish_name,
             "ingredients": self.ingredients,
             "instructions": self.instructions,
-            "photo_url": self.photoUrl
+            
+
+            "photoUrl": self.photoUrl,
+            "numLikes": len(self.likingUsers),
+            "numComments": len(self.comments)
+
+        }
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "dish_name": self.dish_name,
+            "ingredients": self.ingredients,
+            "instructions": self.instructions,
+            "photoUrl": self.photoUrl,
+            "comments": [comment.to_dict() for comment in self.comments],
+            "numLikes": len(self.likingUsers),
+            "likers":[l.id for l in self.likingUsers]
         }
