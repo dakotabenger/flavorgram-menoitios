@@ -67,12 +67,8 @@ export default function () {
     } else {
       return (
         <>
-          <div className="imgContainer">
-            <img
-              className="postImage"
-              src={imagePreview}
-              alt="Upload Preview"
-            />
+          <div className="img-container">
+            <img className="img-post" src={imagePreview} alt="Upload Preview" />
           </div>
           <div onClick={handleUploadImage}>
             <button className="imgUploadButton" style={{ width: "120px" }}>
@@ -86,8 +82,8 @@ export default function () {
 
   return (
     <div>
-      <form className="newPostForm">
-        <div className="postFormContainer">
+      <form onSubmit={handleSubmit} className="post-form">
+        <div className="post-form__container">
           {uploadImage()}
           <div>
             <input
@@ -107,7 +103,10 @@ export default function () {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div id="errorContainer"></div>
+          <div id="errorContainer">{error}</div>
+          <div>
+            <input className="img-post__button" type="submit" value="Post" />
+          </div>
         </div>
       </form>
     </div>
