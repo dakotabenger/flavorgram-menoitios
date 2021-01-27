@@ -11,6 +11,28 @@ export default function () {
   const history = useHistory();
   const uploadInput = useRef(null);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!image) {
+      setError(<p id="errorMsg">Please Upload Recipe Image</p>);
+      return;
+    }
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("description", description);
+    try {
+      let res = await fetch(`/api/recipes/`, {
+        method: "POST",
+        body: formData,
+      });
+      if (!res.ok) throw res;
+      return history.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div>
       <form className="newPostForm">
