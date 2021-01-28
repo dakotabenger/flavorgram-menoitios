@@ -10,48 +10,48 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const [comments, setComments] = useState(recipe.comments);
 
   const history = useHistory();
-  //maps through comments and if <= 3, it will show all, if > than three, it hides all comments
+  // maps through comments and if <= 3, it will show all, if > than three, it hides all comments
   //  except 2 most recent.
-  // const commentGen = () => {
-  //   return comments.length <= 3 ? (
-  //     comments.map((c) => (
-  //       <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-  //         <NavLink to={`users/${users[c.userId].username}`}>
-  //           <b>{users[c.userId].username}</b>
-  //         </NavLink>{" "}
-  //         {c.comment}
-  //       </div>
-  //     ))
-  //   ) : (
-  //     <>
-  //       <div className="feed-link">
-  //         <NavLink className="more-comments" to={`/recipes/${recipe.id}`}>
-  //           {`See ${comments.length - 2} more comments`}{" "}
-  //         </NavLink>
-  //       </div>
-  //       <div className="feed-comment">
-  //         <NavLink
-  //           to={`/users/${
-  //             users[comments[comments.length - 2].userId].username
-  //           }`}
-  //         >
-  //           <b>{users[comments[comments.length - 2].userId].username}</b>
-  //         </NavLink>
-  //         {" " + comments[comments.length - 2].comment}
-  //       </div>
-  //       <div className="feed-comment">
-  //         <NavLink
-  //           to={`/users/${
-  //             users[comments[comments.length - 1].userId].username
-  //           }`}
-  //         >
-  //           <b>{users[comments[comments.length - 1].userId].username}</b>
-  //         </NavLink>
-  //         {" " + comments[comments.length - 1].comment}
-  //       </div>
-  //     </>
-  //   );
-  // };
+  const commentGen = () => {
+    return comments.length <= 3 ? (
+      comments.map((c) => (
+        <div key={`${recipe.id}-${c.id}`} className="feed-comment">
+          <NavLink to={`users/${users[c.userId].username}`}>
+            <b>{users[c.userId].username}</b>
+          </NavLink>{" "}
+          {c.comment}
+        </div>
+      ))
+    ) : (
+      <>
+        <div className="feed-link">
+          <NavLink className="more-comments" to={`/recipes/${recipe.id}`}>
+            {`See ${comments.length - 2} more comments`}{" "}
+          </NavLink>
+        </div>
+        <div className="feed-comment">
+          <NavLink
+            to={`/users/${
+              users[comments[comments.length - 2].userId].username
+            }`}
+          >
+            <b>{users[comments[comments.length - 2].userId].username}</b>
+          </NavLink>
+          {" " + comments[comments.length - 2].comment}
+        </div>
+        <div className="feed-comment">
+          <NavLink
+            to={`/users/${
+              users[comments[comments.length - 1].userId].username
+            }`}
+          >
+            <b>{users[comments[comments.length - 1].userId].username}</b>
+          </NavLink>
+          {" " + comments[comments.length - 1].comment}
+        </div>
+      </>
+    );
+  };
 
   const submitComment = async (e) => {
     e.preventDefault();
@@ -114,7 +114,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
             {recipe.dish_name}
           </div>
           {/*                               {commentGen()} */}
-          <div className="post-comment-container">Comment</div>
+          <div className="post-comment-container"> {commentGen()} </div>
           <form className="comment-form" onSubmit={submitComment}>
             <textarea
               className="post-comment-field"
