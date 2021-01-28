@@ -33,7 +33,7 @@ const Feed = () => {
             />
           ))
         ) : (
-          <h2>No Recipes currently Uploaded!</h2>
+          <h2 className="no-recipe">No Recipes currently Uploaded!</h2>
         )}
       </div>
     )
