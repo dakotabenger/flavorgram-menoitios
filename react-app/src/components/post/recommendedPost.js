@@ -23,6 +23,9 @@ const RecommendedPost = ({ usepost }) => {
           <i className="far fa-comment"></i>
           {usepost.numComments}
         </div>
+        <div className="overlay-comments">
+          {usepost.dish_name}
+        </div>
       </div>
     </div>
   );
