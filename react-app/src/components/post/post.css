@@ -16,11 +16,53 @@ body {
   background-color: white;
 }
 
+.post-user-name {
+  text-decoration: none;
+  display: inline;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-user-name-name {
+  text-decoration: none;
+  font-size: 22px;
+  color:red;
+}
+.post-user-name-name:hover {
+  text-decoration: none;
+  font-size: 22px;
+  color:red;
+  border: 3px solid rgba(10, 10, 10, 0.1);
+  border-radius: 20px;
+  background-color: rgba(10, 10, 10, 0.1);
+  padding: 2px;
+}
+
+.fa-heart:checked {
+  background-color: red;
+}
+
 .post-follow-link {
-  color: blue;
   font-size: small;
   cursor: pointer;
   margin-left: auto;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  width:61px;
+  height: 25px;
+  margin-bottom:4px;
+  margin-top:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:black;
+}
+.post-follow-link:hover {
+  background-color: red
 }
 
 .post-likes {
@@ -32,8 +74,16 @@ body {
   height: 100%;
   width: 75%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.post-recipe {
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  padding: 5px;
+  margin-top: 15px;
 }
 
 .post-comments-holder {
@@ -90,14 +140,28 @@ body {
 
 .post-comment-submit textarea {
   width: 100%;
-  border: none;
+  resize: none;
+  height: 125px;
+  border-top: 1px solid rgba(10, 10, 10, 0.1);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+  border-left: 3px solid rgba(10, 10, 10, 0.0);
+  border-right: none;
 }
 
 .post-comment-submit input {
-  background-color: transparent;
-  color: blue;
-  border: none;
-  cursor: pointer;
+  width:110px;
+  height: 25px;
+  margin-bottom:4px;
+  margin-top:4px;
+  margin-left:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:black;
+}
+
+.post-comment-submit input:hover {
+  background-color: red
 }
 
 .post-comment-submit .far {
