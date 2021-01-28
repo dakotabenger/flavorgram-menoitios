@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { authenticate } from "../../services/auth";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import RecommendedPost from "./recommendedPost";
+import { useSelector } from "react-redux";
 import "./post.css";
 
 const Post = () => {
@@ -19,24 +20,27 @@ const Post = () => {
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [canFollow, setCanFollow] = useState(true);
 
+  const currUsesr = useSelector((state) => state.session.user.id)
+
   useEffect(() => {
     (async () => {
       setLoaded(true);
       let res = await fetch(`/api/recipes/${recipeId}`);
       res = await res.json();
-      setUsers(res.users);
+      console.log(res)
+      setUsers(res.recipe.user);
       setImg(res.recipe.photoUrl);
       setComments([
         { userId: res.recipe.userId, comment: res.recipe.dishName },
         ...res.recipe.comments,
       ]);
-      setDishName(res.recipe.dishName);
-      setPoster(res.recipe.userId);
+      setDishName(res.recipe.dish_name);
+      setPoster(res.recipe.user.id);
       setLikeUsers(res.recipe.likers);
       setNumLikes(res.recipe.numLikes);
-      setMyUserId((await authenticate()).id);
-      setRecommendedPosts(res.recommended);
-      setCanFollow(res.canFollow);
+      setMyUserId(currUsesr);
+      // setRecommendedPosts(res.recommended);
+      // setCanFollow(res.canFollow);
       setLoaded(true);
     })();
   }, [recipeId]);
@@ -49,6 +53,9 @@ const Post = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ comment: newComment }),
     });
+    // expects response to have userID, comment(and associated dishName)
+    // also all comments under recipe
+
     res = await res.json();
     setComments([
       { userId: res.userId, comment: res.dishName },
@@ -73,6 +80,8 @@ const Post = () => {
     let res = await fetch(`/api/recipes/${recipeId}/likes`, {
       method: "POST",
     });
+    //expects response to have a length of likers on res object
+    //as well as individual user objects of who liked
     res = await res.json();
     setNumLikes(res.numLikes);
     setLikeUsers(res.likers);
@@ -87,8 +96,12 @@ const Post = () => {
           </div>
           <div className="post-info-holder">
             <div className="poster-info">
-              <img alt="user avatar" />
-              <div className="post-user-name"></div>
+              <img alt="user avatar" src={users.avatarUrl}/>
+              <div className="post-user-name">
+                <NavLink to={`/users/${users.username}`}>
+                  {users.username}
+                </NavLink>
+              </div>
               {canFollow ? (
                 <div onClick={follow} className="post-follow-link">
                   Follow
@@ -96,12 +109,10 @@ const Post = () => {
               ) : null}
             </div>
             <div className="post-comments-holder">
-              {comments.map((c) => (
-                <div key={c.id} className="post-comment">
-                  <img alt="user avatar" src={users[c.userId].avatarUrl} />
-                  <div className="post-comment-text"></div>
-                </div>
-              ))}
+                        {/* {comments.map(c=><div key={c.id} className="post-comment">
+                            <img alt="user avatar" src={users[c.userId].avatarUrl}/>
+                            <div className="post-comment-text"><NavLink to={`/users/${users[c.userId].username}`}><b>{users[c.userId].username}</b></NavLink> {c.comment}</div>
+                          </div>)} */}
             </div>
             <div className="post-comment-submit">
               <i
@@ -126,13 +137,14 @@ const Post = () => {
             </div>
           </div>
         </div>
-        <div className="recommended-post-holder">
+        {/* <div className="recommended-post-holder">
           {recommendedPosts.map((r, idx) => (
             <RecommendedPost key={`rec-${idx}`} rec={r} />
           ))}
-        </div>
+        </div> */}
       </div>
     )
+
   );
 };
 

@@ -36,27 +36,17 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 
     return "{}{}".format(app.config["S3_LOCATION"], spaceRemover(file.filename))
 
-# @recipe_routes.route('/', methods=['GET'])
-# def read_recipes():
-#     user = User.query.get(current_user.get_id())
-#     # user = user.to_dict()
-#     following_ids = [following.id for following in user.following]
-#     recipes = Recipe.query.filter(Recipe.userId.in_(following_ids)).all()
-#     users = {}
-#     for recipe in recipes:
-#         if recipe.userId not in users:
-#             users[recipe.userId] = recipe.user.to_simple_dict()
-#         for comment in recipe.comments:
-#             if comment.userId not in users:
-#                 users[comment.userId] = comment.user.to_simple_dict()
-#     if user.id not in users:
-#         users[user.id] = user.to_simple_dict()
-#     return jsonify({"Recipes": [recipe.to_dict() for recipe in recipes], "users": users})
 
 @recipe_routes.route('/feed', methods=["GET"])
 def get_recipes():
     recipes = Recipe.query.all()
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
+
+@recipe_routes.route('/<int:recipeId>', methods=["GET"])
+def get_recipe(recipeId):
+
+    recipes = Recipe.query.get(recipeId)
+    return {"recipe": recipes.to_dict()}
 
 
 @recipe_routes.route('/create_recipe', methods=["POST"])
