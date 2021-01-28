@@ -11,7 +11,7 @@ def seed_users():
     seed_user1 = User(username='Amanda', email='amanda@aa.io',
                       password='password', avatarUrl='https://randomuser.me/api/portraits/women/62.jpg', bio="Amanda's bio")
     seed_user2 = User(username='Buddy', email='buddy@aa.io',
-                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/50.jpg'', bio="Buddy's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/50.jpg', bio="Buddy's bio")
     seed_user3 = User(username='Megan', email='megan@aa.io',
                       password='password', avatarUrl='https://randomuser.me/api/portraits/women/42.jpg', bio="Megan's bio")
     seed_user4 = User(username='Max', email='max@aa.io',
