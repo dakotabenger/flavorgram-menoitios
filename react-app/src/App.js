@@ -48,10 +48,10 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/search-results" exact={true}>
+        <ProtectedRoute path="/search-results" exact={true}>
           <NavBar />
           <SearchedResults />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path={`/users/:username`} exact={true}>
           <NavBar />
           <Profile userdata={userdata} />
@@ -63,10 +63,14 @@ function App() {
           <ImageGen />
         </ProtectedRoute>
         <ProtectedRoute path="/create_recipe" exact={true}>
+          <NavBar />
           <CreateRecipe />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/recipes/:recipeId' exact={true}>
+          <Post />
         </ProtectedRoute>
 
         <ProtectedRoute path="/" exact={true}>
@@ -81,6 +85,7 @@ function App() {
           <NavBar userdata={userdata} />
           <Post />
         </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   );

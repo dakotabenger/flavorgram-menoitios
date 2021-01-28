@@ -16,7 +16,7 @@ const Feed = () => {
     (async () => {
       let res = await fetch("/api/recipes/feed");
       res = await res.json();
-      console.log(res)
+      // console.log(res)
       setRecipe(res.recipes);
       setUsers(res.user);
       setLoaded(true);
