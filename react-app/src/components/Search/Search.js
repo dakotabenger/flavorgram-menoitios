@@ -24,7 +24,7 @@ const Search = () => {
     return dispatch(searchActions.search(search))
   }
 
-  if(searchResults) {history.push("/search-results")}
+  
 
     return (
     <div>
@@ -33,7 +33,11 @@ const Search = () => {
         type="text"
         className="searchbar fas fa-search"
         placeholder="Search Recipes..."
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => { 
+          setSearch(e.target.value) 
+          onSearch(e)
+          history.push("/search-results")
+        }}
         />
       </form>
     </div>
