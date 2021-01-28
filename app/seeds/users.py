@@ -7,25 +7,27 @@ from app.models import db, User
 def seed_users():
 
     demo = User(username='Demo', email='demo@aa.io',
-                password='password', avatarUrl='https://insta-group-project.s3.amazonaws.com/default-avatar.jpg')
+                password='password', avatarUrl='https://randomuser.me/api/portraits/men/6.jpg')
     seed_user1 = User(username='Amanda', email='amanda@aa.io',
-                      password='password', avatarUrl='https://uifaces.co/our-content/donated/3799Ffxy.jpeg', bio="Amanda's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/women/62.jpg', bio="Amanda's bio")
     seed_user2 = User(username='Buddy', email='buddy@aa.io',
-                      password='password', avatarUrl='https://uifaces.co/our-content/donated/bUkmHPKs.jpg', bio="Buddy's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/50.jpg'', bio="Buddy's bio")
     seed_user3 = User(username='Megan', email='megan@aa.io',
-                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/46.jpg', bio="Megan's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/women/42.jpg', bio="Megan's bio")
     seed_user4 = User(username='Max', email='max@aa.io',
-                      password='password', avatarUrl='https://randomuser.me/api/portraits/women/95.jpg', bio="Max's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/62.jpg', bio="Max's bio")
     seed_user5 = User(username='Jackie', email='jackie@aa.io',
-                      password='password', avatarUrl='https://uifaces.co/our-content/donated/1H_7AxP0.jpg', bio="Jackie's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/women/16.jpg', bio="Jackie's bio")
     seed_user6 = User(username='Henry', email='henry@aa.io',
-                      password='password', avatarUrl='https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb', bio="Henry's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/92.jpg', bio="Henry's bio")
     seed_user7 = User(username='Dez', email='dez@aa.io',
-                      password='password', avatarUrl='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=a72ca28288878f8404a795f39642a46f', bio="Dez's bio")
-    seed_user8 = User(username='Carmen', email='carmen@aa.io',
-                      password='password', avatarUrl='https://images.unsplash.com/photo-1500080209535-717dd4ebaa6b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=acddea1fd5f8d1eafd1fc300f280176c', bio="Carmen's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/38.jpg', bio="Dez's bio")
+    seed_user8 = User(username='Melissa', email='carmen@aa.io',
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/women/79.jpg', bio="Melissa's bio")
     seed_user9 = User(username='Lexi', email='lexi@aa.io',
-                      password='password', avatarUrl='https://uifaces.co/our-content/donated/noplz47r59v1uxvyg8ku.png', bio="Lexi's bio")
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/women/47.jpg', bio="Lexi's bio")
+    seed_user10 = User(username='Will', email='will@aa.io',
+                      password='password', avatarUrl='https://randomuser.me/api/portraits/men/36.jpg', bio="Will's bio")
 
     seed_user1.followers.append(demo)
     seed_user2.followers.append(demo)
@@ -36,6 +38,7 @@ def seed_users():
     seed_user7.followers.append(demo)
     seed_user8.followers.append(demo)
     seed_user9.followers.append(demo)
+    seed_user10.followers.append(demo)
 
     db.session.add(demo)
     db.session.add(seed_user1)
@@ -47,6 +50,7 @@ def seed_users():
     db.session.add(seed_user7)
     db.session.add(seed_user8)
     db.session.add(seed_user9)
+    db.session.add(seed_user10)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE the users table.
