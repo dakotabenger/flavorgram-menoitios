@@ -4,9 +4,9 @@ from flask import Blueprint, jsonify, request
 from dotenv import load_dotenv
 load_dotenv
 from ..models.db import db
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.config import Config
-from app.models import Recipe
+from app.models import Recipe, User
 from app.forms import NewRecipe
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -36,7 +36,22 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 
     return "{}{}".format(app.config["S3_LOCATION"], spaceRemover(file.filename))
 
-
+# @recipe_routes.route('/', methods=['GET'])
+# def read_recipes():
+#     user = User.query.get(current_user.get_id())
+#     # user = user.to_dict()
+#     following_ids = [following.id for following in user.following]
+#     recipes = Recipe.query.filter(Recipe.userId.in_(following_ids)).all()
+#     users = {}
+#     for recipe in recipes:
+#         if recipe.userId not in users:
+#             users[recipe.userId] = recipe.user.to_simple_dict()
+#         for comment in recipe.comments:
+#             if comment.userId not in users:
+#                 users[comment.userId] = comment.user.to_simple_dict()
+#     if user.id not in users:
+#         users[user.id] = user.to_simple_dict()
+#     return jsonify({"Recipes": [recipe.to_dict() for recipe in recipes], "users": users})
 
 @recipe_routes.route('/feed', methods=["GET"])
 def get_recipes():
