@@ -23,7 +23,7 @@ def create_comment(id):
     if form.validate_on_submit():
         data = form.data
         new_comment = Comment(userId=data["userId"],
-                            comment=data["dish_name"],
+                            comment=data["comment"],
                             recipeId=id)
         db.session.add(new_comment)
         db.session.commit()
