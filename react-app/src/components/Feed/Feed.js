@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Post from "./post";
 import "./Feed.css";
 import { authenticate } from "../../services/auth";
+import { useSelector } from "react-redux";
 
 const Feed = () => {
   const [recipe, setRecipe] = useState([]);
@@ -9,14 +10,17 @@ const Feed = () => {
   const [users, setUsers] = useState({});
   const [myUserId, setMyUserId] = useState(null);
 
+  const userId = useSelector((state) => state.session.user.id)
+
   useEffect(() => {
     (async () => {
-      let res = await fetch("/api/recipes/");
+      let res = await fetch("/api/recipes/feed");
       res = await res.json();
-      setRecipe(res.Recipe);
-      setUsers(res.users);
+      console.log(res)
+      setRecipe(res.recipes);
+      setUsers(res.user);
       setLoaded(true);
-      setMyUserId((await authenticate()).id);
+      setMyUserId(userId);
     })();
   }, []);
   return (
@@ -27,8 +31,8 @@ const Feed = () => {
             <Post
               key={recipe.id}
               recipe={recipe}
-              user={users[recipe.userId]}
-              users={users}
+              user={recipe.user}
+              // users={users}
               myUserId={myUserId}
             />
           ))
