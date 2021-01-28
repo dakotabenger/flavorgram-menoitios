@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, NavLink } from "react";
+import { useHistory, NavLink } from 'react-router-dom'
 // import frenchtoast from "../../assets/frenchtoast.jpg";
 // import chewtalk from "../../assets/chewytalk.jpg";
 
@@ -9,7 +9,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const [likeUsers, setLikeUsers] = useState(recipe.likers);
   const [comments, setComments] = useState(recipe.comments);
 
-  // const history = useHistory();
+  const history = useHistory();
   //maps through comments and if <= 3, it will show all, if > than three, it hides all comments
   //  except 2 most recent.
   // const commentGen = () => {
@@ -81,36 +81,36 @@ const Post = ({ recipe, user, users, myUserId }) => {
         <div className="post-user-info">
           <img
             className="post-profile-pic"
-            // src={user.avatarUrl}
-            // alt={`profile pic of ${user.username}`}
+            src={user.avatarUrl}
+            alt={`profile pic of ${user.username}`}
           />
           <div className="post-author-name">
-            {/* <NavLink to={`/users/${user.username}`}>{user.username}</NavLink> */}
+            <NavLink to={`/users/${user.username}`}>{user.username}</NavLink>
           </div>
         </div>
         <div className="feed-post-img-container">
           <img
             src={recipe.photoUrl}
             alt={recipe.dish_name}
-            // onClick={(e) => history.push(`/recipes/${recipe.id}`)}
+            onClick={(e) => history.push(`/recipes/${recipe.id}`)}
           />
         </div>
         <div className="post-bottom-info-container">
           <i
             onClick={like}
-            // className={
-            //   likeUsers.includes(myUserId)
-            //     ? "fas fa-heart fa-lg"
-            //     : "far fa-heart fa-lg"
-            // }
+            className={
+              likeUsers.includes(myUserId)
+                ? "fas fa-heart fa-lg"
+                : "far fa-heart fa-lg"
+            }
           ></i>
           <div className="post-likes">
             {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
           </div>
           <div className="post-text">
-            {/* <NavLink to={`/users/${user.username}`}> */}
-              {/* <b>{user.username}</b> */}
-            {/* </NavLink>{" "} */}
+            <NavLink to={`/users/${user.username}`}>
+              <b>{user.username}</b>
+            </NavLink>{" "}
             {recipe.dish_name}
           </div>
           {/*                               {commentGen()} */}
