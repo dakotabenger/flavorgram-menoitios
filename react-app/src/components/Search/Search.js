@@ -2,7 +2,7 @@ import styled from "styled-components";
 import '../NavBar/NavBar.css'
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 import * as searchActions from '../../store/search'
 
 
@@ -17,14 +17,14 @@ const Search = () => {
   const [search, setSearch] = useState('')
   const searchResults = useSelector((state) => state.search.results);
   const dispatch = useDispatch()
-
+  const history = useHistory()
   const onSearch = (e) => {
     e.preventDefault();
 
     return dispatch(searchActions.search(search))
   }
 
-  if(searchResults) return <Redirect to='/search-results' />
+  if(searchResults) {history.push("/search-results")}
 
     return (
     <div>
