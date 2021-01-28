@@ -24,6 +24,12 @@
   padding: 15px;
 }
 
+.no-recipe {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
 .post-profile-pic {
   width: 40px;
   height: 40px;
@@ -50,7 +56,6 @@
 
 .post-comment-field {
   margin-top: 10px;
-
   border: 1px solid black;
   width: 80%;
 }

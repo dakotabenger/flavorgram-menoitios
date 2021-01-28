@@ -12,7 +12,7 @@ function Profile(props) {
   const [followToFollowing, setFollowToFollowing] = useState(false);
   const [notFollowing, setNotFollowing] = useState(true);
   const { username } = useParams();
-  const userName = localStorage.getItem("IG_USERNAME");
+  const userName = localStorage.getItem("FG_USERNAME");
   const following = loggedin.followingUserNames;
 
   useEffect(() => {

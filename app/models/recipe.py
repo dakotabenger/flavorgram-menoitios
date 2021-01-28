@@ -16,6 +16,8 @@ class Recipe(db.Model):
 
     user = relationship("User")
     comments = relationship('Comment')
+    likingUsers = relationship(
+        "User", secondary=Like, back_populates="likedPosts")
 
     def to_simple_dict(self):
         return {
@@ -25,8 +27,6 @@ class Recipe(db.Model):
             "dish_name": self.dish_name,
             "ingredients": self.ingredients,
             "instructions": self.instructions,
-
-
             "photoUrl": self.photoUrl,
             "numLikes": len(self.likingUsers),
             "numComments": len(self.comments)
@@ -41,6 +41,6 @@ class Recipe(db.Model):
             "instructions": self.instructions,
             "photoUrl": self.photoUrl,
             "comments": [comment.to_dict() for comment in self.comments],
-            # "numLikes": len(self.likingUsers),
-            # "likers":[l.id for l in self.likingUsers]
+            "numLikes": len(self.likingUsers),
+            "likers":[l.id for l in self.likingUsers]
         }

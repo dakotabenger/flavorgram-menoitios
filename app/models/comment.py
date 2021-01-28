@@ -15,3 +15,11 @@ class Comment(db.Model):
 
     user = relationship("User")
     recipe = relationship("Recipe")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "comment": self.comment,
+            "recipeId": self.recipeId,
+            "userId": self.userId
+        }
