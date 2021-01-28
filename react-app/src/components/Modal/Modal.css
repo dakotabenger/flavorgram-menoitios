@@ -1,32 +1,24 @@
 
 .container {
-  position: static;
   z-index: 100;
   display: flex;
   flex-direction: column;
   margin: auto;
   align-items: flex-end;
-  float: right;
-  width: 1px;
-  height: 1px;
 }
 
 #modal {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  position: fixed;
+  float: right;
   background-color: lightgray;
   border: 1px solid #555;
-  left:0;
-  right:0;
   width:145px;
   height:100px;
-  top: 15%; /* push down by 50% of the height of the container */
-  margin-top: -29px; /* bring it back up by half of it's height */
+  top: 15%;
+  margin-top: -46px;
 }
 
 #modal-content {
-
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -34,6 +26,4 @@
   width:120px;
   height:75px;
   background-color: lightgray;
-
-
 }
