@@ -19,6 +19,8 @@ const Post = () => {
   const [myUserId, setMyUserId] = useState(null);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [canFollow, setCanFollow] = useState(true);
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
 
   const currUsesr = useSelector((state) => state.session.user.id)
 
@@ -38,6 +40,9 @@ const Post = () => {
       setPoster(res.recipe.user.id);
       setLikeUsers(res.recipe.likers);
       setNumLikes(res.recipe.numLikes);
+      setIngredients(res.recipe.ingredients);
+      setInstructions(res.recipe.instructions);
+
       setMyUserId(currUsesr);
       // setRecommendedPosts(res.recommended);
       // setCanFollow(res.canFollow);
@@ -93,12 +98,19 @@ const Post = () => {
         <div className="post-holder">
           <div className="post-img-holder">
             <img alt={dishName} src={img} />
+            <div className="post-recipe">
+              <h1>{dishName}</h1>
+              <h2>List of Ingredients:</h2>
+              <h3>{ingredients}</h3>
+              <h2>Instructions:</h2>
+              <h3>{instructions}</h3>
+            </div>
           </div>
           <div className="post-info-holder">
             <div className="poster-info">
               <img alt="user avatar" src={users.avatarUrl}/>
               <div className="post-user-name">
-                <NavLink to={`/users/${users.username}`}>
+                <NavLink className="post-user-name-name" to={`/users/${users.username}`}>
                   {users.username}
                 </NavLink>
               </div>
