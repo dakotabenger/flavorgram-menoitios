@@ -9,7 +9,7 @@ const RecommendedPost = ({ usepost }) => {
       className="one-user-post"
       onMouseOver={(e) => (overlay.current.style.display = "flex")}
       onMouseLeave={(e) => (overlay.current.style.display = "none")}
-      onClick={(e) => history.push(`/posts/${usepost.id}`)}
+      onClick={(e) => history.push(`/recipes/${usepost.id}`)}
     >
       <div className="post-img-holder">
         <img alt="User Post" src={usepost.photoUrl} />

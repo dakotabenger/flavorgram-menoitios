@@ -12,6 +12,7 @@ function Profile(props) {
   const [followingToFollow, setFollowingToFollow] = useState(false);
   const [followToFollowing, setFollowToFollowing] = useState(false);
   const [notFollowing, setNotFollowing] = useState(true);
+  const [userPosts, setUserPosts] = useState([])
   const { username } = useParams();
   const userName = localStorage.getItem("FG_USERNAME");
   const following = loggedin.followingUserNames;
@@ -23,8 +24,9 @@ function Profile(props) {
     async function fetchData() {
       let res = await fetch(`/api/users/${username}`);
       res = await res.json();
-        setUsers(res);
+      setUsers(res);
       console.log(res)
+      setUserPosts(res.recipes)
       setLoggedin(loggedInUser);
       setLoaded(true);
     }
@@ -226,7 +228,7 @@ function Profile(props) {
                         fontWeight: "600",
                       }}
                     >
-                      {/* {user.posts.length}{" "} */}
+                      {userPosts.length}
                     </span>
                     posts
                   </span>
@@ -245,7 +247,8 @@ function Profile(props) {
                       }}
                       title="600"
                     >
-                      {/* <FollowerNum followers={user.followerNum} />{" "} */}
+                      {/* had component followers but couldn't figure out how to use */}
+                      <span>{user.numFollowers}</span>
                     </span>
                     followers
                   </span>
@@ -263,7 +266,7 @@ function Profile(props) {
                         fontWeight: "600",
                       }}
                     >
-                      {/* <FollowingNum following={user.followingNum} />{" "} */}
+                      <span>{user.numFollowing} </span>
                     </span>
                     following
                   </span>
@@ -297,9 +300,9 @@ function Profile(props) {
                 style={{ marginTop: "2vh" }}
                 className="recommended-post-holder"
               >
-                {/* {user.posts.map((p) => (
-                  <RecommendedPost key={p.id} rec={p} />
-                ))} */}
+                {userPosts.map((p) => (
+                  <RecommendedPost key={p.id} usepost={p} />
+                ))}
               </div>
             </article>
           </div>
