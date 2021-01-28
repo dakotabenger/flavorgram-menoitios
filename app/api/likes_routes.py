@@ -9,7 +9,20 @@ from app.forms import NewLike
 
 likes_routes = Blueprint('likes', __name__)
 
-@recipe_routes.route('/<int:id>', methods=["GET"])
+@likes_routes.route('/<int:id>', methods=["GET"])
 def get_recipes(id):
-    likes = Like.query.filter()
+    likes = Like.query.filter(recipeId=id).all()
     return {"likes": [Like.to_dict() for like in Likes]}
+
+@likes_routes.route('/<int:id>', methods=["POST"])
+def create_like(id):
+    form = NewLike()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        new_like = Like(userId=data["userId"], recipeId=id)
+        db.session.add(new_like)
+        db.session.commit()
+        return new_like.to_dict()
+    return "Uh-oh. There's something wrong here..."
+        
