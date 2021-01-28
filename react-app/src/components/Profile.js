@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux"
 import RecommendedPost from "./post/recommendedPost";
 import FollowerNum from "./FollowerNum";
 import FollowingNum from "./FollowingNum";
@@ -15,15 +16,16 @@ function Profile(props) {
   const userName = localStorage.getItem("FG_USERNAME");
   const following = loggedin.followingUserNames;
 
+  const loggedInUser = useSelector((state) => state.session.user)
+
   useEffect(() => {
     setLoaded(true);
     async function fetchData() {
-      const response = await fetch(`/api/users/${username}`);
-      const loggedInUser = await fetch(`/api/users/${userName}`);
-      //   const responseData = await response.json();
-      const resData = await loggedInUser.json();
-      //   setUsers(responseData);
-      setLoggedin(resData);
+      let res = await fetch(`/api/users/${username}`);
+      res = await res.json();
+        setUsers(res);
+      console.log(res)
+      setLoggedin(loggedInUser);
       setLoaded(true);
     }
 

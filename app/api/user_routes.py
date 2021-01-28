@@ -49,12 +49,9 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route("/<username>")
+@user_routes.route("/<username>", methods=["GET"])
 @login_required
 def userParam(username):
-    user = User.query.filter(username=username).first()
-
-    userProfile = user.to_profile_dict()
-    return userProfile
-
-
+    user = User.query.filter_by(username=f'{username}').first()
+    # print(f'----------this is the return of filtering: {user.to_profile_dict()}-----------')
+    return user.to_profile_dict()

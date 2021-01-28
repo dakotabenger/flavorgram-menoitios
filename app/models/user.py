@@ -66,12 +66,12 @@ class User(db.Model, UserMixin):
       "numFollowing": len(self.following),
       "followers": [follower.to_dict() for follower in self.followers],
       "following": [user.to_dict() for user in self.following],
-      "followingUserNames": [user.follower_names() for user in self.following],
-      "recipes": [recipe.to_simple_dict() for recipe in self.recipes]
+      # "followingUserNames": [user.follower_names() for user in self.following],
+      "recipes": [recipe.to_simple_dict() for recipe in self.recipe]
     }
 
   def to_simple_dict(self):
     return {
       "username": self.username,
       "avatarUrl": self.avatarUrl,
-    }  
+    }
