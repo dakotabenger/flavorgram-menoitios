@@ -9,6 +9,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const [likeUsers, setLikeUsers] = useState(recipe.likers);
   const [comments, setComments] = useState(recipe.comments);
 
+
   const history = useHistory();
   // maps through comments and if <= 3, it will show all, if > than three, it hides all comments
   //  except 2 most recent.
@@ -16,8 +17,8 @@ const Post = ({ recipe, user, users, myUserId }) => {
     return comments.length <= 3 ? (
       comments.map((c) => (
         <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-          <NavLink to={`users/${users[c.userId].username}`}>
-            <b>{users[c.userId].username}</b>
+          <NavLink to={`users/${user.username}`}>
+            <b>{user.username}</b>
           </NavLink>{" "}
           {c.comment}
         </div>
@@ -56,14 +57,14 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const submitComment = async (e) => {
     e.preventDefault();
     if (comment.length === 0) return;
-    let res = await fetch(`/api/recipes/${recipe.id}/comments`, {
+    let res = await fetch(`/api/comments/${recipe.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment }),
+      body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
     });
     res = await res.json();
-    setComments(...res.comments);
-    setComment("");
+    setComments(recipe.comments);
+    setComment(res.comment);
   };
 
   const like = async (e) => {
