@@ -35,42 +35,41 @@ const dispatch = useDispatch()
       dispatch(recipeActions.setRecipe(res.recipe))
       setUsers(res.recipe.user);
       setImg(res.recipe.photoUrl);
-      setComments([
-        { userId: res.recipe.userId, comment: res.recipe.dishName },
-        ...res.recipe.comments,
-      ]);
+      setComments(res.recipe.comments);
+      console.log(res.recipe.comments)
+      // console.log("COMMMENTTSSSSSSSSSS", comments)
       setDishName(res.recipe.dish_name);
       setPoster(res.recipe.user.id);
       setLikeUsers(res.recipe.likers);
       setNumLikes(res.recipe.numLikes);
       setIngredients(res.recipe.ingredients);
       setInstructions(res.recipe.instructions);
-
+      setComments(res.recipe.comments)
       setMyUserId(currUsesr);
       // setRecommendedPosts(res.recommended);
       // setCanFollow(res.canFollow);
       dispatch(recipesActions.addRecipes())
       setLoaded(true);
     })();
-  }, [recipeId]);
+  }, []);
 
   const submitComment = async (e) => {
     e.preventDefault();
     if (newComment.length === 0) return;
-    let res = await fetch(`/api/recipes/${recipeId}/comments`, {
+    let res = await fetch(`/api/comments/${recipeId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment: newComment }),
+      body: JSON.stringify({ comment:newComment, userId: myUserId, recipeId: recipeId }),
     });
+    res = await res.json();
+    setComments([...comments,res]);
+    console.log(comments,"HEEEEEEEEEEEEEEEEEEEEEEEJJJJSDJFFJIDEIJF")
+    setNewComment("You're comment was posted!");
+    setTimeout(() => {setNewComment("")},3000)
+  
     // expects response to have userID, comment(and associated dishName)
     // also all comments under recipe
 
-    res = await res.json();
-    setComments([
-      { userId: res.userId, comment: res.dishName },
-      ...res.comments,
-    ]);
-    setNewComment("");
   };
 
   const follow = async (e) => {
@@ -118,17 +117,17 @@ const dispatch = useDispatch()
                   {users.username}
                 </NavLink>
               </div>
-              {canFollow ? (
+              {/* {canFollow ? (
                 <div onClick={follow} className="post-follow-link">
                   Follow
                 </div>
-              ) : null}
+              ) : null} */}
             </div>
             <div className="post-comments-holder">
-                        {/* {comments.map(c=><div key={c.id} className="post-comment">
-                            <img alt="user avatar" src={users[c.userId].avatarUrl}/>
-                            <div className="post-comment-text"><NavLink to={`/users/${users[c.userId].username}`}><b>{users[c.userId].username}</b></NavLink> {c.comment}</div>
-                          </div>)} */}
+                        {comments.map((comment)=>{ return ( <div key={comment.id} className="post-comment">
+                            <img alt="user avatar" src={comment.usersAvatar}/>
+                            <div className="post-comment-text"><NavLink to={`/users/${comment.username}`}><b>{comment.username}</b></NavLink> {comment.comment}</div>
+                          </div>)})}
             </div>
             <div className="post-comment-submit">
               <i

@@ -1,27 +1,36 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, NavLink } from 'react-router-dom'
+import { useHistory, NavLink } from "react-router-dom";
 // import frenchtoast from "../../assets/frenchtoast.jpg";
 // import chewtalk from "../../assets/chewytalk.jpg";
-import * as recipeActions from '../../store/recipe'
+import * as recipeActions from "../../store/recipe";
 const Post = ({ recipe, user, users, myUserId }) => {
   const [comment, setComment] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
   const [numLikes, setNumLikes] = useState(recipe.numLikes);
   const [likeUsers, setLikeUsers] = useState(recipe.likers);
   const [comments, setComments] = useState(recipe.comments);
-  const dispatch = useDispatch
+  const dispatch = useDispatch;
 
   const history = useHistory();
+
   // maps through comments and if <= 3, it will show all, if > than three, it hides all comments
   //  except 2 most recent.
   const commentGen = () => {
     return comments.length <= 3 ? (
-      comments.map((c) => (
-        <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-          <NavLink className="comment-username"to={`users/${user.username}`}>
-            <b>{user.username}</b>
+
+      comments.map((comment) => (
+        <div key={`${recipe.id}-${comment.id}`} className="feed-comment">
+          <NavLink className="comment-username" to={`users/${comment.username}`}>
+            <img
+              className="comment-profile-pic"
+              alt="user avatar"
+              src={comment.usersAvatar}
+            />
+            <b>{comment.username}</b>
+
           </NavLink>{" "}
-          {c.comment}
+          {comment.comment}
         </div>
       ))
     ) : (
@@ -34,51 +43,86 @@ const Post = ({ recipe, user, users, myUserId }) => {
         <div className="feed-comment">
           <NavLink
             to={`/users/${
-              users[comments[comments.length - 2].userId].username
+              recipe.comments[recipe.comments.length - 2].username
             }`}
           >
-            <b>{users[comments[comments.length - 2].userId].username}</b>
+            <b>{recipe.comments[recipe.comments.length - 2].username}</b>
           </NavLink>
-          {" " + comments[comments.length - 2].comment}
+          {" " + recipe.comments[recipe.comments.length - 2].comment}
         </div>
         <div className="feed-comment">
           <NavLink
             to={`/users/${
-              users[comments[comments.length - 1].userId].username
+              recipe.comments[recipe.comments.length - 1].username
             }`}
           >
-            <b>{users[comments[comments.length - 1].userId].username}</b>
+            <b>{recipe.comments[recipe.comments.length - 1].username}</b>
           </NavLink>
-          {" " + comments[comments.length - 1].comment}
+          {" " + recipe.comments[recipe.comments.length - 1].comment}
         </div>
       </>
     );
   };
 
   const submitComment = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // if (comment.length === 0) return;
+    // let res = await fetch(`/api/comments/${recipe.id}`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
+    // });
+    // res = await res.json();
+    // setComments(recipe.comments);
+    // setComment(res.comment);
     if (comment.length === 0) return;
     let res = await fetch(`/api/comments/${recipe.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
+      body: JSON.stringify({
+        comment: comment,
+        userId: myUserId,
+        recipeId: recipe.id,
+      }),
     });
     res = await res.json();
-    setComments(recipe.comments);
-    setComment(res.comment);
+    setComments([...comments, res]);
+    // console.log(comments,"HEEEEEEEEEEEEEEEEEEEEEEEJJJJSDJFFJIDEIJF")
+    setComment("You're comment was posted!");
+    setTimeout(() => {
+      setComment("");
+    }, 3000);
   };
 
   const like = async (e) => {
     e.preventDefault();
-    let res = await fetch(`/api/likes/${recipe.id}`, {
+    let res = await fetch(`/api/likes/${recipe.id}/${user.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
     });
-    // res = await res.json();
-    setNumLikes(numLikes +1);
+    res = await res.json();
+    setNumLikes(res.numLikes);
     // setLikeUsers(res.likers);
   };
+
+  const heartToggle = () => {};
+
+  const deletePost = async () => {
+    let res = await fetch(`api/recipes/delete_recipe/${recipe.id}/${myUserId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
+
+    });
+
+  }
+
+  const deleteButton = () => {
+    return recipe.userId === myUserId ? <button onClick={deletePost}>X</button>: <></>
+  }
+
+
   return (
     <div className="post-main__container">
       <div className="one-post-container">
@@ -89,7 +133,15 @@ const Post = ({ recipe, user, users, myUserId }) => {
             alt={`profile pic of ${user.username}`}
           />
           <div>
-            <NavLink className="post-author-name" to={`/users/${user.username}`}>{user.username}</NavLink>
+            <NavLink
+              className="post-author-name"
+              to={`/users/${user.username}`}
+            >
+              {user.username}
+            </NavLink>
+          </div>
+          <div>
+            {deleteButton()}
           </div>
         </div>
         <div className="feed-post-img-container">
@@ -98,7 +150,8 @@ const Post = ({ recipe, user, users, myUserId }) => {
             src={recipe.photoUrl}
             alt={recipe.dish_name}
             onClick={(e) => {
-              history.push(`/recipes/${recipe.id}`)}}
+              history.push(`/recipes/${recipe.id}`);
+            }}
           />
         </div>
         <div className="post-bottom-info-container">
@@ -115,14 +168,18 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
             </div>
             <div className="post-text">
+
               <NavLink className="post-username" to={`/users/${user.username}`}>
-                <b>{user.username}</b>
+                <b className="comment__name">{user.username}</b>
+
               </NavLink>{" "}
               {recipe.dish_name}
             </div>
           </div>
-          {/*                               {commentGen()} */}
+
+         
           <h1 className="comments-title">Comments:</h1>
+
           <div className="post-comment-container"> {commentGen()} </div>
           <form className="comment-form" onSubmit={submitComment}>
             <textarea

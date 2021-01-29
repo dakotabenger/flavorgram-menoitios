@@ -17,6 +17,7 @@
   align-items: center;
 }
 
+
 .post-username {
   text-decoration: none;
   font-size: 20px;
@@ -50,7 +51,7 @@
 .post-author-name {
   text-decoration: none;
   font-size: 22px;
-  color:red;
+  color: red;
 }
 .post-author-name:hover {
   text-decoration: underline;
@@ -83,6 +84,16 @@
   margin-right: 5px;
 }
 
+.comment-profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 2px solid rgba(10, 10, 10, 0.3);
+  /* padding: 3px; */
+  margin-right: 5px;
+}
+
 .post-comment-holder {
   color: grey;
   font-weight: lighter;
@@ -92,7 +103,7 @@
 .post-text {
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 16px;
+ font-size: 16px;
   font-family: Neue Helvetica;
   margin-left: 10px;
 }
@@ -110,6 +121,7 @@ i.far.fa-heart{
   margin-top: 10px;
   resize: none;
   border: 1px solid black;
+  padding: 5px 0px 10px 10px;
   width: 80%;
   height: 9vh;
   font-family: Helvetica, sans-serif;
@@ -130,7 +142,7 @@ i.far.fa-heart{
   outline: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 1px solid #BFBFBF;
+  border: 1px solid #bfbfbf;
   background-color: white;
   box-shadow: 10px 10px 5px #aaaaaa;
 }
@@ -169,18 +181,18 @@ i.far.fa-heart{
 }
 
 .comment-submit {
-  width:110px;
+  width: 110px;
   height: 25px;
-  margin-bottom:4px;
-  margin-top:4px;
-  margin-left:4px;
-  border:solid 1px lightgrey;
-  border-radius:5px;
-  background-color:salmon;
-  color:black;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-left: 4px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  background-color: salmon;
+  color: black;
 }
 .comment-submit:hover {
-  background-color: red
+  background-color: red;
 }
 
 .comment-submit:hover {
@@ -189,6 +201,7 @@ i.far.fa-heart{
 
 .more-comments {
   text-decoration: none;
+  padding-left: 4px;
 }
 
 .feed-comment {
@@ -198,6 +211,7 @@ i.far.fa-heart{
 
 .fa-heart {
   cursor: pointer;
+  padding: 6px 0px 0px 6px;
 }
 
 .comment-form {
@@ -206,9 +220,11 @@ i.far.fa-heart{
   align-items: center;
   padding: 15px;
 }
-.feed-comment{
+.feed-comment {
+  /* border: 1px solid black; */
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 10px;
   margin-top: 5px;
 }
 

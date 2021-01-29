@@ -18,11 +18,11 @@ def create_like(recipeId, userId):
         new_like = Like(userId=userId, recipeId=recipeId)
         db.session.add(new_like)
         db.session.commit()
-        new_data = Recipe.query.filter(Recipe.id==recipeId)
-        return new_data.to_profile_dict()
+        new_data = Recipe.query.filter(Recipe.id==recipeId).first()
+        return new_data.to_dict()
     else:
-        existingLike.delete()
+        db.session.delete(existingLike)
         db.session.commit()
-        new_data = Recipe.query.filter(Recipe.id==recipeId)
-        return new_data.to_profile_dict()
-    return "Uh-oh. There's something wrong here..."
+        new_data = Recipe.query.filter(Recipe.id==recipeId).first()
+        return new_data.to_dict()
+    return {"message":"Uh-oh. There's something wrong here..."}

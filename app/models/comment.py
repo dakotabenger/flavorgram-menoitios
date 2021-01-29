@@ -22,5 +22,6 @@ class Comment(db.Model):
             "comment": self.comment,
             "recipeId": self.recipeId,
             "userId": self.userId,
-            "username": self.user.username
+            "username": self.user.username,
+            "usersAvatar": self.user.avatarUrl
         }

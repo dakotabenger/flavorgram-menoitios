@@ -18,10 +18,10 @@ def get_comments(id):
 @comment_routes.route('/<int:id>', methods=["POST"])
 def create_comment(id):
     form = NewComment()
-
+    
     form['csrf_token'].data = request.cookies['csrf_token']
     data = form.data
-    print(data)
+    print(f'HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE {data["userId"]},{data["comment"]},{id}')
     if form.validate_on_submit():
 
         new_comment = Comment(userId=data["userId"],

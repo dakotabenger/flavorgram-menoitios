@@ -1,27 +1,30 @@
 .brand_link {
-    text-decoration: none;
-    color: black;
-    display: inline;
+  text-decoration: none;
+  color: black;
+  display: inline;
 }
 
 .logout {
-    text-decoration: none;
-    color: black;
-    display: inline;
+  text-decoration: none;
+  color: black;
+  display: inline;
 }
 
 .brand_linked {
-    width:75px;
-    height: 25px;
-    margin-bottom:4px;
-    margin-top:4px;
-    border:solid 1px lightgrey;
-    border-radius:5px;
-    background-color:salmon;
-    color:black;
+  width: 75px;
+  height: 25px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  background-color: salmon;
+  color: black;
 }
 
 .brand_linked:hover {
-    background-color: red
+  background-color: red;
 }
 
+.fa-user-circle:hover {
+  color: red;
+}

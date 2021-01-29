@@ -28,19 +28,19 @@ body {
 .post-user-name-name {
   text-decoration: none;
   font-size: 22px;
-  color:red;
+  color: red;
 }
 .post-user-name-name:hover {
   text-decoration: none;
   font-size: 22px;
-  color:red;
+  color: red;
   border: 3px solid rgba(10, 10, 10, 0.1);
   border-radius: 20px;
   background-color: rgba(10, 10, 10, 0.1);
   padding: 2px;
 }
 
-.fa-heart:checked {
+.far fa-heart:checked {
   background-color: red;
 }
 
@@ -52,22 +52,21 @@ body {
   display: flex;
   align-items: center;
   padding-left: 10px;
-  width:61px;
+  width: 61px;
   height: 25px;
-  margin-bottom:4px;
-  margin-top:4px;
-  border:solid 1px lightgrey;
-  border-radius:5px;
-  background-color:salmon;
-  color:black;
-}
-.post-follow-link:hover {
-  background-color: red
+  margin-bottom: 4px;
+  margin-top: 4px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  background-color: salmon;
+  color: black;
 }
 
 .post-likes {
   color: black;
+
   font-size: small;
+  padding: 1px 0px 0px 3px;
 }
 
 .post-img-holder {
@@ -80,8 +79,8 @@ body {
 }
 
 .post-recipe {
-  border:solid 1px lightgrey;
-  border-radius:5px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
   padding: 5px;
   margin-top: 15px;
 }
@@ -127,6 +126,10 @@ body {
   margin-bottom: 3px;
 }
 
+.user-comment {
+  text-decoration: none;
+}
+
 .post-comment-text {
   max-width: 100%;
   overflow-wrap: break-word;
@@ -144,24 +147,24 @@ body {
   height: 125px;
   border-top: 1px solid rgba(10, 10, 10, 0.1);
   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
-  border-left: 3px solid rgba(10, 10, 10, 0.0);
+  border-left: 3px solid rgba(10, 10, 10, 0);
   border-right: none;
 }
 
 .post-comment-submit input {
-  width:110px;
+  width: 110px;
   height: 25px;
-  margin-bottom:4px;
-  margin-top:4px;
-  margin-left:4px;
-  border:solid 1px lightgrey;
-  border-radius:5px;
-  background-color:salmon;
-  color:black;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-left: 4px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  background-color: salmon;
+  color: black;
 }
 
 .post-comment-submit input:hover {
-  background-color: red
+  background-color: red;
 }
 
 .post-comment-submit .far {
