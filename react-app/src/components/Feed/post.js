@@ -16,12 +16,13 @@ const Post = ({ recipe, user, users, myUserId }) => {
   //  except 2 most recent.
   const commentGen = () => {
     return comments.length <= 3 ? (
-      comments.map((c) => (
-        <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-          <NavLink to={`users/${user.username}`}>
-            <b>{user.username}</b>
+      comments.map((comment) => (
+        <div key={`${recipe.id}-${comment.id}`} className="feed-comment">
+          <NavLink to={`users/${comment.username}`}>
+          <img alt="user avatar" src={comment.usersAvatar}/>
+          <b>{comment.username}</b>
           </NavLink>{" "}
-          {c.comment}
+          {comment.comment}
         </div>
       ))
     ) : (
@@ -34,49 +35,60 @@ const Post = ({ recipe, user, users, myUserId }) => {
         <div className="feed-comment">
           <NavLink
             to={`/users/${
-              users[comments[comments.length - 2].userId].username
+              recipe.comments[recipe.comments.length - 2].username
             }`}
           >
-            <b>{users[comments[comments.length - 2].userId].username}</b>
+            <b>{recipe.comments[recipe.comments.length - 2].username}</b>
           </NavLink>
-          {" " + comments[comments.length - 2].comment}
+          {" " + recipe.comments[recipe.comments.length - 2].comment}
         </div>
         <div className="feed-comment">
           <NavLink
             to={`/users/${
-              users[comments[comments.length - 1].userId].username
+              recipe.comments[recipe.comments.length - 1].username
             }`}
           >
-            <b>{users[comments[comments.length - 1].userId].username}</b>
+            <b>{recipe.comments[recipe.comments.length - 1].username}</b>
           </NavLink>
-          {" " + comments[comments.length - 1].comment}
+          {" " + recipe.comments[recipe.comments.length - 1].comment}
         </div>
       </>
     );
   };
 
   const submitComment = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // if (comment.length === 0) return;
+    // let res = await fetch(`/api/comments/${recipe.id}`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
+    // });
+    // res = await res.json();
+    // setComments(recipe.comments);
+    // setComment(res.comment);
     if (comment.length === 0) return;
     let res = await fetch(`/api/comments/${recipe.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
+      body: JSON.stringify({ comment:comment, userId: myUserId, recipeId: recipe.id }),
     });
     res = await res.json();
-    setComments(recipe.comments);
-    setComment(res.comment);
+    setComments([...comments,res]);
+    // console.log(comments,"HEEEEEEEEEEEEEEEEEEEEEEEJJJJSDJFFJIDEIJF")
+    setComment("You're comment was posted!");
+    setTimeout(() => {setComment("")},3000)
   };
 
   const like = async (e) => {
     e.preventDefault();
-    let res = await fetch(`/api/likes/${recipe.id}`, {
+    let res = await fetch(`/api/likes/${recipe.id}/${user.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
     });
-    // res = await res.json();
-    setNumLikes(numLikes +1);
+    res = await res.json();
+    setNumLikes(res.numLikes);
     // setLikeUsers(res.likers);
   };
   return (
