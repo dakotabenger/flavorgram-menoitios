@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect,useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { addRecipe } from "../../store/post";
 import * as sessionActions from "../../store/post";
 import "./createrecipe.css";
@@ -13,7 +13,7 @@ function CreateRecipe() {
   const [photoUrl, setPhotoUrl] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id)
+  const userId = useSelector((state) => state.session.user.id);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,14 +25,14 @@ function CreateRecipe() {
       instructions,
       photoUrl,
     };
-    console.log("PAYLOAD", payload)
+    console.log("PAYLOAD", payload);
     const createdRecipe = dispatch(addRecipe(payload));
 
-    if (createdRecipe) history.push('/');
+    if (createdRecipe) history.push("/");
   };
 
   const handleCancel = () => {
-    history.push("/")
+    history.push("/");
   };
 
   return (
@@ -41,15 +41,39 @@ function CreateRecipe() {
       <section>
         <form onSubmit={handleSubmit}>
           <div className="form_container">
-            <ImageGen />
+            {/* <ImageGen /> */}
             <h2>Title</h2>
-            <input onChange={(e) => {setDish_Name(e.target.value)}}type="text" className="title" />
+            <input
+              onChange={(e) => {
+                setDish_Name(e.target.value);
+              }}
+              type="text"
+              className="title"
+            />
             <h2>Ingredients</h2>
-            <textarea onChange={(e) => {setIngredients(e.target.value)}} type="text" className="ingredients" />
+            <textarea
+              onChange={(e) => {
+                setIngredients(e.target.value);
+              }}
+              type="text"
+              className="ingredients"
+            />
             <h2>Instructions</h2>
-            <textarea onChange={(e) => {setInstructions(e.target.value)}} type="text" className="instructions" />
+            <textarea
+              onChange={(e) => {
+                setInstructions(e.target.value);
+              }}
+              type="text"
+              className="instructions"
+            />
             <h2>Photo Url</h2>
-            <input onChange={(e) => {setPhotoUrl(e.target.value)}} type="text" className="photourl" />
+            <input
+              onChange={(e) => {
+                setPhotoUrl(e.target.value);
+              }}
+              type="text"
+              className="photourl"
+            />
             <button type="submit" className="submit_button">
               Create Recipe
             </button>
