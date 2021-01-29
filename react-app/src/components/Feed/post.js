@@ -12,6 +12,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const dispatch = useDispatch
 
   const history = useHistory();
+
   // maps through comments and if <= 3, it will show all, if > than three, it hides all comments
   //  except 2 most recent.
   const commentGen = () => {
@@ -91,6 +92,21 @@ const Post = ({ recipe, user, users, myUserId }) => {
     setNumLikes(res.numLikes);
     // setLikeUsers(res.likers);
   };
+
+  const deletePost = async () => {
+    let res = await fetch(`api/recipes/delete_recipe/${recipe.id}/${myUserId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
+
+    });
+
+  }
+
+  const deleteButton = () => {
+    return recipe.userId === myUserId ? <button onClick={deletePost}>X</button>: <></>
+  }
+
   return (
     <div className="post-main__container">
       <div className="one-post-container">
@@ -102,6 +118,9 @@ const Post = ({ recipe, user, users, myUserId }) => {
           />
           <div>
             <NavLink className="post-author-name" to={`/users/${user.username}`}>{user.username}</NavLink>
+          </div>
+          <div>
+            {deleteButton()}
           </div>
         </div>
         <div className="feed-post-img-container">
