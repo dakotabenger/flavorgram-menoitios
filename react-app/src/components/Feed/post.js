@@ -34,22 +34,22 @@ const Post = ({ recipe, user, users, myUserId }) => {
         <div className="feed-comment">
           <NavLink
             to={`/users/${
-              users[comments[comments.length - 2].userId].username
+              recipe.comments[recipe.comments.length - 2].username
             }`}
           >
-            <b>{users[comments[comments.length - 2].userId].username}</b>
+            <b>{recipe.comments[recipe.comments.length - 2].username}</b>
           </NavLink>
-          {" " + comments[comments.length - 2].comment}
+          {" " + recipe.comments[recipe.comments.length - 2].comment}
         </div>
         <div className="feed-comment">
           <NavLink
             to={`/users/${
-              users[comments[comments.length - 1].userId].username
+              recipe.comments[recipe.comments.length - 1].username
             }`}
           >
-            <b>{users[comments[comments.length - 1].userId].username}</b>
+            <b>{recipe.comments[recipe.comments.length - 1].username}</b>
           </NavLink>
-          {" " + comments[comments.length - 1].comment}
+          {" " + recipe.comments[recipe.comments.length - 1].comment}
         </div>
       </>
     );

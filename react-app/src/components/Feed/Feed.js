@@ -32,7 +32,7 @@ const Feed = ({children}) => {
               key={recipe.id}
               recipe={recipe}
               user={recipe.user}
-              // users={users}
+              users={users}
               myUserId={userId}
             />
             </>
