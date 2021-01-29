@@ -1,3 +1,59 @@
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Flavorgram</h3>
+
+  <p align="center">
+    A application for those food lovers that want to share their passion 
+    <br />
+    <a href="https://github.com/dakotabenger/flavorgram-menoitios/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+  </p>
+</p>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#getting-started">Flask/Back-end</a></li>
+        <li><a href="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/README.md">React/Front-End</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/RamsesRomeroJr-patch-1/FlavorGram-Home.jpg" alt="HomePage" >
+<-- quick description about project -->
+
+### Built With
+
+This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+* [Javascript]()
+* [React](https://reactjs.org/)
+* [Python](https://docs.python.org/3/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
 # Flask React Project
 
 This is the backend for the Flask React project.
@@ -96,3 +152,9 @@ This is the backend for the Flask React project.
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
+
+<!-- CONTACT -->
+## Contact
+
+
+[Project Link](https://github.com/dakotabenger/flavorgram-menoitios)
