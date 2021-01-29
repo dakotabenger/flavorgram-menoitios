@@ -15,7 +15,7 @@ function Profile(props) {
   const [userPosts, setUserPosts] = useState([])
   const { username } = useParams();
   // const userName = localStorage.getItem("FG_USERNAME");
-  const following = loggedin.followingUserNames;
+  // const following = loggedin.followingUserNames;
 
   const loggedInUser = useSelector((state) => state.session.user)
 
@@ -84,14 +84,11 @@ function Profile(props) {
       followButton.innerHTML = "Following";
       setFollowToFollowing(true);
       setNotFollowing(false);
-      await fetch(`/api/users/${user.id}/follower`, {
+      await fetch(`/api/follows/${user.id}/${loggedInUser.id}`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          followerId: loggedin.id,
-        }),
       });
       const response = await fetch(`/api/users/${username}`);
       const result = await response.json();

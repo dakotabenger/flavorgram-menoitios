@@ -4,14 +4,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 from datetime import datetime
+from .follow import Follow
 
 
-follow = db.Table ( 'follow',
-  db.Model.metadata,
-  db.Column("followerId", db.Integer, db.ForeignKey("users.id")),
-  db.Column("followingId", db.Integer, db.ForeignKey("users.id")),
-  db.Column("timestamp", db.DateTime, default=datetime.now())
-)
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -22,9 +17,10 @@ class User(db.Model, UserMixin):
   bio = db.Column(db.String(255))
   avatarUrl = db.Column(db.String(255))
   hashed_password = db.Column(db.String(255), nullable = False)
+  followerId = db.Column(db.Integer,unique = True)
 
-  followers = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followingId, secondaryjoin=id==follow.c.followerId, back_populates="following")
-  following = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followerId, secondaryjoin=id==follow.c.followingId, back_populates="followers")
+  followers = db.relationship("Follow", secondary=Follow, primaryjoin=id==Follow.followingId, secondaryjoin=id==Follow.followerId, back_populates="following")
+  following = db.relationship("Follow", secondary=Follow, primaryjoin=id==Follow.followerId, secondaryjoin=id==Follow.followingId, back_populates="followers")
   recipe = relationship("Recipe")
   # likedPosts = relationship("Like", back_populates="likingUsers")
 
