@@ -14,6 +14,7 @@ function CreateRecipe() {
   const history = useHistory();
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.session.user.id)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,7 +28,7 @@ function CreateRecipe() {
     console.log("PAYLOAD", payload)
     const createdRecipe = dispatch(addRecipe(payload));
 
-    if (createdRecipe) return <Redirect to="/" />;
+    if (createdRecipe) history.push('/');
   };
 
   const handleCancel = () => {
