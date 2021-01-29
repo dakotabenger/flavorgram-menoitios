@@ -95,17 +95,17 @@ export default function () {
             />
           </div>
           <div className="imgCaptionContainer">
-            <textarea
+            {/* <textarea
               className="imgCaptionInput"
               value={description}
               name="description"
               placeholder="Add a description..."
               onChange={(e) => setDescription(e.target.value)}
-            />
+            /> */}
           </div>
           <div id="errorContainer">{error}</div>
           <div>
-            <input className="img-post__button" type="submit" value="Post" />
+            {/* <input className="img-post__button" type="submit" value="Post" /> */}
           </div>
         </div>
       </form>
