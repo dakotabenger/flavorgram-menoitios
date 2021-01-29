@@ -13,13 +13,13 @@ const Feed = ({children}) => {
   const userId = useSelector((state) => state.session.user.id)
   let recipes = useSelector((state) => state.recipes.results.recipes)
 
-  
-    
+
+
   useEffect(() => {
     (async () => {
       console.log(await dispatch(recipesActions.addRecipes()))
       setLoaded(true)
-      
+
     })();
   }, []);
   return (
@@ -27,7 +27,6 @@ const Feed = ({children}) => {
       <div className="post-container">
         {recipes.length ? (
           recipes.map((recipe) => (
-            <>
             <Post
               key={recipe.id}
               recipe={recipe}
@@ -35,9 +34,8 @@ const Feed = ({children}) => {
               // users={users}
               myUserId={userId}
             />
-            </>
           ))
-            
+
         ) : (
           <h2 className="no-recipe">No Recipes currently Uploaded!</h2>
         )}
