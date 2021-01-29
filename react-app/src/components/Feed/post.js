@@ -16,12 +16,12 @@ const Post = ({ recipe, user, users, myUserId }) => {
   //  except 2 most recent.
   const commentGen = () => {
     return comments.length <= 3 ? (
-      comments.map((c) => (
-        <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-          <NavLink to={`users/${user.username}`}>
-            <b>{user.username}</b>
+      comments.map((comment) => (
+        <div key={`${recipe.id}-${comment.id}`} className="feed-comment">
+          <NavLink to={`users/${comment.username}`}>
+            <b>{comment.username}</b>
           </NavLink>{" "}
-          {c.comment}
+          {comment.comment}
         </div>
       ))
     ) : (
