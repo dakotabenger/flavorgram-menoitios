@@ -14,7 +14,7 @@ function Profile(props) {
   const [notFollowing, setNotFollowing] = useState(true);
   const [userPosts, setUserPosts] = useState([])
   const { username } = useParams();
-  const userName = localStorage.getItem("FG_USERNAME");
+  // const userName = localStorage.getItem("FG_USERNAME");
   const following = loggedin.followingUserNames;
 
   const loggedInUser = useSelector((state) => state.session.user)
@@ -32,7 +32,7 @@ function Profile(props) {
     }
 
     fetchData();
-  }, [username, userName]);
+  }, [username]);
 
   const overFollowing = () => {
     const followButton = window.document.querySelector(".follow-button");
