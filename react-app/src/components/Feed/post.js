@@ -18,7 +18,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
     return comments.length <= 3 ? (
       comments.map((c) => (
         <div key={`${recipe.id}-${c.id}`} className="feed-comment">
-          <NavLink to={`users/${user.username}`}>
+          <NavLink className="comment-username"to={`users/${user.username}`}>
             <b>{user.username}</b>
           </NavLink>{" "}
           {c.comment}
@@ -115,13 +115,14 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
             </div>
             <div className="post-text">
-              <NavLink to={`/users/${user.username}`}>
+              <NavLink className="post-username" to={`/users/${user.username}`}>
                 <b>{user.username}</b>
               </NavLink>{" "}
               {recipe.dish_name}
             </div>
           </div>
           {/*                               {commentGen()} */}
+          <h1 className="comments-title">Comments:</h1>
           <div className="post-comment-container"> {commentGen()} </div>
           <form className="comment-form" onSubmit={submitComment}>
             <textarea
