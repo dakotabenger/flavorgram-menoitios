@@ -35,10 +35,6 @@
         <li><a href="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/README.md">React/Front-End</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -47,6 +43,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/RamsesRomeroJr-patch-1/FlavorGram-Home.jpg" alt="HomePage" >
 <-- quick description about project -->
 
 ### Built With
@@ -156,3 +153,9 @@ This is the backend for the Flask React project.
 10. Under Settings find "Config Vars" and add any additional/secret .env variables.
 
 11. profit
+
+<!-- CONTACT -->
+## Contact
+
+
+[Project Link](https://github.com/dakotabenger/flavorgram-menoitios)
