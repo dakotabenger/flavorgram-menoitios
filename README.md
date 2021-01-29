@@ -31,8 +31,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#getting-started">Flask/Back-end</a></li>
+        <li><a href="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/README.md">React/Front-End</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -45,6 +45,19 @@
 </details>
 
 
+<!-- ABOUT THE PROJECT -->
+## About The Project
+<-- quick description about project -->
+
+### Built With
+
+This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+* [Javascript]()
+* [React](https://reactjs.org/)
+* [Python](https://docs.python.org/3/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
 # Flask React Project
 
 This is the backend for the Flask React project.
