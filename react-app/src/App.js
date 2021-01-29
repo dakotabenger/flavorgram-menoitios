@@ -15,14 +15,13 @@ import Post from "./components/post";
 import Feed from "./components/Feed/Feed";
 
 import { restoreUser } from "./store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [userdata, setUserData] = useState({});
   const dispatch = useDispatch();
-
   useEffect(() => {
     (async () => {
       // const user = await authenticate();

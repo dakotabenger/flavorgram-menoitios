@@ -4,39 +4,52 @@ import { useParams, NavLink } from "react-router-dom";
 import RecommendedPost from "./recommendedPost";
 import { useDispatch, useSelector } from "react-redux";
 import "./post.css";
-import * as recipeActions from "../../store/recipe";
+import * as recipeActions from "../../store/recipe"
+import * as recipesActions from "../../store/recipes"
 
 const Post = () => {
   const { recipeId } = useParams();
+  const [comments, setComments] = useState([]);
+  const [img, setImg] = useState("");
   const [loaded, setLoaded] = useState(true);
+  const [dishName, setDishName] = useState("");
+  const [users, setUsers] = useState({});
+  const [poster, setPoster] = useState(0);
   const [newComment, setNewComment] = useState("");
+  const [likeUsers, setLikeUsers] = useState([]);
+  const [numLikes, setNumLikes] = useState(0);
   const [myUserId, setMyUserId] = useState(null);
   const [recommendedPosts, setRecommendedPosts] = useState([]);
   const [canFollow, setCanFollow] = useState(true);
-  const dispatch = useDispatch()
-  
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
+const dispatch = useDispatch()
   const currUsesr = useSelector((state) => state.session.user.id)
-  let recipe = useSelector((state) => state.session.recipe)
-  let users = useSelector((state) => state.session.recipe.userId)
-  let img = useSelector((state) => state.session.recipe.photoUrl)
-  let comments = useSelector((state) => state.session.recipe.comments)
-  let dishName = useSelector((state) => state.session.recipe.dish_name)
-  let poster = useSelector((state) => state.session.recipe.user.id);
-  let likeUsers = useSelector((state) => state.session.recipe.likers);
-  let numLikes = useSelector((state) => state.session.recipe.numLikes);
-  let ingredients = useSelector((state) => state.session.recipe.ingredients);
-  let instructions = useSelector((state) => state.session.recipe.instructions);
-  
-  
+
   useEffect(() => {
     (async () => {
       setLoaded(true);
-      dispatch(recipeActions.addRecipe())
-      
+      let res = await fetch(`/api/recipes/${recipeId}`);
+      res = await res.json();
+      console.log(res)
+      dispatch(recipeActions.setRecipe(res))
+      setUsers(res.recipe.user);
+      setImg(res.recipe.photoUrl);
+      setComments([
+        { userId: res.recipe.userId, comment: res.recipe.dishName },
+        ...res.recipe.comments,
+      ]);
+      setDishName(res.recipe.dish_name);
+      setPoster(res.recipe.user.id);
+      setLikeUsers(res.recipe.likers);
+      setNumLikes(res.recipe.numLikes);
+      setIngredients(res.recipe.ingredients);
+      setInstructions(res.recipe.instructions);
 
       setMyUserId(currUsesr);
       // setRecommendedPosts(res.recommended);
       // setCanFollow(res.canFollow);
+      dispatch(recipesActions.addRecipes())
       setLoaded(true);
     })();
   }, [recipeId]);
@@ -53,7 +66,11 @@ const Post = () => {
     // also all comments under recipe
 
     res = await res.json();
-    
+    setComments([
+      { userId: res.userId, comment: res.dishName },
+      ...res.comments,
+    ]);
+    setNewComment("");
   };
 
   const follow = async (e) => {
@@ -75,7 +92,8 @@ const Post = () => {
     //expects response to have a length of likers on res object
     //as well as individual user objects of who liked
     res = await res.json();
-    
+    setNumLikes(res.numLikes);
+    setLikeUsers(res.likers);
   };
 
   return (

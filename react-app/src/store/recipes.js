@@ -12,15 +12,17 @@ const setRecipes = (recipes) => ({
 //thunk to fetch searched recipes then dispatch setRecipe action
 export const addRecipes = () => async (dispatch) => {
     let res = await fetch("/api/recipes/feed");
+    
     dispatch(setRecipes(res.data))
+    console.log(res.data)
     return res
 }
 
-function reducer(state = {results: null}, action){
+function reducer(state = {results: {recipes:[]}}, action){
     let newState;
     switch(action.type){
         case FIND_RECIPES:
-            newState = Object.assign({}, state, {results: action.recipe});
+            newState = Object.assign({}, state, {results: {...action.recipes}});
             return newState;
         default:
             return state;
