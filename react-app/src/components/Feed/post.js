@@ -18,15 +18,17 @@ const Post = ({ recipe, user, users, myUserId }) => {
   //  except 2 most recent.
   const commentGen = () => {
     return comments.length <= 3 ? (
+
       comments.map((comment) => (
         <div key={`${recipe.id}-${comment.id}`} className="feed-comment">
-          <NavLink className="user-comment" to={`users/${comment.username}`}>
+          <NavLink className="comment-username" to={`users/${comment.username}`}>
             <img
               className="comment-profile-pic"
               alt="user avatar"
               src={comment.usersAvatar}
             />
             <b>{comment.username}</b>
+
           </NavLink>{" "}
           {comment.comment}
         </div>
@@ -166,12 +168,17 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
             </div>
             <div className="post-text">
-              <NavLink to={`/users/${user.username}`}>
+
+              <NavLink className="post-username" to={`/users/${user.username}`}>
                 <b className="comment__name">{user.username}</b>
+
               </NavLink>{" "}
               {recipe.dish_name}
             </div>
           </div>
+
+         
+          <h1 className="comments-title">Comments:</h1>
 
           <div className="post-comment-container"> {commentGen()} </div>
           <form className="comment-form" onSubmit={submitComment}>
