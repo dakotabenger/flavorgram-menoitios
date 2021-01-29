@@ -70,6 +70,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/recipes/:recipeId' exact={true}>
+          <NavBar />
           <Post />
         </ProtectedRoute>
 

@@ -1,5 +1,4 @@
 from .db import db
-from .like import Like
 from . import User
 from sqlalchemy.orm import relationship
 
@@ -14,10 +13,10 @@ class Recipe(db.Model):
     instructions = db.Column(db.String, nullable=False)
     photoUrl = db.Column(db.String, nullable=False)
 
-    user = relationship("User")
-    comments = relationship('Comment')
-    likingUsers = relationship(
-        "User", secondary=Like, back_populates="likedPosts")
+    user = db.relationship("User")
+    comments = db.relationship('Comment')
+    likingUsers = db.relationship(
+        "Like", back_populates="likedRecipes")
 
     def to_simple_dict(self):
         return {
