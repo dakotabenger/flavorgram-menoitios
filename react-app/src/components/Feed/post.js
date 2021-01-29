@@ -56,27 +56,38 @@ const Post = ({ recipe, user, users, myUserId }) => {
   };
 
   const submitComment = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // if (comment.length === 0) return;
+    // let res = await fetch(`/api/comments/${recipe.id}`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
+    // });
+    // res = await res.json();
+    // setComments(recipe.comments);
+    // setComment(res.comment);
     if (comment.length === 0) return;
     let res = await fetch(`/api/comments/${recipe.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
+      body: JSON.stringify({ comment:comment, userId: myUserId, recipeId: recipe.id }),
     });
     res = await res.json();
-    setComments(recipe.comments);
-    setComment(res.comment);
+    setComments([...comments,res]);
+    // console.log(comments,"HEEEEEEEEEEEEEEEEEEEEEEEJJJJSDJFFJIDEIJF")
+    setComment("You're comment was posted!");
+    setTimeout(() => {setComment("")},3000)
   };
 
   const like = async (e) => {
     e.preventDefault();
-    let res = await fetch(`/api/likes/${recipe.id}`, {
+    let res = await fetch(`/api/likes/${recipe.id}/${user.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
     });
-    // res = await res.json();
-    setNumLikes(numLikes +1);
+    res = await res.json();
+    setNumLikes(res.numLikes);
     // setLikeUsers(res.likers);
   };
   return (
