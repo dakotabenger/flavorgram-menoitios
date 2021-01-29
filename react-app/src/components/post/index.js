@@ -10,6 +10,7 @@ import * as recipesActions from "../../store/recipes"
 const Post = () => {
   const { recipeId } = useParams();
   const [comments, setComments] = useState([]);
+  const [comment,setComment] = useState({})
   const [img, setImg] = useState("");
   const [loaded, setLoaded] = useState(true);
   const [dishName, setDishName] = useState("");
@@ -56,21 +57,19 @@ const dispatch = useDispatch()
 
   const submitComment = async (e) => {
     e.preventDefault();
-    if (newComment.length === 0) return;
-    let res = await fetch(`/api/recipes/${recipeId}/comments`, {
+    if (comment.length === 0) return;
+    let res = await fetch(`/api/comments/${recipe.id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment: newComment }),
+      body: JSON.stringify({ comment, userId: myUserId, recipeId: recipe.id }),
     });
+    res = await res.json();
+    setComments([...comments,res]);
+    setComment(res);
+  
     // expects response to have userID, comment(and associated dishName)
     // also all comments under recipe
 
-    res = await res.json();
-    setComments([
-      { userId: res.userId, comment: res.dishName },
-      ...res.comments,
-    ]);
-    setNewComment("");
   };
 
   const follow = async (e) => {
