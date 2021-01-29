@@ -6,7 +6,7 @@ load_dotenv
 from ..models.db import db
 from flask_login import login_required, current_user
 from app.config import Config
-from app.models import Recipe, User
+from app.models import Recipe, User, Comment
 from app.forms import NewRecipe
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -53,6 +53,13 @@ def delete_recipe(recipeId, userId):
 
     validRecipe = Recipe.query.filter(Recipe.id==recipeId, Recipe.userId==userId).first()
     if(validRecipe):
+        currRecipe = validRecipe.to_dict()
+        recipeComments = currRecipe['comments']
+        for comment in recipeComments:
+            currComment = Comment.query.filter(Comment.id==comment['id']).first()
+            db.session.delete(currComment)
+            db.session.commit()
+
         db.session.delete(validRecipe)
         db.session.commit()
 
