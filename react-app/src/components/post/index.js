@@ -28,11 +28,11 @@ const dispatch = useDispatch()
 
   useEffect(() => {
     (async () => {
-      setLoaded(true);
+      setLoaded(false);
       let res = await fetch(`/api/recipes/${recipeId}`);
       res = await res.json();
       console.log(res)
-      dispatch(recipeActions.setRecipe(res))
+      dispatch(recipeActions.setRecipe(res.recipe))
       setUsers(res.recipe.user);
       setImg(res.recipe.photoUrl);
       setComments([
@@ -84,9 +84,9 @@ const dispatch = useDispatch()
     setCanFollow(!res.added);
   };
 
-  const like = async (e) => {
-    e.preventDefault();
-    let res = await fetch(`/api/recipes/${recipeId}/likes`, {
+  const like = async (recipeId,userId) => {
+    console.log(recipeId,userId,"HEREEEEEEEEEEEEEEEEE")
+    let res = await fetch(`/api/likes/${recipeId}/${userId}`, {
       method: "POST",
     });
     //expects response to have a length of likers on res object
@@ -132,7 +132,9 @@ const dispatch = useDispatch()
             </div>
             <div className="post-comment-submit">
               <i
-                onClick={like}
+                onClick={(e) => {
+                  like(recipeId,poster)
+                }}
                 className={
                   likeUsers.includes(myUserId)
                     ? "fas fa-heart fa-lg"

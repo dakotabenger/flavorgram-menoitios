@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired
 
 
 class NewFollow(FlaskForm):
-    followerId = IntergerField("followerId", [DataRequired()])
-    followingId = IntergerField("followingId", [DataRequired()])
+    followerId = IntegerField("followerId", [DataRequired()])
+    followingId = IntegerField("followingId", [DataRequired()])

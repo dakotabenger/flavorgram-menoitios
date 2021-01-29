@@ -17,7 +17,7 @@ const Feed = ({children}) => {
     
   useEffect(() => {
     (async () => {
-      console.log(dispatch(recipesActions.addRecipes()))
+      console.log(await dispatch(recipesActions.addRecipes()))
       setLoaded(true)
       
     })();
