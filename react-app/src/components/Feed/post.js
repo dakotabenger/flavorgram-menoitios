@@ -6,6 +6,7 @@ import { useHistory, NavLink } from "react-router-dom";
 import * as recipeActions from "../../store/recipe";
 const Post = ({ recipe, user, users, myUserId }) => {
   const [comment, setComment] = useState("");
+  const [isLiked, setIsLiked] = useState(false);
   const [numLikes, setNumLikes] = useState(recipe.numLikes);
   const [likeUsers, setLikeUsers] = useState(recipe.likers);
   const [comments, setComments] = useState(recipe.comments);
@@ -101,6 +102,9 @@ const Post = ({ recipe, user, users, myUserId }) => {
     setNumLikes(res.numLikes);
     // setLikeUsers(res.likers);
   };
+
+  const heartToggle = () => {};
+
   return (
     <div className="post-main__container">
       <div className="one-post-container">
@@ -149,7 +153,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {recipe.dish_name}
             </div>
           </div>
-          {/*                               {commentGen()} */}
+
           <div className="post-comment-container"> {commentGen()} </div>
           <form className="comment-form" onSubmit={submitComment}>
             <textarea

@@ -40,7 +40,7 @@ body {
   padding: 2px;
 }
 
-.fa-heart:checked {
+.far fa-heart:checked {
   background-color: red;
 }
 
@@ -61,12 +61,10 @@ body {
   background-color: salmon;
   color: black;
 }
-.post-follow-link:hover {
-  background-color: red;
-}
 
 .post-likes {
   color: black;
+
   font-size: small;
   padding: 1px 0px 0px 3px;
 }
