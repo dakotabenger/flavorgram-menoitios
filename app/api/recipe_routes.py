@@ -48,6 +48,19 @@ def get_recipe(recipeId):
     recipes = Recipe.query.get(recipeId)
     return {"recipe": recipes.to_dict()}
 
+@recipe_routes.route('/delete_recipe/<int:recipeId>/<int:userId>', methods=["POST"])
+def delete_recipe(recipeId, userId):
+
+    validRecipe = Recipe.query.filter(Recipe.id==recipeId, Recipe.userId==userId).first()
+    if(validRecipe):
+        db.session.delete(validRecipe)
+        db.session.commit()
+
+        recipes = Recipe.query.all()
+        return {"recipes": [recipe.to_dict() for recipe in recipes]}
+    else:
+        return {'message':'Uh-oh something went wrong...'}
+
 
 @recipe_routes.route('/create_recipe', methods=["POST"])
 def create_recipe():
