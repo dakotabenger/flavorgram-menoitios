@@ -17,11 +17,38 @@
   align-items: center;
 }
 
+.actual-image{
+  height: auto;
+  width: auto;
+}
+
+.post-comments-likes {
+  border-bottom: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
+}
+
+.actual-image:hover{
+}
+
 .post-user-info {
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
   padding: 15px;
+}
+
+.post-author-name {
+  text-decoration: none;
+  font-size: 22px;
+  color:red;
+}
+.post-author-name:hover {
+  text-decoration: none;
+  font-size: 22px;
+  color:red;
+  border: 3px solid rgba(10, 10, 10, 0.1);
+  border-radius: 20px;
+  background-color: rgba(10, 10, 10, 0.1);
+  padding: 2px;
 }
 
 .no-recipe {
@@ -35,6 +62,7 @@
   height: 40px;
   border-radius: 30px;
   overflow: hidden;
+  border: 2px solid rgba(10, 10, 10, 0.3);
   padding: 3px;
   margin-right: 5px;
 }
@@ -50,25 +78,26 @@
   margin-bottom: 5px;
 }
 
-.post-bottom-info-container {
-  padding: 15px;
-}
-
 .post-comment-field {
   margin-top: 10px;
+  resize: none;
   border: 1px solid black;
   width: 80%;
+  height: 9vh;
 }
 
 .one-post-container {
   display: flex;
   align-content: center;
   flex-direction: column;
-  width: 50%;
+  width: 500px;
+  height: auto;
   outline: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
   margin-top: 10px;
   margin-bottom: 10px;
+  border: 1px solid #BFBFBF;
   background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
 }
 
 .one-searched-container {
@@ -99,14 +128,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: auto;
+  height: auto;
   border-bottom: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
 }
 
 .comment-submit {
-  background-color: transparent;
-  border: 0px;
-  color: red;
+  width:110px;
+  height: 25px;
+  margin-bottom:4px;
+  margin-top:4px;
+  margin-left:4px;
+  border:solid 1px lightgrey;
+  border-radius:5px;
+  background-color:salmon;
+  color:black;
+}
+.comment-submit:hover {
+  background-color: red
 }
 
 .comment-submit:hover {
@@ -129,6 +168,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px;
+}
+.feed-comment{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 5px;
 }
 
 .feed-post-img-container img {

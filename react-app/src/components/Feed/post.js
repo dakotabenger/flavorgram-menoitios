@@ -88,12 +88,13 @@ const Post = ({ recipe, user, users, myUserId }) => {
             src={user.avatarUrl}
             alt={`profile pic of ${user.username}`}
           />
-          <div className="post-author-name">
-            <NavLink to={`/users/${user.username}`}>{user.username}</NavLink>
+          <div>
+            <NavLink className="post-author-name" to={`/users/${user.username}`}>{user.username}</NavLink>
           </div>
         </div>
         <div className="feed-post-img-container">
           <img
+            className="actual-image"
             src={recipe.photoUrl}
             alt={recipe.dish_name}
             onClick={(e) => {
@@ -101,22 +102,24 @@ const Post = ({ recipe, user, users, myUserId }) => {
           />
         </div>
         <div className="post-bottom-info-container">
-          <i
-            onClick={like}
-            className={
-              likeUsers.includes(myUserId)
-                ? "fas fa-heart fa-lg"
-                : "far fa-heart fa-lg"
-            }
-          ></i>
-          <div className="post-likes">
-            {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
-          </div>
-          <div className="post-text">
-            <NavLink to={`/users/${user.username}`}>
-              <b>{user.username}</b>
-            </NavLink>{" "}
-            {recipe.dish_name}
+          <div className="post-comments-likes">
+            <i
+              onClick={like}
+              className={
+                likeUsers.includes(myUserId)
+                  ? "fas fa-heart fa-lg"
+                  : "far fa-heart fa-lg"
+              }
+            ></i>
+            <div className="post-likes">
+              {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
+            </div>
+            <div className="post-text">
+              <NavLink to={`/users/${user.username}`}>
+                <b>{user.username}</b>
+              </NavLink>{" "}
+              {recipe.dish_name}
+            </div>
           </div>
           {/*                               {commentGen()} */}
           <div className="post-comment-container"> {commentGen()} </div>
