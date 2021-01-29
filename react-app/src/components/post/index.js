@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { authenticate } from "../../services/auth";
 import { useParams, NavLink } from "react-router-dom";
 import RecommendedPost from "./recommendedPost";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./post.css";
+import * as recipeActions from "../../store/recipe"
+import * as recipesActions from "../../store/recipes"
 
 const Post = () => {
   const { recipeId } = useParams();
@@ -21,15 +23,16 @@ const Post = () => {
   const [canFollow, setCanFollow] = useState(true);
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
-
+const dispatch = useDispatch()
   const currUsesr = useSelector((state) => state.session.user.id)
 
   useEffect(() => {
     (async () => {
-      setLoaded(true);
+      setLoaded(false);
       let res = await fetch(`/api/recipes/${recipeId}`);
       res = await res.json();
       console.log(res)
+      dispatch(recipeActions.setRecipe(res.recipe))
       setUsers(res.recipe.user);
       setImg(res.recipe.photoUrl);
       setComments([
@@ -46,6 +49,7 @@ const Post = () => {
       setMyUserId(currUsesr);
       // setRecommendedPosts(res.recommended);
       // setCanFollow(res.canFollow);
+      dispatch(recipesActions.addRecipes())
       setLoaded(true);
     })();
   }, [recipeId]);
@@ -80,9 +84,9 @@ const Post = () => {
     setCanFollow(!res.added);
   };
 
-  const like = async (e) => {
-    e.preventDefault();
-    let res = await fetch(`/api/recipes/${recipeId}/likes`, {
+  const like = async (recipeId,userId) => {
+    console.log(recipeId,userId,"HEREEEEEEEEEEEEEEEEE")
+    let res = await fetch(`/api/likes/${recipeId}/${userId}`, {
       method: "POST",
     });
     //expects response to have a length of likers on res object
@@ -128,7 +132,9 @@ const Post = () => {
             </div>
             <div className="post-comment-submit">
               <i
-                onClick={like}
+                onClick={(e) => {
+                  like(recipeId,poster)
+                }}
                 className={
                   likeUsers.includes(myUserId)
                     ? "fas fa-heart fa-lg"

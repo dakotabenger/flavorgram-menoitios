@@ -1,41 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext,useRef } from "react";
 import Post from "./post";
 import "./Feed.css";
 import { authenticate } from "../../services/auth";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import * as recipesActions from "../../store/recipes";
+import * as recipeActions from "../../store/recipe"
 
-const Feed = () => {
-  const [recipe, setRecipe] = useState([]);
-  const [loaded, setLoaded] = useState(true); //set to false once logged in
-  const [users, setUsers] = useState({});
-  const [myUserId, setMyUserId] = useState(null);
+const Feed = ({children}) => {
+  const [loaded, setLoaded] = useState(false); //set to false once logged in
+  const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.session.user.id)
+  let recipes = useSelector((state) => state.recipes.results.recipes)
 
+  
+    
   useEffect(() => {
     (async () => {
-      let res = await fetch("/api/recipes/feed");
-      res = await res.json();
-      // console.log(res)
-      setRecipe(res.recipes);
-      setUsers(res.user);
-      setLoaded(true);
-      setMyUserId(userId);
+      console.log(await dispatch(recipesActions.addRecipes()))
+      setLoaded(true)
+      
     })();
   }, []);
   return (
     loaded && (
       <div className="post-container">
-        {recipe.length ? (
-          recipe.map((recipe) => (
+        {recipes.length ? (
+          recipes.map((recipe) => (
+            <>
             <Post
               key={recipe.id}
               recipe={recipe}
               user={recipe.user}
               // users={users}
-              myUserId={myUserId}
+              myUserId={userId}
             />
+            </>
           ))
+            
         ) : (
           <h2 className="no-recipe">No Recipes currently Uploaded!</h2>
         )}

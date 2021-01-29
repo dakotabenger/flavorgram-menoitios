@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory, NavLink } from 'react-router-dom'
 // import frenchtoast from "../../assets/frenchtoast.jpg";
 // import chewtalk from "../../assets/chewytalk.jpg";
-
+import * as recipeActions from '../../store/recipe'
 const Post = ({ recipe, user, users, myUserId }) => {
   const [comment, setComment] = useState("");
   const [numLikes, setNumLikes] = useState(recipe.numLikes);
   const [likeUsers, setLikeUsers] = useState(recipe.likers);
   const [comments, setComments] = useState(recipe.comments);
-
+  const dispatch = useDispatch
 
   const history = useHistory();
   // maps through comments and if <= 3, it will show all, if > than three, it hides all comments
@@ -95,7 +96,8 @@ const Post = ({ recipe, user, users, myUserId }) => {
           <img
             src={recipe.photoUrl}
             alt={recipe.dish_name}
-            onClick={(e) => history.push(`/recipes/${recipe.id}`)}
+            onClick={(e) => {
+              history.push(`/recipes/${recipe.id}`)}}
           />
         </div>
         <div className="post-bottom-info-container">

@@ -3,6 +3,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+import * as recipesActions from "../../store/recipes";
 
 const FormContainer = styled.div`
   display: flex;
@@ -125,10 +126,12 @@ const LoginForm = () => {
   const onLogin = (e) => {
     e.preventDefault();
     if (email && password){
-      return dispatch(sessionActions.login({ email, password }))
+      dispatch(sessionActions.login({ email, password }))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
+      dispatch(recipesActions.addRecipes())
+
     }
 
   };
