@@ -171,22 +171,67 @@ def seed_posts():
                         photoUrl=f"https://images.themodernproper.com/billowy-turkey/production/posts/2019/five-spice-sheet-pan-dinner-with-cabbage-and-carrots-10.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1599767606&s=f9d99ca5b72c1d1e7d9934a32381e577",
                         )
     seed_post9 = Recipe(userId=10,
-                        dish_name="chip chip",
-                        ingredients="cookies",
-                        instructions='1) google',
-                        photoUrl=f"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
+                        dish_name="Grilled Pork Tenderloin with Chimichuri",
+                        ingredients="2.5 lbs Pork tenderloin\
+                                    1 tbsp Brown sugar\
+                                    1 tbsp Salt\
+                                    1 tbsp Paprika\
+                                    1 tbsp Pepper\
+                                    1 tbsp Garlic powder\
+                                    1 cup Homemade chimichurri sauce",
+                        instructions='In a bowl whisk together brown sugar, salt, paprika, pepper and garlic powder.\
+                                    Rub the tenderloin with the seasoning until evenly coated.\
+                                    Cook the tenderloin:\
+                                    Oven: Preheat oven to 400° Place rack in the middle. Heat 1-2 tbsp olive oil in oven safe skillet (or cast iron skillet). Add tenderloin to the pan and cook until it is evenly browned on all sides (5-6 minutes). Place the pan in the oven and bake for 15 more minutes, flipping the meat once halfway through. Bake until the internal temperature reads 145° F.\
+                                    Grill: Heat grill or grill pan to medium-high heat. Grill pork, turning occasionally with tongs, until charred and a thermometer inserted into the thickest part of the tenderloinreads 145, about 20 minutes. (For larger tenderloins, bake in a 400º oven for 15 to 25 minutes more, until desired internal temperature is reached.)\
+                                    Transfer to a cutting board and let it rest for at least three minutes.\
+                                    Slice and serve.',
+                        photoUrl=f"https://images.themodernproper.com/billowy-turkey/production/posts/2019/grilled-pork-tenderloin-with-chimichurri-8.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1599767690&s=964495f7db7d1fe508c7459d2b25a6fb",
                         )
     seed_post10 = Recipe(userId=11,
-                        dish_name="chip chip",
-                        ingredients="cookies",
-                        instructions='1) google',
-                        photoUrl=f"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
+                        dish_name="Chimichurri Steak",
+                        ingredients="2 lbs Flank steak\
+                                    1 tsp Kosher salt\
+                                    1/2 tsp Freshly ground black pepper\
+                                    Chimichurri Sauce: \
+                                    1 Small shallot, cut into wedges\
+                                    3/4 cup Flat-leaf parsley, stems removed\
+                                    1 tbsp Fresh oregano, stems removed\
+                                    2 Garlic cloves\
+                                    1 1/2 tsp Kosher salt\
+                                    1 tsp Freshly ground black pepper\
+                                    1/2 tsp Red pepper flakes\
+                                    3/4 cup Extra-virgin olive oil\
+                                    1/2 cup Red wine vinegar",
+                        instructions='In a small food processor pulse the shallot, parsley, oregano, garlic cloves, 1 1/2 teaspoonkosher salt and pepper until combined, but still able to see the ingredients clearly (slightly chunky).\
+                                    In a small bowl add the red wine vinegar, olive oil red pepper flakes and the parsley mixture. Stir until combined**\
+                                    Pat the steak dry with paper towels. Season with salt and pepper.\
+                                    To grill the steak: Preheat grill to medium-high. Place steak on grill and cook to preferred internal temperature, about 6 minutes per side for medium-rare. (Cooking time will vary due to thickness of your steak.)\
+                                    To broil the steak in the oven: Preheat broiler to high. Place steak on a sheet pan and cook, turning once halfway through, until cooked to preferred internal temperature, about 6 minutes per side for medium-rare. (Cooking time will vary due to thickness of your steak.)\
+                                    Let rest for 5-10 minutes before slicing against the grain.\
+                                    Serve with chimichurri sauce.\
+                                    *The sauce will store in refrigerator for up to two weeks.\
+                                    ** Make about 1 cup',
+                        photoUrl=f"https://images.themodernproper.com/billowy-turkey/production/posts/2018/gchimchurri-steak-recipe-5.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.4867&fp-y=0.668&dm=1599796869&s=90e76383cf57c4eaea076bb4828745ba",
                         )
     seed_post11 = Recipe(userId=7,
                         dish_name="chip chip",
-                        ingredients="cookies",
-                        instructions='1) google',
-                        photoUrl=f"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fGZvb2R8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60",
+                        ingredients="3/4 lb Green beans, trimmed and cut into 3\" pieces\
+                                    2 lb Boneless skinless chicken breasts cut into 2\" cubes\
+                                    1/4 cup Toasted sesame oil\
+                                    3 tbsp Cornstarch\
+                                    3 Large garlic cloves, minced\
+                                    1 tbsp Fresh ginger grated\
+                                    1/4 cup Soy sauce or tamari\
+                                    1 tsp Ground fresh chili paste (or 1 tsp red pepper flakes)\
+                                    1/4 tsp Salt\
+                                    Sesame seeds for finishing\
+                                    Cilantro for finishing",
+                        instructions='In a medium sized bowl toss chicken breast in cornstarch.\
+                                    In a large skillet (or wok) heat 2 tbsp of sesame oil over medium heat until glistening. Working in small batches, add in chicken and allow to crisp up. Turn often until all sides are golden brown and chicken is cooked through. Repeat steps until all chicken is cooked, adding more oil only if necessary.\
+                                    Once chicken is cooked add 2 tbsp of sesame oil to the pan and bring to high heat. The oil should be glistening and almost smoking. Add in green beans stirring constantly until green beans are blistered (little dark spots) and green beans are just barely tender. Remove green beans from pan and set aside.\
+                                    Allow skillet to cool down slightly. Over medium/low heat stir in garlic cloves, ginger, soy sauce and chili paste and salt. Stir until all ingredients are combine and garlic is fragrant. Add chicken and green beans back to the pan stirring until coated in marinade. Top with sesame seeds and cilantro and serve immediately.',
+                        photoUrl=f"https://images.themodernproper.com/billowy-turkey/production/posts/2019/crispy-chicken-stir-fry-with-blistered-green-beans-9.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1599767083&s=96d8cacd185a16ef5fb1fd4217503946",
                         )
 
     db.session.add(seed_post1)
