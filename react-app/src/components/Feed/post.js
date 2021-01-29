@@ -69,12 +69,14 @@ const Post = ({ recipe, user, users, myUserId }) => {
 
   const like = async (e) => {
     e.preventDefault();
-    let res = await fetch(`/api/recipes/${recipe.id}/likes`, {
+    let res = await fetch(`/api/likes/${recipe.id}`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
     });
-    res = await res.json();
-    setNumLikes(res.numLikes);
-    setLikeUsers(res.likers);
+    // res = await res.json();
+    setNumLikes(numLikes +1);
+    // setLikeUsers(res.likers);
   };
   return (
     <div className="post-main__container">

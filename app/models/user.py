@@ -1,5 +1,5 @@
 from .db import db
-from .like import Like
+# from .like import Like
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
   followers = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followingId, secondaryjoin=id==follow.c.followerId, back_populates="following")
   following = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followerId, secondaryjoin=id==follow.c.followingId, back_populates="followers")
   recipe = relationship("Recipe")
-  likedPosts = relationship("Recipe", secondary=Like, back_populates="likingUsers")
+  # likedPosts = relationship("Like", back_populates="likingUsers")
 
   @property
   def password(self):
