@@ -125,7 +125,7 @@ const dispatch = useDispatch()
             </div>
             <div className="post-comments-holder">
                         {comments.map((comment)=>{ return ( <div key={comment.id} className="post-comment">
-                            {/* <img alt="user avatar" src={comment.avatarUrl}/> */}
+                            <img alt="user avatar" src={comment.usersAvatar}/>
                             <div className="post-comment-text"><NavLink to={`/users/${comment.username}`}><b>{comment.username}</b></NavLink> {comment.comment}</div>
                           </div>)})}
             </div>

@@ -19,7 +19,8 @@ const Post = ({ recipe, user, users, myUserId }) => {
       comments.map((comment) => (
         <div key={`${recipe.id}-${comment.id}`} className="feed-comment">
           <NavLink to={`users/${comment.username}`}>
-            <b>{comment.username}</b>
+          <img alt="user avatar" src={comment.usersAvatar}/>
+          <b>{comment.username}</b>
           </NavLink>{" "}
           {comment.comment}
         </div>
