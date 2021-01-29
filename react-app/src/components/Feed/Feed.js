@@ -2,25 +2,22 @@ import React, { useState, useEffect } from "react";
 import Post from "./post";
 import "./Feed.css";
 import { authenticate } from "../../services/auth";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import * as recipesActions from "../../store/recipes";
+
 
 const Feed = () => {
   const [recipe, setRecipe] = useState([]);
   const [loaded, setLoaded] = useState(true); //set to false once logged in
-  const [users, setUsers] = useState({});
-  const [myUserId, setMyUserId] = useState(null);
+  const dispatch = useDispatch();
 
   const userId = useSelector((state) => state.session.user.id)
-
+  let recipes = useSelector((state) => state.session.recipes)
   useEffect(() => {
     (async () => {
-      let res = await fetch("/api/recipes/feed");
-      res = await res.json();
+      dispatch(recipesActions.addRecipes())
       // console.log(res)
-      setRecipe(res.recipes);
-      setUsers(res.user);
-      setLoaded(true);
-      setMyUserId(userId);
+ 
     })();
   }, []);
   return (
@@ -33,7 +30,7 @@ const Feed = () => {
               recipe={recipe}
               user={recipe.user}
               // users={users}
-              myUserId={myUserId}
+              myUserId={userId}
             />
           ))
         ) : (
