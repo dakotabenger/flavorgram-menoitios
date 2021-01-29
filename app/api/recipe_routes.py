@@ -70,6 +70,32 @@ def delete_recipe(recipeId, userId):
 
 
 @recipe_routes.route('/create_recipe', methods=["POST"])
+# def create_post():
+#     file = request.files['file']
+#     # dish_name = request.form.get('dish_name')
+#     form = NewRecipe()
+#     print(form.data)
+#     form['csrf_token'].data = request.cookies['csrf_token']
+
+#     if "file" not in request.files:
+#         return "No file key in request.files"
+#     elif file:
+#         photo_url = upload_file_to_s3(file, current_user.get_id(), BUCKET_NAME)
+#         try:
+#             new_recipe = Recipe(userId=data["userId"],
+#                                 dish_name=data["dish_name"],
+#                                 ingredients=data["ingredients"],
+#                                 instructions=data["instructions"],
+#                                 photoUrl=data["photoUrl"])
+
+#         db.session.add(new_recipe)
+#         db.session.commit()
+#         return new_recipe.to_dict()
+#         # except AssertionError as message:
+#         #     return jsonify({"error": str(message)}), 400
+#     else:
+#         print("Uh-oh. There's something wrong here...")
+#--------original create recipe-------------------------
 def create_recipe():
     form = NewRecipe()
     print(form.data)
