@@ -71,6 +71,30 @@
   background-color: white;
 }
 
+.one-searched-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 35%;
+  outline: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.search-main__container {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.container__title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 .feed-post-img-container {
   display: flex;
   justify-content: center;
