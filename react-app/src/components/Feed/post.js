@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory, NavLink } from "react-router-dom";
-// import frenchtoast from "../../assets/frenchtoast.jpg";
-// import chewtalk from "../../assets/chewytalk.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, NavLink, Redirect } from "react-router-dom";
+import * as sessionActions from "../../store/session";
+
 import * as recipeActions from "../../store/recipe";
 const Post = ({ recipe, user, users, myUserId }) => {
   const [comment, setComment] = useState("");
@@ -10,6 +10,9 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const [numLikes, setNumLikes] = useState(recipe.numLikes);
   const [likeUsers, setLikeUsers] = useState(recipe.likers);
   const [comments, setComments] = useState(recipe.comments);
+  const [remove, setRemove] = useState(false);
+  // const sessionUser = useSelector((state) => state.session.user);
+
   const dispatch = useDispatch;
 
   const history = useHistory();
@@ -107,8 +110,6 @@ const Post = ({ recipe, user, users, myUserId }) => {
     // setLikeUsers(res.likers);
   };
 
-  const heartToggle = () => {};
-
   const deletePost = async () => {
     let res = await fetch(
       `api/recipes/delete_recipe/${recipe.id}/${myUserId}`,
@@ -120,11 +121,12 @@ const Post = ({ recipe, user, users, myUserId }) => {
     );
   };
 
-  const deleteButton = () => {
+  const deleteButton = (recipeId) => {
     return recipe.userId === myUserId ? (
-      <button className="x-stretch" onClick={deletePost}>
-        <i class="fas fa-ellipsis-h"></i>
-      </button>
+      <i
+        className="fal fa-trash-alt"
+        onClick={(e) => deletePost(e, recipeId)}
+      ></i>
     ) : (
       <></>
     );
@@ -147,7 +149,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {user.username}
             </NavLink>
           </div>
-          <div className="delete-button">{deleteButton()}</div>
+          <div className="delete-button hide">{deleteButton()}</div>
         </div>
         <div className="feed-post-img-container">
           <img

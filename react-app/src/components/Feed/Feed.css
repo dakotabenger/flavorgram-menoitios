@@ -239,4 +239,6 @@ i.far.fa-heart {
 
 .x-stretch {
   padding-left: 30px;
+  /* border: none; */
+  background-color: salmon;
 }
