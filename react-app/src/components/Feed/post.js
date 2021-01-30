@@ -18,17 +18,18 @@ const Post = ({ recipe, user, users, myUserId }) => {
   //  except 2 most recent.
   const commentGen = () => {
     return comments.length <= 3 ? (
-
       comments.map((comment) => (
         <div key={`${recipe.id}-${comment.id}`} className="feed-comment">
-          <NavLink className="comment-username" to={`users/${comment.username}`}>
+          <NavLink
+            className="comment-username"
+            to={`users/${comment.username}`}
+          >
             <img
               className="comment-profile-pic"
               alt="user avatar"
               src={comment.usersAvatar}
             />
             <b>{comment.username}</b>
-
           </NavLink>{" "}
           {comment.comment}
         </div>
@@ -109,19 +110,25 @@ const Post = ({ recipe, user, users, myUserId }) => {
   const heartToggle = () => {};
 
   const deletePost = async () => {
-    let res = await fetch(`api/recipes/delete_recipe/${recipe.id}/${myUserId}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
-
-    });
-
-  }
+    let res = await fetch(
+      `api/recipes/delete_recipe/${recipe.id}/${myUserId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: myUserId, recipeId: recipe.id }),
+      }
+    );
+  };
 
   const deleteButton = () => {
-    return recipe.userId === myUserId ? <button onClick={deletePost}>X</button>: <></>
-  }
-
+    return recipe.userId === myUserId ? (
+      <button className="x-stretch" onClick={deletePost}>
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    ) : (
+      <></>
+    );
+  };
 
   return (
     <div className="post-main__container">
@@ -140,9 +147,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {user.username}
             </NavLink>
           </div>
-          <div>
-            {deleteButton()}
-          </div>
+          <div className="delete-button">{deleteButton()}</div>
         </div>
         <div className="feed-post-img-container">
           <img
@@ -168,16 +173,13 @@ const Post = ({ recipe, user, users, myUserId }) => {
               {numLikes} {numLikes !== 1 ? "likes" : "like"}{" "}
             </div>
             <div className="post-text">
-
               <NavLink className="post-username" to={`/users/${user.username}`}>
                 <b className="comment__name">{user.username}</b>
-
               </NavLink>{" "}
               {recipe.dish_name}
             </div>
           </div>
 
-         
           <h1 className="comments-title">Comments:</h1>
 
           <div className="post-comment-container"> {commentGen()} </div>
