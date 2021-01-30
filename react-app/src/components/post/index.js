@@ -66,7 +66,7 @@ const dispatch = useDispatch()
     console.log(comments,"HEEEEEEEEEEEEEEEEEEEEEEEJJJJSDJFFJIDEIJF")
     setNewComment("You're comment was posted!");
     setTimeout(() => {setNewComment("")},3000)
-  
+
     // expects response to have userID, comment(and associated dishName)
     // also all comments under recipe
 
@@ -100,13 +100,15 @@ const dispatch = useDispatch()
       <div className="post-wraper">
         <div className="post-holder">
           <div className="post-img-holder">
-            <img alt={dishName} src={img} />
+            <div className="actual-img">
+              <img alt={dishName} src={img} />
+            </div>
             <div className="post-recipe">
-              <h1>{dishName}</h1>
-              <h2>List of Ingredients:</h2>
-              <h3>{ingredients}</h3>
-              <h2>Instructions:</h2>
-              <h3>{instructions}</h3>
+              <h1 className="dishname">{dishName}</h1>
+              <h2 className="list-title">List of Ingredients:</h2>
+              <h3 className="list">{ingredients}</h3>
+              <h2 className="instructions-title">Instructions:</h2>
+              <h3 className="instructions-actual">{instructions}</h3>
             </div>
           </div>
           <div className="post-info-holder">
@@ -126,7 +128,7 @@ const dispatch = useDispatch()
             <div className="post-comments-holder">
                         {comments.map((comment)=>{ return ( <div key={comment.id} className="post-comment">
                             <img alt="user avatar" src={comment.usersAvatar}/>
-                            <div className="post-comment-text"><NavLink to={`/users/${comment.username}`}><b>{comment.username}</b></NavLink> {comment.comment}</div>
+                            <div className="post-comment-text"><NavLink className="comment-username" to={`/users/${comment.username}`}><b>{comment.username}</b></NavLink> {comment.comment}</div>
                           </div>)})}
             </div>
             <div className="post-comment-submit">
