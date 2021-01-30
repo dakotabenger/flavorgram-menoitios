@@ -17,17 +17,16 @@
   align-items: center;
 }
 
-
 .post-username {
   text-decoration: none;
   font-size: 20px;
-  color:red;
+  color: red;
 }
 .post-username:hover {
   text-decoration: underline;
 }
 
-.actual-image{
+.actual-image {
   height: auto;
   width: auto;
 }
@@ -60,12 +59,12 @@
 .comment-username {
   text-decoration: none;
   font-size: 14px;
-  color:red;
+  color: red;
 }
 .comment-username:hover {
   text-decoration: underline;
   font-size: 16px;
-  color:red;
+  color: red;
 }
 
 .no-recipe {
@@ -103,17 +102,17 @@
 .post-text {
   margin-top: 5px;
   margin-bottom: 5px;
- font-size: 16px;
+  font-size: 16px;
   font-family: Neue Helvetica;
   margin-left: 10px;
 }
 div.post-likes {
   margin-left: 10px;
 }
-i.fas.fa-heart{
+i.fas.fa-heart {
   margin-left: 10px;
 }
-i.far.fa-heart{
+i.far.fa-heart {
   margin-left: 10px;
 }
 
@@ -232,4 +231,14 @@ i.far.fa-heart{
   max-width: 100%;
   max-height: 80vh;
   cursor: pointer;
+}
+
+.delete-button {
+  padding-left: 340px;
+}
+
+.x-stretch {
+  padding-left: 30px;
+  /* border: none; */
+  background-color: salmon;
 }
