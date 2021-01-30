@@ -237,6 +237,10 @@ i.far.fa-heart {
   padding-left: 340px;
 }
 
+.delete-button:hover{
+  color:salmon;
+}
+
 .x-stretch {
   padding-left: 30px;
   /* border: none; */
