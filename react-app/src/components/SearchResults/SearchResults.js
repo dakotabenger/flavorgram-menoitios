@@ -40,6 +40,10 @@ const SearchResults = () => {
             }}
           />
         </div>
+        <div className="post-likes">
+              {recipe.numLikes} {recipe.numLikes !== 1 ? "likes" : "like"}{" "}
+            </div>
+            <div className="post-likes"> {recipe.comments.length} {' comments '} </div>
             </div>
           </div>
         );
