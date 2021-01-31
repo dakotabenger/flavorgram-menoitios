@@ -10,7 +10,7 @@ body {
 .post-holder {
   display: flex;
   width: 80vw;
-  height: 80vh;
+  height: inherit;
   min-height: 600px;
   min-width: 800px;
   outline: 1px solid rgba(0.3, 0.3, 0.3, 0.25);
@@ -23,11 +23,9 @@ body {
 
 .post-user-name {
   text-decoration: none;
-  display: inline;
   display: flex;
-  margin: auto;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
 }
 
 .post-user-name-name {
@@ -69,7 +67,7 @@ body {
 }
 
 .post-img-holder {
-  height: 100%;
+  height: auto;
   width: 75%;
   display: flex;
   flex-direction: column;
@@ -110,6 +108,7 @@ body {
 .actual-img {
   height: 100%;
   width: auto;
+  border: solid 3px lightgrey;
   max-height: 500px;
   max-width: 500px;
   margin-top: 15px;
@@ -118,6 +117,7 @@ body {
 
 .post-recipe {
   border: solid 1px lightgrey;
+  background-color: #FAFAFA;
   border-radius: 5px;
   padding: 25px;
   margin-top: 15px;
@@ -155,7 +155,7 @@ body {
 }
 
 .post-info-holder {
-  height: 100%;
+  height: auto;
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -165,16 +165,19 @@ body {
 .poster-info {
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 100px;
   width: 100%;
   border-bottom: 1px solid rgba(10, 10, 10, 0.1);
 }
 
-.post-info-holder img {
-  width: 30px;
-  height: 30px;
-  border-radius: 30px;
-  margin: 3px;
+.user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  border: 2px solid rgba(10, 10, 10, 0.3);
+  padding: 3px;
+  margin-right: 5px;
+  margin-left: 17.5px;
 }
 
 .post-comment {

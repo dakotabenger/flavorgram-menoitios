@@ -47,6 +47,7 @@ const StyledLi = styled.li`
   font-size: 2rem;
   color: black;
   margin-left: 25px;
+  margin-right: 3px;
   // position:relative;
   // bottom: 30px;
   // right: 300px;
