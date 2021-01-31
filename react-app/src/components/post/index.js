@@ -113,7 +113,7 @@ const dispatch = useDispatch()
           </div>
           <div className="post-info-holder">
             <div className="poster-info">
-              <img alt="user avatar" src={users.avatarUrl}/>
+              <img className="user-avatar" alt="user avatar" src={users.avatarUrl}/>
               <div className="post-user-name">
                 <NavLink className="post-user-name-name" to={`/users/${users.username}`}>
                   {users.username}
