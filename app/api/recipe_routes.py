@@ -42,7 +42,6 @@ def upload_file_to_s3(file, userId, bucket_name, acl="public-read"):
 def get_recipes():
     recipes = Recipe.query.all()
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
-
 @recipe_routes.route('/<int:recipeId>', methods=["GET"])
 def get_recipe(recipeId):
 
