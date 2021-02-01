@@ -46,6 +46,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
         </div>
         <div className="feed-comment">
           <NavLink
+            className="comment-username"
             to={`/users/${
               recipe.comments[recipe.comments.length - 2].username
             }`}
@@ -56,6 +57,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
         </div>
         <div className="feed-comment">
           <NavLink
+            className="comment-username"
             to={`/users/${
               recipe.comments[recipe.comments.length - 1].username
             }`}
