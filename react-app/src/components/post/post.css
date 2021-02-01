@@ -112,16 +112,15 @@ body {
   max-height: 500px;
   max-width: 500px;
   margin-top: 15px;
-
 }
 
 .post-recipe {
   border: solid 1px lightgrey;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   border-radius: 5px;
   padding: 25px;
   margin-top: 15px;
-  margin-left:5px;
+  margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 25px;
 }
@@ -130,14 +129,14 @@ body {
   font-family: Helvetica, sans-serif;
 }
 .list-title {
-  margin-bottom:5px;
+  margin-bottom: 5px;
   font-family: Helvetica, sans-serif;
 }
 .list {
   font-family: Helvetica, sans-serif;
 }
 .instructions-title {
-  margin-top:25px;
+  margin-top: 25px;
   font-family: Helvetica, sans-serif;
 }
 .instructions-actual {
@@ -188,13 +187,20 @@ body {
   margin-bottom: 3px;
 }
 
+.img-comment {
+  width: 35px;
+  height: 35px;
+  border-radius: 30px;
+  border: 2px solid rgba(10, 10, 10, 0.3);
+}
+
 .user-comment {
   text-decoration: none;
 }
 .comment-username {
   text-decoration: none;
   font-size: 14px;
-  color:red;
+  color: red;
 }
 .comment-username:hover {
   text-decoration: underline;
@@ -204,6 +210,7 @@ body {
   max-width: 100%;
   overflow-wrap: break-word;
   overflow-x: hidden;
+  padding-left: 8px;
 }
 
 .post-comment-submit {
@@ -223,7 +230,6 @@ body {
   font-size: 14px;
   padding: 5px;
 }
-
 
 .post-comment-submit input {
   width: 110px;

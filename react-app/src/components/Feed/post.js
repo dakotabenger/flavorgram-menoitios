@@ -107,7 +107,7 @@ const Post = ({ recipe, user, users, myUserId }) => {
     });
     res = await res.json();
     setNumLikes(res.numLikes);
-    // setLikeUsers(res.likers);
+    setLikeUsers(res.likers);
   };
 
   const deletePost = async () => {

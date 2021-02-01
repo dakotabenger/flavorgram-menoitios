@@ -118,3 +118,19 @@ def searched(keyword):
     recipes = Recipe.query.filter(Recipe.dish_name.ilike(f'%{keyword}%')).all()
     print([recipe.to_dict() for recipe in recipes])
     return {"recipes": [recipe.to_dict() for recipe in recipes]}
+
+
+@recipe_routes.route('/<int:id>/likes', methods=["POST"])
+# @login_required
+def likePost(id):
+    recipes = Recipe.query.get(id)
+    user = User.query.get(current_user.get_id())
+    likingUserIds = {u.id: True for u in Recipe.likingUsers}
+    if user.id not in likingUserIds:
+        recipe.likingUsers.append(user)
+        db.session.commit()
+        return jsonify(recipe.to_dict())
+    else:
+        recipe.likingUsers.remove(user)
+        db.session.commit()
+        return jsonify(recipe.to_dict())
