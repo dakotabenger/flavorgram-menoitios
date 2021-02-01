@@ -63,12 +63,13 @@ const IconContainer = styled.div`
   justify-content: flex-end;
   position: relative;
   top: 20px;
+  margin-right: 15px;
   // left: 560px;
 `;
 
 const StyledIcon = styled.div`
   padding: 10px;
-  bottom: 8px;
+  bottom: 13px;
   position: relative;
   & :hover {
     background-color: red;
@@ -136,7 +137,7 @@ const HomeButton = styled.i`
   -moz-text-fill-color: transparent;
   padding: 10px;
   position: relative;
-  bottom: 10px;
+  bottom: 15px;
   &: hover {
     background-color: red;
   } ;
