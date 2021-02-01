@@ -126,7 +126,7 @@ function Profile(props) {
         },
         body: JSON.stringify({
           followerId: loggedin.id,
-        }),
+        }),   
       });
       const response = await fetch(`/api/users/${username}`);
       const result = await response.json();

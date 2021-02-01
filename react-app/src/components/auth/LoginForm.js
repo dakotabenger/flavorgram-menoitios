@@ -9,37 +9,38 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  margin-top:50px;
-  height:500px;
-  width:400px;
+  align-items: center;
+  margin-top: 50px;
+  height: 500px;
+  width: 400px;
   background-color: white;
   border: 1px solid lightgrey;
-  border-radius:2px;
+  border-radius: 2px;
 `;
 
 const Input = styled.input`
-  margin-bottom:10px;
-  margin-top:10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 4px 0 4px 4px;
-  border:solid 1px lightgrey;
-  border-radius:5px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
   justify-self: center;
-  background-color:#FAFAFA;
+  background-color: #fafafa;
 `;
 
 const SubmitButton = styled.button`
-  width:163px;
-  margin-bottom:4px;
-  margin-top:4px;
-  border:solid 1px lightgrey;
-  border-radius:5px;
-  background-color:salmon;
-  color:#FAFAFA;
+  width: 163px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  background-color: salmon;
+  color: #fafafa;
 
-  &:hover{
-    background-color:red;
-  }`;
+  &:hover {
+    background-color: red;
+  }
+`;
 
 const SignUpButton = styled.button`
   width:163px;
@@ -57,14 +58,14 @@ const SignUpButton = styled.button`
 const Form = styled.form`
   display: flex;
   justify-content: center;
-  align-items:center;
-`
+  align-items: center;
+`;
 
 const Page = styled.div`
-  background-color:#FAFAFA;
+  background-color: #fafafa;
   height: 580px;
   width: auto;
-`
+`;
 
 const Demo = styled.button`
   background: none!important;
@@ -82,12 +83,12 @@ const Demo = styled.button`
 `;
 
 const Logo = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-bottom:75px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 75px;
 `;
 
-const Util =styled.li`
+const Util = styled.li`
   background-color: red;
   background-image: linear-gradient(to top, #ff0844 0%, #ffb199, 100%);
   background-size: 100%;
@@ -109,10 +110,9 @@ const Util =styled.li`
 const Name = styled.h2`
   color: black;
   display: inline;
-  font-size:30px;
+  font-size: 30px;
   font-family: "kunbh sans", sans-serif;
 `;
-
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -125,15 +125,12 @@ const LoginForm = () => {
 
   const onLogin = (e) => {
     e.preventDefault();
-    if (email && password){
-      dispatch(sessionActions.login({ email, password }))
-      .catch((res) => {
+    if (email && password) {
+      dispatch(sessionActions.login({ email, password })).catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
-      dispatch(recipesActions.addRecipes())
-
+      dispatch(recipesActions.addRecipes());
     }
-
   };
 
   // const updateEmail = (e) => {
@@ -179,16 +176,19 @@ const LoginForm = () => {
             />
           </div>
           <SubmitButton type="submit">Login</SubmitButton>
-          <NavLink to='/sign-up'>
+          <NavLink to="/sign-up">
             <SignUpButton type="button">Sign Up</SignUpButton>
           </NavLink>
           <Demo
-            type='submit'
+            type="submit"
             onClick={() => {
-              setEmail('demo@aa.io')
-              setPassword('password')
+              setEmail("demo@aa.io");
+              setPassword("password");
             }}
-          > Demo </Demo>
+          >
+            {" "}
+            Demo{" "}
+          </Demo>
         </FormContainer>
       </Form>
     </Page>
