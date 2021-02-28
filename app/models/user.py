@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
   followers = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followingId, secondaryjoin=id==follow.c.followerId, back_populates="following")
   following = db.relationship("User", secondary=follow, primaryjoin=id==follow.c.followerId, secondaryjoin=id==follow.c.followingId, back_populates="followers")
   recipe = relationship("Recipe")
-  # likedPosts = relationship("Like", back_populates="likingUsers")
+
 
   @property
   def password(self):
@@ -66,7 +66,6 @@ class User(db.Model, UserMixin):
       "numFollowing": len(self.following),
       "followers": [follower.to_dict() for follower in self.followers],
       "following": [user.to_dict() for user in self.following],
-      # "followingUserNames": [user.follower_names() for user in self.following],
       "recipes": [recipe.to_simple_dict() for recipe in self.recipe]
     }
 
