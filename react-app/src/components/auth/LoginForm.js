@@ -191,8 +191,56 @@ const LoginForm = () => {
           </Demo>
         </FormContainer>
       </Form>
+      <FooterBox>
+        Contributors
+        <Contribute>
+          <NameList href="https://github.com/dakotabenger">
+            Dakota Benger{" "}
+          </NameList>
+          <NameList href="https://github.com/RamsesRomeroJr">
+            Ramses Romero
+          </NameList>
+          <NameList href="https://github.com/dezadkins">Dez Adkins</NameList>
+          <NameList href="https://github.com/dereknungesser">
+            Derek Nungesser
+          </NameList>
+        </Contribute>
+      </FooterBox>
     </Page>
   );
 };
 
 export default LoginForm;
+
+const FooterBox = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: lightblue; */
+  width: 100%;
+  min-height: 20vh;
+  margin-top: 45px;
+  font-weight: 800;
+  font-size: 16px;
+  font-family: "Kumbh Sans", sans-serif;
+  color: #8b8b94;
+`;
+
+const Contribute = styled.div`
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  font-family: "Kumbh Sans", sans-serif;
+`;
+
+const NameList = styled.a`
+  font-family: "Kumbh Sans", sans-serif;
+  text-decoration: none;
+  margin-top: 10px;
+  color: #8b8b94;
+  font-size: 14px;
+  font-weight: 200;
+`;

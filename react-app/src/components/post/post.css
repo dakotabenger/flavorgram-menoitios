@@ -148,6 +148,7 @@ body {
 
 .post-comments-holder {
   overflow: auto;
+  /* padding-right: 10px; */
   height: 100%;
 }
 
@@ -184,9 +185,10 @@ body {
 
 .post-comment {
   display: flex;
+  margin-left: 5px;
   align-items: center;
   font-size: small;
-  margin-top: 3px;
+  margin-top: 5px;
   margin-bottom: 3px;
 }
 
