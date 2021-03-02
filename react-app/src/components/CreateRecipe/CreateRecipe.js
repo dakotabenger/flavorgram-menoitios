@@ -41,7 +41,7 @@ function CreateRecipe() {
       <section>
         <form onSubmit={handleSubmit}>
           <div className="form_container">
-            {/* <ImageGen /> */}
+            <ImageGen />
             <h2>Title</h2>
             <input
               onChange={(e) => {

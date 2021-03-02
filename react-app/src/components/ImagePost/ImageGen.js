@@ -1,31 +1,41 @@
 import React, { useState, useRef } from "react";
+import { fetch } from "../../store/csrf";
+
 import { useHistory } from "react-router-dom";
+import * as sessionActions from "../../store/session";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./ImageGen.css";
 
-export default function () {
+export default function ImageGen() {
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(null);
+  const [photoUrl, setPhotoUrl] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [error, setError] = useState(null);
   const history = useHistory();
   const uploadInput = useRef(null);
-
+  const user = useSelector((state) => {
+    return state.session.user;
+  });
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!image) {
+    if (!photoUrl) {
       setError(<p id="errorMsg">Please Upload Recipe Image</p>);
       return;
     }
     const formData = new FormData();
-    formData.append("file", image);
-    formData.append("description", description);
+
+    formData.append("userId", user.id);
+    formData.append("file", photoUrl);
+    // formData.append("description", description);
     try {
       let res = await fetch(`/api/recipes/`, {
         method: "POST",
         body: formData,
+        headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log("hit me", res);
       if (!res.ok) throw res;
       return history.push("/");
     } catch (err) {
@@ -44,7 +54,7 @@ export default function () {
     e.target.files[0]
       ? setImagePreview(URL.createObjectURL(e.target.files[0]))
       : setImagePreview(null);
-    return validity.valid && setImage(file);
+    return validity.valid && setPhotoUrl(file);
   };
 
   const handleUploadImage = (e) => {
@@ -94,19 +104,19 @@ export default function () {
               onChange={updateFile}
             />
           </div>
-          <div className="imgCaptionContainer">
-            {/* <textarea
+          {/* <div className="imgCaptionContainer">
+            <textarea
               className="imgCaptionInput"
               value={description}
               name="description"
               placeholder="Add a description..."
               onChange={(e) => setDescription(e.target.value)}
-            /> */}
-          </div>
+            />
+          </div> */}
           <div id="errorContainer">{error}</div>
-          <div>
-            {/* <input className="img-post__button" type="submit" value="Post" /> */}
-          </div>
+          {/* <div>
+            <input className="img-post__button" type="submit" value="Post" />
+          </div> */}
         </div>
       </form>
     </div>
