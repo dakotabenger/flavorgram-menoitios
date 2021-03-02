@@ -10,7 +10,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 130px;
+  margin-top: 105px;
   height: 500px;
   width: 400px;
   background-color: white;
@@ -220,7 +220,7 @@ const FooterBox = styled.div`
   /* background-color: lightblue; */
   width: 100%;
   min-height: 20vh;
-  margin-top: 45px;
+  margin-top: 80px;
   font-weight: 800;
   font-size: 16px;
   font-family: "Kumbh Sans", sans-serif;
