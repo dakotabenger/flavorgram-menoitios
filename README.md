@@ -13,6 +13,12 @@
     <a href="https://github.com/dakotabenger/flavorgram-menoitios/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
+    <a href="http://flavorgram.herokuapp.com/" target="_blank" >View Live</a>
+    ·
+    <a href="https://github.com/dakotabenger/flavorgram-menoitios/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/dakotabenger/flavorgram-menoitios/issues">Request Feature</a>
+    <br />
   </p>
 </p>
 
@@ -35,6 +41,8 @@
         <li><a href="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/README.md">React/Front-End</a></li>
       </ul>
     </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -42,7 +50,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/RamsesRomeroJr-patch-1/FlavorGram-Home.jpg" alt="HomePage" >
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/readMe/react-app/public/flavorgram-homepage.jpg?raw=true" alt="HomePage" >
 <-- quick description about project -->
 
 ### Built With
@@ -153,8 +161,42 @@ This is the backend for the Flask React project.
 
 11. profit
 
+<!-- USAGE EXAMPLES -->
+## Usage
+
+### Some of the features that you can use with this website
+- Being able to sign-up/login/demo 
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/public/Flavorgram-DemoLogin.gif?raw=true" />
+
+- Liking recipes
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/public/Flavorgram-CanLike.gif?raw=true" />
+
+- Commenting / Recipe info
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/public/Flavorgram-Commenting.gif?raw=true" />
+
+- Create Recipes 
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/public/Flavorgram-CreateRecipe.gif?raw=true" />
+
+- Search for recipes
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/public/Flavorgram-Search.gif?raw=true" />
+
+- User Profiles 
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/main/react-app/public/Flavorgram-UserProfiles.gif?raw=true" />
+
+<!-- ROADMAP -->
+## Roadmap
+
+For all planning done before hand check it out [here](https://github.com/dakotabenger/flavorgram-menoitios/wiki)
+
 <!-- CONTACT -->
 ## Contact
+#### Dakota Benger: [Github](https://github.com/dakotabenger) - [LinkedIn](https://www.linkedin.com/in/dakota-benger/)
+
+#### Derek Nungesser: [Github](https://github.com/dereknungesser) - [LinkedIn](https://www.linkedin.com/in/nungesser94/)
+
+#### Dez Adkins: [Github](https://github.com/dezadkins) - [LinkedIn](https://www.linkedin.com/in/desmond-adkins-64981a36/)
+
+#### Ramses Romero Jr: [Github](https://github.com/RamsesRomeroJr) - [LinkedIn](https://www.linkedin.com/in/ramses-romero-jr/)
 
 
 [Project Link](https://github.com/dakotabenger/flavorgram-menoitios)
