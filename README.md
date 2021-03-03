@@ -177,7 +177,7 @@ This is the backend for the Flask React project.
 <img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/readMe/react-app/public/Flavorgram-Commenting.gif?raw=true" />
 
 - Create Recipes 
-<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/readMe/react-app/public/Flavorgram-CreateRecipe.gif?raw=true />
+<img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/readMe/react-app/public/Flavorgram-CreateRecipe.gif?raw=true" />
 
 - Search for recipes
 <img src="https://github.com/dakotabenger/flavorgram-menoitios/blob/readMe/react-app/public/Flavorgram-Search.gif?raw=true" />
