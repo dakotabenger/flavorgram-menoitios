@@ -161,7 +161,7 @@ This is the backend for the Flask React project.
 11. profit
 
 <!-- USAGE EXAMPLES -->
-##Usage
+## Usage
 
 ### Some of the features that you can use with this website
 - Being able to sign-up/login/demo 
