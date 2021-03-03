@@ -190,13 +190,13 @@ For all planning done before hand check it out [here](https://github.com/dakotab
 
 <!-- CONTACT -->
 ## Contact
-Dakota Benger: [Github](https://github.com/dakotabenger) - [LinkedIn](https://www.linkedin.com/in/dakota-benger/)
+#### Dakota Benger: [Github](https://github.com/dakotabenger) - [LinkedIn](https://www.linkedin.com/in/dakota-benger/)
 -
-Derek Nungesser: [Github](https://github.com/dereknungesser) - [LinkedIn](https://www.linkedin.com/in/nungesser94/)
+#### Derek Nungesser: [Github](https://github.com/dereknungesser) - [LinkedIn](https://www.linkedin.com/in/nungesser94/)
 -
-Dez Adkins: [Github](https://github.com/dezadkins) - [LinkedIn](https://www.linkedin.com/in/desmond-adkins-64981a36/)
+#### Dez Adkins: [Github](https://github.com/dezadkins) - [LinkedIn](https://www.linkedin.com/in/desmond-adkins-64981a36/)
 -
-Ramses Romero Jr: [Github](https://github.com/RamsesRomeroJr) - [LinkedIn](https://www.linkedin.com/in/ramses-romero-jr/)
+#### Ramses Romero Jr: [Github](https://github.com/RamsesRomeroJr) - [LinkedIn](https://www.linkedin.com/in/ramses-romero-jr/)
 -
 
 [Project Link](https://github.com/dakotabenger/flavorgram-menoitios)
