@@ -93,9 +93,10 @@ const StyledSearch = styled.li`
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
-  color: black;
+  color: gray;
   position: relative;
   bottom: 10px;
+
   // right: 75px;
 `;
 // Moved to Search/Search.js
@@ -191,7 +192,7 @@ const NavBar = ({ setAuthenticated }) => {
               <IconLi className="navbar__item">
                 <IconLi className="navbar__btn"></IconLi>
                 <NavLink to="/" exact={true} activeClassName="active">
-                  <HomeButton className="fas fa-home navbar__links"></HomeButton>
+                  <HomeButton className="far fa-home-alt navbar__links"></HomeButton>
                 </NavLink>
               </IconLi>
               <IconLi className="navbar__item">
@@ -200,7 +201,7 @@ const NavBar = ({ setAuthenticated }) => {
                   exact={true}
                   activeClassName="active"
                 >
-                  <HomeButton className="fas fa-mortar-pestle navbar__links"></HomeButton>
+                  <HomeButton className="far fa-mortar-pestle navbar__links"></HomeButton>
                 </NavLink>
               </IconLi>
 
