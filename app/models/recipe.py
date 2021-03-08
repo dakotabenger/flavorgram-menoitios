@@ -42,6 +42,6 @@ class Recipe(db.Model):
             "photoUrl": self.photoUrl,
             "comments": [comment.to_dict() for comment in self.comments],
             "numLikes": len(self.likingUsers),
-            "likers":[l.id for l in self.likingUsers],
+            "likers": [liker.to_dict() for liker in self.likingUsers],
             "user": self.user.to_dict()
         }
